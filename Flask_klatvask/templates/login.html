@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container">
+    <form action="/login" method="post">
+    <div class="mb-3">
+      <label for="Username" class="form-label">Room number</label>
+      <br>
+      <input type="text" class="form-control" id="Username" name="username">
+    </div>
+    <div class="mb-3">
+      <label for="Password" class="form-label">Password</label>
+      <br>
+      <input type="password" class="form-control" id="Password" name="password">
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+  </form>
+      <br/>
+      Don't have an account ? <a href="/register" class="btn btn-primary btn-sm">Create account</a>
+  </div>
+{% endblock %}

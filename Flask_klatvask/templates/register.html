@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container">
+      <form action="/register" method="post">
+
+          <div class="mb-3">
+              <label for="Username" class="form-label">Room number</label>
+              <br>
+              <input type="text" class="form-control" id="Username" name="username">
+          </div>
+          <div class="mb-3">
+              <label for="Password" class="form-label">Password</label>
+              <br>
+              <input type="password" class="form-control" id="Password" name="password">
+          </div>
+          <div class="mb-3">
+              <label for="Password" class="form-label">Repeat password</label>
+              <br>
+              <input type="password" class="form-control" id="Repeat_Password" name="repeat_password">
+          </div>
+          <div class="mb-3">
+              <label for="Phone_number" class="form-label">Phone number</label>
+              <br>
+              <input type="text" class="form-control" id="Phone_number" name="phone_number">
+          </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+    <br>
+    <a href="/login" class="btn btn-primary btn-sm">Back</a>
+  </div>
+{% endblock %}

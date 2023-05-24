@@ -1,0 +1,23 @@
+
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr); /* 8 columns */
+    grid-template-rows: repeat(9, 1fr); /* 9 rows */ 
+    gap: 5px; /* Adjust the gap between squares as needed */
+
+  }
+
+  .grid-item {
+    background-color: #ccc; /* Adjust the background color as needed */
+    text-align: center;
+    padding: 10px;
+  }
+
+  .grid-item a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+  }
