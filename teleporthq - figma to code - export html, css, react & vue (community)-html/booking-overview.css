@@ -1,0 +1,1362 @@
+.booking-overview-container {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+}
+.booking-overview-booking-overview {
+  width: 100%;
+  height: 844px;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 0;
+  background-color: rgba(255, 255, 255, 1);
+}
+.booking-overview-rectangle1 {
+  top: 0px;
+  left: 0px;
+  width: 390px;
+  height: 86px;
+  position: absolute;
+}
+.booking-overview-text {
+  top: 48px;
+  left: 21px;
+  color: rgba(255, 255, 255, 1);
+  height: auto;
+  position: absolute;
+  font-size: 24px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  font-style: Regular;
+  text-align: left;
+  font-family: Noto Sans Gujarati;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-rectangle2 {
+  top: 150px;
+  left: 21px;
+  width: 348px;
+  height: 289px;
+  position: absolute;
+  border-color: rgba(0, 0, 0, 1);
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 15px;
+}
+.booking-overview-text02 {
+  top: 154px;
+  left: 72px;
+  color: rgba(255, 255, 255, 1);
+  width: 29px;
+  height: auto;
+  position: absolute;
+  font-size: 32px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  font-style: Regular;
+  text-align: left;
+  font-family: Noto Sans Gujarati;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-text03 {
+  top: 198px;
+  left: 22px;
+  color: rgba(255, 255, 255, 1);
+  width: 42px;
+  height: auto;
+  position: absolute;
+  font-size: 16px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  font-style: Regular;
+  text-align: center;
+  font-family: Noto Sans Gujarati;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-text05 {
+  top: 228px;
+  left: 22px;
+  color: rgba(255, 255, 255, 1);
+  width: 42px;
+  height: auto;
+  position: absolute;
+  font-size: 16px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  font-style: Regular;
+  text-align: center;
+  font-family: Noto Sans Gujarati;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-text07 {
+  top: 258px;
+  left: 21px;
+  color: rgba(255, 255, 255, 1);
+  width: 42px;
+  height: auto;
+  position: absolute;
+  font-size: 16px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  font-style: Regular;
+  text-align: center;
+  font-family: Noto Sans Gujarati;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-text09 {
+  top: 288px;
+  left: 21px;
+  color: rgba(255, 255, 255, 1);
+  width: 42px;
+  height: auto;
+  position: absolute;
+  font-size: 16px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  font-style: Regular;
+  text-align: center;
+  font-family: Noto Sans Gujarati;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-text11 {
+  top: 318px;
+  left: 21px;
+  color: rgba(255, 255, 255, 1);
+  width: 42px;
+  height: auto;
+  position: absolute;
+  font-size: 16px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  font-style: Regular;
+  text-align: center;
+  font-family: Noto Sans Gujarati;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-text13 {
+  top: 348px;
+  left: 21px;
+  color: rgba(255, 255, 255, 1);
+  width: 42px;
+  height: auto;
+  position: absolute;
+  font-size: 16px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  font-style: Regular;
+  text-align: center;
+  font-family: Noto Sans Gujarati;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-text15 {
+  top: 378px;
+  left: 21px;
+  color: rgba(255, 255, 255, 1);
+  width: 42px;
+  height: auto;
+  position: absolute;
+  font-size: 16px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  font-style: Regular;
+  text-align: center;
+  font-family: Noto Sans Gujarati;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-text17 {
+  top: 408px;
+  left: 21px;
+  color: rgba(255, 255, 255, 1);
+  width: 42px;
+  height: auto;
+  position: absolute;
+  font-size: 16px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  font-style: Regular;
+  text-align: center;
+  font-family: Noto Sans Gujarati;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-text19 {
+  top: 154px;
+  left: 121px;
+  color: rgba(255, 255, 255, 1);
+  width: 18px;
+  height: auto;
+  position: absolute;
+  font-size: 32px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  font-style: Regular;
+  text-align: left;
+  font-family: Noto Sans Gujarati;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-text20 {
+  top: 154px;
+  left: 206px;
+  color: rgba(255, 255, 255, 1);
+  width: 18px;
+  height: auto;
+  position: absolute;
+  font-size: 32px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  font-style: Regular;
+  text-align: left;
+  font-family: Noto Sans Gujarati;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-text21 {
+  top: 154px;
+  left: 160px;
+  color: rgba(255, 255, 255, 1);
+  width: 25px;
+  height: auto;
+  position: absolute;
+  font-size: 32px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  font-style: Regular;
+  text-align: left;
+  font-family: Noto Sans Gujarati;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-text22 {
+  top: 154px;
+  left: 249px;
+  color: rgba(255, 255, 255, 1);
+  width: 19px;
+  height: auto;
+  position: absolute;
+  font-size: 32px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  font-style: Regular;
+  text-align: left;
+  font-family: Noto Sans Gujarati;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-text23 {
+  top: 154px;
+  left: 294px;
+  color: rgba(255, 255, 255, 1);
+  width: 19px;
+  height: auto;
+  position: absolute;
+  font-size: 32px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  font-style: Regular;
+  text-align: left;
+  font-family: Noto Sans Gujarati;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-text24 {
+  top: 154px;
+  left: 337px;
+  color: rgba(255, 255, 255, 1);
+  width: 19px;
+  height: auto;
+  position: absolute;
+  font-size: 32px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  font-style: Regular;
+  text-align: left;
+  font-family: Noto Sans Gujarati;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-line1 {
+  top: 188px;
+  left: 21px;
+  width: 348px;
+  height: 1px;
+  position: absolute;
+}
+.booking-overview-line12 {
+  top: 221px;
+  left: 21px;
+  width: 348px;
+  height: 1px;
+  position: absolute;
+}
+.booking-overview-line13 {
+  top: 252px;
+  left: 22px;
+  width: 348px;
+  height: 1px;
+  position: absolute;
+}
+.booking-overview-line14 {
+  top: 283px;
+  left: 21px;
+  width: 348px;
+  height: 1px;
+  position: absolute;
+}
+.booking-overview-line15 {
+  top: 314px;
+  left: 22px;
+  width: 348px;
+  height: 1px;
+  position: absolute;
+}
+.booking-overview-line16 {
+  top: 343px;
+  left: 21px;
+  width: 348px;
+  height: 1px;
+  position: absolute;
+}
+.booking-overview-line17 {
+  top: 373px;
+  left: 22px;
+  width: 348px;
+  height: 1px;
+  position: absolute;
+}
+.booking-overview-line18 {
+  top: 402px;
+  left: 22px;
+  width: 348px;
+  height: 1px;
+  position: absolute;
+}
+.booking-overview-line2 {
+  top: 149.80555725097656px;
+  left: 64px;
+  width: 289px;
+  height: 1px;
+  position: absolute;
+}
+.booking-overview-line3 {
+  top: 149.80555725097656px;
+  left: 108px;
+  width: 289px;
+  height: 1px;
+  position: absolute;
+}
+.booking-overview-line5 {
+  top: 149.80555725097656px;
+  left: 151px;
+  width: 289px;
+  height: 1px;
+  position: absolute;
+}
+.booking-overview-line6 {
+  top: 149.80555725097656px;
+  left: 194px;
+  width: 289px;
+  height: 1px;
+  position: absolute;
+}
+.booking-overview-line7 {
+  top: 150px;
+  left: 235px;
+  width: 289px;
+  height: 1px;
+  position: absolute;
+}
+.booking-overview-line4 {
+  top: 150px;
+  left: 280px;
+  width: 289px;
+  height: 1px;
+  position: absolute;
+}
+.booking-overview-line11 {
+  top: 150px;
+  left: 323px;
+  width: 289px;
+  height: 1px;
+  position: absolute;
+}
+.booking-overview-rectangle3 {
+  top: 46px;
+  left: 344px;
+  width: 38px;
+  height: 33px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.booking-overview-rectangle31 {
+  top: 0px;
+  left: 0px;
+  width: 38px;
+  height: 33px;
+  position: absolute;
+}
+.booking-overview-frame1 {
+  top: 0px;
+  left: 0px;
+  width: 38px;
+  height: 33px;
+  display: flex;
+  overflow: hidden;
+  position: absolute;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  align-items: flex-start;
+  flex-shrink: 0;
+  border-color: rgba(0, 0, 0, 1);
+  border-style: solid;
+  border-width: 1px;
+}
+.booking-overview-line8 {
+  top: 55px;
+  left: 348px;
+  width: 30px;
+  height: 1px;
+  position: absolute;
+}
+.booking-overview-line9 {
+  top: 63px;
+  left: 348px;
+  width: 30px;
+  height: 1px;
+  position: absolute;
+}
+.booking-overview-line10 {
+  top: 71px;
+  left: 348px;
+  width: 30px;
+  height: 1px;
+  position: absolute;
+}
+.booking-overview-rectangle4 {
+  top: 492.1944580078125px;
+  left: 22px;
+  width: 348px;
+  height: 289px;
+  position: absolute;
+  border-color: rgba(0, 0, 0, 1);
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 15px;
+}
+.booking-overview-primarybutton {
+  top: 188px;
+  left: 65px;
+  width: 43px;
+  height: 32px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.booking-overview-rectangle {
+  top: 0px;
+  left: 0px;
+  width: 43px;
+  height: 32px;
+  position: absolute;
+}
+.booking-overview-text25 {
+  color: rgba(54, 54, 54, 1);
+  width: 43px;
+  height: auto;
+  position: absolute;
+  font-size: 12px;
+  font-style: Regular;
+  text-align: center;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-primarybutton01 {
+  top: 188px;
+  left: 110px;
+  width: 41px;
+  height: 32px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.booking-overview-rectangle01 {
+  top: 0px;
+  left: 0px;
+  width: 41px;
+  height: 32px;
+  position: absolute;
+}
+.booking-overview-text26 {
+  color: rgba(54, 54, 54, 1);
+  width: 41px;
+  height: auto;
+  position: absolute;
+  font-size: 12px;
+  font-style: Regular;
+  text-align: center;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-primarybutton02 {
+  top: 188px;
+  left: 153px;
+  width: 41px;
+  height: 32px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.booking-overview-rectangle02 {
+  top: 0px;
+  left: 0px;
+  width: 41px;
+  height: 32px;
+  position: absolute;
+}
+.booking-overview-text27 {
+  color: rgba(54, 54, 54, 1);
+  width: 41px;
+  height: auto;
+  position: absolute;
+  font-size: 12px;
+  font-style: Regular;
+  text-align: center;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-primarybutton03 {
+  top: 188px;
+  left: 110px;
+  width: 41px;
+  height: 32px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.booking-overview-rectangle03 {
+  top: 0px;
+  left: 0px;
+  width: 41px;
+  height: 32px;
+  position: absolute;
+}
+.booking-overview-text28 {
+  color: rgba(54, 54, 54, 1);
+  width: 41px;
+  height: auto;
+  position: absolute;
+  font-size: 12px;
+  font-style: Regular;
+  text-align: center;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-primarybutton04 {
+  top: 188px;
+  left: 153px;
+  width: 41px;
+  height: 32px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.booking-overview-rectangle04 {
+  top: 0px;
+  left: 0px;
+  width: 41px;
+  height: 32px;
+  position: absolute;
+}
+.booking-overview-text29 {
+  color: rgba(54, 54, 54, 1);
+  width: 41px;
+  height: auto;
+  position: absolute;
+  font-size: 12px;
+  font-style: Regular;
+  text-align: center;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-primarybutton05 {
+  top: 188px;
+  left: 196px;
+  width: 39px;
+  height: 32px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.booking-overview-rectangle05 {
+  top: 0px;
+  left: 0px;
+  width: 39px;
+  height: 32px;
+  position: absolute;
+}
+.booking-overview-text30 {
+  color: rgba(54, 54, 54, 1);
+  width: 39px;
+  height: auto;
+  position: absolute;
+  font-size: 12px;
+  font-style: Regular;
+  text-align: center;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-primarybutton06 {
+  top: 188px;
+  left: 237px;
+  width: 43px;
+  height: 32px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.booking-overview-rectangle06 {
+  top: 0px;
+  left: 0px;
+  width: 43px;
+  height: 32px;
+  position: absolute;
+}
+.booking-overview-text31 {
+  color: rgba(54, 54, 54, 1);
+  width: 43px;
+  height: auto;
+  position: absolute;
+  font-size: 12px;
+  font-style: Regular;
+  text-align: center;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-primarybutton07 {
+  top: 188px;
+  left: 282px;
+  width: 41px;
+  height: 32px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.booking-overview-rectangle07 {
+  top: 0px;
+  left: 0px;
+  width: 41px;
+  height: 32px;
+  position: absolute;
+}
+.booking-overview-text32 {
+  color: rgba(54, 54, 54, 1);
+  width: 41px;
+  height: auto;
+  position: absolute;
+  font-size: 12px;
+  font-style: Regular;
+  text-align: center;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-primarybutton08 {
+  top: 188px;
+  left: 325px;
+  width: 42px;
+  height: 32px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.booking-overview-rectangle08 {
+  top: 0px;
+  left: 0px;
+  width: 42px;
+  height: 32px;
+  position: absolute;
+}
+.booking-overview-text33 {
+  color: rgba(54, 54, 54, 1);
+  width: 42px;
+  height: auto;
+  position: absolute;
+  font-size: 12px;
+  font-style: Regular;
+  text-align: center;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-primarybutton09 {
+  top: 221px;
+  left: 65px;
+  width: 43px;
+  height: 30px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.booking-overview-rectangle09 {
+  top: 0px;
+  left: 0px;
+  width: 43px;
+  height: 30px;
+  position: absolute;
+}
+.booking-overview-text34 {
+  color: rgba(54, 54, 54, 1);
+  width: 43px;
+  height: auto;
+  position: absolute;
+  font-size: 12px;
+  font-style: Regular;
+  text-align: center;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-primarybutton10 {
+  top: 252px;
+  left: 65px;
+  width: 43px;
+  height: 30px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.booking-overview-rectangle10 {
+  top: 0px;
+  left: 0px;
+  width: 43px;
+  height: 30px;
+  position: absolute;
+}
+.booking-overview-text35 {
+  color: rgba(54, 54, 54, 1);
+  width: 43px;
+  height: auto;
+  position: absolute;
+  font-size: 12px;
+  font-style: Regular;
+  text-align: center;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-primarybutton11 {
+  top: 283px;
+  left: 65px;
+  width: 43px;
+  height: 30px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.booking-overview-rectangle11 {
+  top: 0px;
+  left: 0px;
+  width: 43px;
+  height: 30px;
+  position: absolute;
+}
+.booking-overview-text36 {
+  color: rgba(54, 54, 54, 1);
+  width: 43px;
+  height: auto;
+  position: absolute;
+  font-size: 12px;
+  font-style: Regular;
+  text-align: center;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-primarybutton12 {
+  top: 314px;
+  left: 65px;
+  width: 43px;
+  height: 28px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.booking-overview-rectangle12 {
+  top: 0px;
+  left: 0px;
+  width: 43px;
+  height: 28px;
+  position: absolute;
+}
+.booking-overview-text37 {
+  color: rgba(54, 54, 54, 1);
+  width: 43px;
+  height: auto;
+  position: absolute;
+  font-size: 12px;
+  font-style: Regular;
+  text-align: center;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-primarybutton13 {
+  top: 343px;
+  left: 65px;
+  width: 43px;
+  height: 29px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.booking-overview-rectangle13 {
+  top: 0px;
+  left: 0px;
+  width: 43px;
+  height: 29px;
+  position: absolute;
+}
+.booking-overview-text38 {
+  color: rgba(54, 54, 54, 1);
+  width: 43px;
+  height: auto;
+  position: absolute;
+  font-size: 12px;
+  font-style: Regular;
+  text-align: center;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-primarybutton14 {
+  top: 373px;
+  left: 65px;
+  width: 43px;
+  height: 28px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.booking-overview-rectangle14 {
+  top: 0px;
+  left: 0px;
+  width: 43px;
+  height: 28px;
+  position: absolute;
+}
+.booking-overview-text39 {
+  color: rgba(54, 54, 54, 1);
+  width: 43px;
+  height: auto;
+  position: absolute;
+  font-size: 12px;
+  font-style: Regular;
+  text-align: center;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-primarybutton15 {
+  top: 403px;
+  left: 65px;
+  width: 43px;
+  height: 33px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.booking-overview-rectangle15 {
+  top: 0px;
+  left: 0px;
+  width: 43px;
+  height: 33px;
+  position: absolute;
+}
+.booking-overview-text40 {
+  color: rgba(54, 54, 54, 1);
+  width: 43px;
+  height: auto;
+  position: absolute;
+  font-size: 12px;
+  font-style: Regular;
+  text-align: center;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-text41 {
+  top: 496.1944580078125px;
+  left: 73px;
+  color: rgba(255, 255, 255, 1);
+  width: 29px;
+  height: auto;
+  position: absolute;
+  font-size: 32px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  font-style: Regular;
+  text-align: left;
+  font-family: Noto Sans Gujarati;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-text42 {
+  top: 540.1944580078125px;
+  left: 23px;
+  color: rgba(255, 255, 255, 1);
+  width: 42px;
+  height: auto;
+  position: absolute;
+  font-size: 16px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  font-style: Regular;
+  text-align: center;
+  font-family: Noto Sans Gujarati;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-text44 {
+  top: 570.1944580078125px;
+  left: 23px;
+  color: rgba(255, 255, 255, 1);
+  width: 42px;
+  height: auto;
+  position: absolute;
+  font-size: 16px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  font-style: Regular;
+  text-align: center;
+  font-family: Noto Sans Gujarati;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-text46 {
+  top: 600.1944580078125px;
+  left: 22px;
+  color: rgba(255, 255, 255, 1);
+  width: 42px;
+  height: auto;
+  position: absolute;
+  font-size: 16px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  font-style: Regular;
+  text-align: center;
+  font-family: Noto Sans Gujarati;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-text48 {
+  top: 630.1944580078125px;
+  left: 22px;
+  color: rgba(255, 255, 255, 1);
+  width: 42px;
+  height: auto;
+  position: absolute;
+  font-size: 16px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  font-style: Regular;
+  text-align: center;
+  font-family: Noto Sans Gujarati;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-text50 {
+  top: 660.1944580078125px;
+  left: 22px;
+  color: rgba(255, 255, 255, 1);
+  width: 42px;
+  height: auto;
+  position: absolute;
+  font-size: 16px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  font-style: Regular;
+  text-align: center;
+  font-family: Noto Sans Gujarati;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-text52 {
+  top: 690.1944580078125px;
+  left: 22px;
+  color: rgba(255, 255, 255, 1);
+  width: 42px;
+  height: auto;
+  position: absolute;
+  font-size: 16px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  font-style: Regular;
+  text-align: center;
+  font-family: Noto Sans Gujarati;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-text54 {
+  top: 720.1944580078125px;
+  left: 22px;
+  color: rgba(255, 255, 255, 1);
+  width: 42px;
+  height: auto;
+  position: absolute;
+  font-size: 16px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  font-style: Regular;
+  text-align: center;
+  font-family: Noto Sans Gujarati;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-text56 {
+  top: 750.1944580078125px;
+  left: 22px;
+  color: rgba(255, 255, 255, 1);
+  width: 42px;
+  height: auto;
+  position: absolute;
+  font-size: 16px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  font-style: Regular;
+  text-align: center;
+  font-family: Noto Sans Gujarati;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-text58 {
+  top: 496.1944580078125px;
+  left: 122px;
+  color: rgba(255, 255, 255, 1);
+  width: 18px;
+  height: auto;
+  position: absolute;
+  font-size: 32px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  font-style: Regular;
+  text-align: left;
+  font-family: Noto Sans Gujarati;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-text59 {
+  top: 496.1944580078125px;
+  left: 207px;
+  color: rgba(255, 255, 255, 1);
+  width: 18px;
+  height: auto;
+  position: absolute;
+  font-size: 32px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  font-style: Regular;
+  text-align: left;
+  font-family: Noto Sans Gujarati;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-text60 {
+  top: 496.1944580078125px;
+  left: 161px;
+  color: rgba(255, 255, 255, 1);
+  width: 25px;
+  height: auto;
+  position: absolute;
+  font-size: 32px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  font-style: Regular;
+  text-align: left;
+  font-family: Noto Sans Gujarati;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-text61 {
+  top: 496.1944580078125px;
+  left: 250px;
+  color: rgba(255, 255, 255, 1);
+  width: 19px;
+  height: auto;
+  position: absolute;
+  font-size: 32px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  font-style: Regular;
+  text-align: left;
+  font-family: Noto Sans Gujarati;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-text62 {
+  top: 496.1944580078125px;
+  left: 295px;
+  color: rgba(255, 255, 255, 1);
+  width: 19px;
+  height: auto;
+  position: absolute;
+  font-size: 32px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  font-style: Regular;
+  text-align: left;
+  font-family: Noto Sans Gujarati;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-text63 {
+  top: 496.1944580078125px;
+  left: 338px;
+  color: rgba(255, 255, 255, 1);
+  width: 19px;
+  height: auto;
+  position: absolute;
+  font-size: 32px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  font-style: Regular;
+  text-align: left;
+  font-family: Noto Sans Gujarati;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-line19 {
+  top: 530.1944580078125px;
+  left: 22px;
+  width: 348px;
+  height: 1px;
+  position: absolute;
+}
+.booking-overview-line20 {
+  top: 563.1944580078125px;
+  left: 22px;
+  width: 348px;
+  height: 1px;
+  position: absolute;
+}
+.booking-overview-line21 {
+  top: 594.1944580078125px;
+  left: 23px;
+  width: 348px;
+  height: 1px;
+  position: absolute;
+}
+.booking-overview-line22 {
+  top: 625.1944580078125px;
+  left: 22px;
+  width: 348px;
+  height: 1px;
+  position: absolute;
+}
+.booking-overview-line23 {
+  top: 656.1944580078125px;
+  left: 23px;
+  width: 348px;
+  height: 1px;
+  position: absolute;
+}
+.booking-overview-line24 {
+  top: 685.1944580078125px;
+  left: 22px;
+  width: 348px;
+  height: 1px;
+  position: absolute;
+}
+.booking-overview-line25 {
+  top: 715.1944580078125px;
+  left: 23px;
+  width: 348px;
+  height: 1px;
+  position: absolute;
+}
+.booking-overview-line26 {
+  top: 744.1944580078125px;
+  left: 23px;
+  width: 348px;
+  height: 1px;
+  position: absolute;
+}
+.booking-overview-line27 {
+  top: 492px;
+  left: 65px;
+  width: 289px;
+  height: 1px;
+  position: absolute;
+}
+.booking-overview-line28 {
+  top: 492px;
+  left: 109px;
+  width: 289px;
+  height: 1px;
+  position: absolute;
+}
+.booking-overview-line29 {
+  top: 492px;
+  left: 152px;
+  width: 289px;
+  height: 1px;
+  position: absolute;
+}
+.booking-overview-line30 {
+  top: 492px;
+  left: 195px;
+  width: 289px;
+  height: 1px;
+  position: absolute;
+}
+.booking-overview-line31 {
+  top: 492.1944580078125px;
+  left: 236px;
+  width: 289px;
+  height: 1px;
+  position: absolute;
+}
+.booking-overview-line32 {
+  top: 492.1944580078125px;
+  left: 281px;
+  width: 289px;
+  height: 1px;
+  position: absolute;
+}
+.booking-overview-line33 {
+  top: 492.1944580078125px;
+  left: 324px;
+  width: 289px;
+  height: 1px;
+  position: absolute;
+}
+.booking-overview-text64 {
+  top: 124px;
+  left: 152px;
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  position: absolute;
+  font-size: 20px;
+  font-style: Regular;
+  text-align: center;
+  font-family: Noto Sans Gujarati;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.booking-overview-text66 {
+  top: 468px;
+  left: 154px;
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  position: absolute;
+  font-size: 20px;
+  font-style: Regular;
+  text-align: center;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
