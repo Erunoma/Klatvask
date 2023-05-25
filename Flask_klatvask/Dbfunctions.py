@@ -1,23 +1,31 @@
 import sqlite3
 
-dum_liste = []
-dummmere_liste = []
+dum_liste = {}
+dummere_liste = {}
 
 def booked_machines():
+    global dum_liste
+    global dummere_liste
     con = sqlite3.connect('database.db')
     cur = con.cursor()
-    cur.execute('SELECT id FROM machine_booking WHERE machine_1_2=? AND machine_3_4=?', (1, 1))
+    cur.execute('SELECT id, machine_1_2, machine_3_4 FROM machine_booking WHERE machine_1_2=? AND machine_3_4=?', (0, 0))
+    cur.execute('SELECT * FROM machine_booking')
+
+
+    result = cur.fetchall()
+    print(result)
     
-    result = cur.fetchone()
+    """
     if result:
-        print(result)
-        dum_liste.append(id)
-        return 1
+        for row in result:
+            dum_liste = {"id " : row[0], "value " :  row[1]}
+        return dum_liste
         
     else:
-        print(result)
-        return 0
-        
+        for row in result:
+            dummere_liste = {"id " : row[0], "value " :  row[1]}
+        return dummere_liste
+       """ 
 
 
 def available_machines():
@@ -27,7 +35,7 @@ def available_machines():
     
     result = cur.fetchone()
     if result:
-        dummmere_liste.append(id)
+        dummere_liste.append(id)
         return 0
     else:
         return 1
@@ -54,6 +62,8 @@ def fill_wash_tabel():
 
 #fill_wash_tabel()
 booked_machines()
+#print("dum_list: ", dum_liste)
+#print("dummere_list: ", dummere_liste)
 
 # database booking
 # database check
