@@ -1,27 +1,43 @@
 import sqlite3
 
-dum_list = []
-dummer_list = []
+fuld_booked = []
+alle_ledige = []
+en_fri = []
 
 def booked_machines():
-    global dum_list
-    global dummer_list
+    global fuld_booked
+    global alle_ledige
+    global en_fri
     con = sqlite3.connect('database.db')
     cur = con.cursor()
     #cur.execute('SELECT id, machine_1_2, machine_3_4 FROM machine_booking WHERE machine_1_2=? AND machine_3_4=?', (0, 0))
     cur.execute('SELECT * FROM machine_booking')
 
     result = cur.fetchall()
-    if result[1][1] and result[1][2] == 1:
-        for row in result:
-            dum_list.append(result)
-        return dum_list
+    for row in result:
+        if row[1] == 1 and row[2] == 1:
+            fuld_booked.append(row)
          
-    else:
-        dummer_list.append(result)
-        return dummer_list
+   
+        elif row[1] == 0 and row[2] == 0:
+            alle_ledige.append(row)
+
+        elif row[1] == 1 and row[2] == 0:
+            en_fri.append(row)
+
+        elif row[1] == 0 and row[2] == 1:
+            en_fri.append(row)    
+
+           
   
-  
+
+
+
+
+
+
+
+
 def available_machines():
     con = sqlite3.connect('database.db')
     cur = con.cursor()
@@ -58,7 +74,7 @@ def booking_machines():
     con = sqlite3.connect('database.db')
     cur = con.cursor()
     var = 'UPDATE machine_booking SET machine_1_2=?, machine_3_4=? WHERE id=?'
-    cur.execute(var, (1, 1, 10))
+    cur.execute(var, (0, 1, 7))
     con.commit()
     con.close()
 
@@ -66,8 +82,9 @@ def booking_machines():
 #fill_wash_tabel()
 booking_machines()
 booked_machines()
-print("dum_list: ", dum_list)
-print("dummer_list: ", dummer_list)
+print("fuld booked: ", fuld_booked)
+print("alle ledige: ", alle_ledige)
+print("en fri : ", en_fri)
 
 # database booking
 # database check
