@@ -104,6 +104,7 @@ def home():
 @app.route('/booking')
 def booking():
     if 'username' in session:
+        
         # fill_wash_tabel() sæt ind hvis du vil fylde vaskedatabasen ud med fyld data.
         return render_template('booking.html')
         

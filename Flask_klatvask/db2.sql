@@ -1,5 +1,5 @@
 CREATE TABLE machine_booking (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     machine_1_2 bit ,
     machine_3_4 bit ,
     username Text not null ,

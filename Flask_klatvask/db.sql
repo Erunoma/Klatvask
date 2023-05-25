@@ -1,5 +1,5 @@
 CREATE TABLE users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     username Text not null ,
     password Text not null ,
     phone_number Text not null ,
