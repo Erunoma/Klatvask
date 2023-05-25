@@ -4,6 +4,7 @@ from flask import Flask, g, redirect, url_for, render_template, request, session
 # hvis database ik er lavet: sqlite3 database.db ".read db.sql"
 # hvis database ik er lavet: sqlite3 database.db ".read db2.sql"
 
+
 def register_user_to_db(username, password, phone_number):
     con = sqlite3.connect('database.db')
     cur = con.cursor()
@@ -35,6 +36,17 @@ def check_if_user_exist(username):
         return True
     else:
         return False
+
+# opret tom vaskemaskine data
+def fill_wash_tabel():
+    con = sqlite3.connect('database.db')
+    cur = con.cursor()
+    querry = "INSERT INTO machine_booking(machine_1_2, machine_3_4, username, wash_day, sms_enabled) VALUES(?,?,?,?,?)"
+    for i in range(56):
+        cur.execute(querry,(0,0,0,0,0))
+    con.commit()
+    con.close()
+
 
 
 app = Flask(__name__)
@@ -92,7 +104,9 @@ def home():
 @app.route('/booking')
 def booking():
     if 'username' in session:
+        # fill_wash_tabel() sæt ind hvis du vil fylde vaskedatabasen ud med fyld data.
         return render_template('booking.html')
+        
     else:
         return 'log ind du!', {"Refresh": "3; url=/login"}
  
@@ -105,3 +119,5 @@ def logout():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
