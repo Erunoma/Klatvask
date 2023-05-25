@@ -1,31 +1,27 @@
 import sqlite3
 
-dum_liste = {}
-dummere_liste = {}
+dum_list = []
+dummer_list = []
 
 def booked_machines():
-    global dum_liste
-    global dummere_liste
+    global dum_list
+    global dummer_list
     con = sqlite3.connect('database.db')
     cur = con.cursor()
-    cur.execute('SELECT id, machine_1_2, machine_3_4 FROM machine_booking WHERE machine_1_2=? AND machine_3_4=?', (0, 0))
+    #cur.execute('SELECT id, machine_1_2, machine_3_4 FROM machine_booking WHERE machine_1_2=? AND machine_3_4=?', (0, 0))
     cur.execute('SELECT * FROM machine_booking')
 
-
     result = cur.fetchall()
-    print(result)
-    
-    """
-    if result:
+ 
+    if result[1][1] and result[1][2] == 1:
         for row in result:
-            dum_liste = {"id " : row[0], "value " :  row[1]}
-        return dum_liste
-        
+            dum_list.append(result)
+        return dum_list
+         
     else:
-        for row in result:
-            dummere_liste = {"id " : row[0], "value " :  row[1]}
-        return dummere_liste
-       """ 
+        dummer_list.append(result)
+        return dummer_list
+    
 
 
 def available_machines():
@@ -35,18 +31,18 @@ def available_machines():
     
     result = cur.fetchone()
     if result:
-        dummere_liste.append(id)
+        dummer_list.append(id)
         return 0
     else:
         return 1
 
-
+"""
 def booking_machines():
     con = sqlite3.connect('database.db')
     cur = con.cursor()
     cur.execute('INSERT username FROM users WHERE username=?'), (username)
     cur.execute('INSERT True INTO machine_booking (selected_machine)'), (selected_machine,)
-
+"""
 
 
 def fill_wash_tabel():
@@ -60,10 +56,20 @@ def fill_wash_tabel():
 
 
 
+def booking_machines():
+    con = sqlite3.connect('database.db')
+    cur = con.cursor()
+    var = 'UPDATE machine_booking SET machine_1_2=?, machine_3_4=? WHERE id=?'
+    cur.execute(var, (1, 1, 10))
+    con.commit()
+    con.close()
+
+
 #fill_wash_tabel()
+booking_machines()
 booked_machines()
-#print("dum_list: ", dum_liste)
-#print("dummere_list: ", dummere_liste)
+print("dum_list: ", dum_list)
+print("dummer_list: ", dummer_list)
 
 # database booking
 # database check
