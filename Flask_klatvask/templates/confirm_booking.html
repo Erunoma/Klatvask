@@ -2,6 +2,23 @@
 
 {% block content %}
 
+    <h1>vælg din maskine</h1>
 
+    {% if id %}
+
+        <p> det valgte id er {{ id }} og status er {{ status }}</p>
+        
+        {% if status == 'en ledig' %}
+            <ul>
+                <li><a href="">den ledige maskine..</a></li>
+            </ul>
+        {% else %}    
+            <ul>
+                <li><a href="">maskine1</a></li>
+                <li><a href="">maskine2</a></li>
+            </ul>
+        {% endif %}
+
+    {% endif %}
 
 {% endblock %}

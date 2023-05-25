@@ -1,9 +1,8 @@
 import sqlite3
-from flask import Flask, g, redirect, url_for, render_template, request, session
+from flask import Flask, redirect, url_for, render_template, request, session
 
 # hvis database til users ik er lavet: sqlite3 database.db ".read db.sql"
 # hvis database ik vaskemaskiner ikke er lavet: sqlite3 database.db ".read db2.sql"
-
 
 def register_user_to_db(username, password, phone_number):
     con = sqlite3.connect('database.db')
@@ -47,6 +46,40 @@ def fill_wash_tabel():
     con.commit()
     con.close()
 
+
+# vaskemaskine status
+def status_machines():
+    fuld_booked = []
+    alle_ledige = []
+    en_fri = []
+    con = sqlite3.connect('database.db')
+    cur = con.cursor()
+    #cur.execute('SELECT id, machine_1_2, machine_3_4 FROM machine_booking WHERE machine_1_2=? AND machine_3_4=?', (0, 0))
+    cur.execute('SELECT * FROM machine_booking')
+    result = cur.fetchall()
+    for row in result:
+        if row[1] == 1 and row[2] == 1:
+            fuld_booked.append(row)
+
+        elif row[1] == 0 and row[2] == 0:
+            alle_ledige.append(row)
+
+        elif row[1] == 1 and row[2] == 0:
+            en_fri.append(row)
+
+        elif row[1] == 0 and row[2] == 1:
+            en_fri.append(row)    
+    return fuld_booked, alle_ledige, en_fri
+
+
+# updater vaskemaskiner
+def update_machines(maskine1, maskine2, id):
+    con = sqlite3.connect('database.db')
+    cur = con.cursor()
+    var = 'UPDATE machine_booking SET machine_1_2=?, machine_3_4=? WHERE id=?'
+    cur.execute(var, (maskine1, maskine2, id))
+    con.commit()
+    con.close()
 
 
 app = Flask(__name__)
@@ -111,11 +144,20 @@ def booking():
     else:
         return 'log ind du!', {"Refresh": "3; url=/login"}
 
-@app.route('/confirm_booking')
-def confirm_booking():
+
+@app.route('/confirm_booking/<id>')
+def confirm_booking(id = None):
     if 'username' in session:
-        return render_template('confirm_booking.html')
+        status_machines()
+        if status_machines()[1][int(id)]:
+
+            return render_template('confirm_booking.html', id=id, status='alle fri')  
+        
+        elif status_machines()[2][int(id)]:
+            
+            return render_template('confirm_booking.html', id=id, status='en ledig')
  
+
 
 @app.route('/logout')
 def logout():

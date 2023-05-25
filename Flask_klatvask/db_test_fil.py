@@ -42,7 +42,7 @@ def update_machines(maskine1, maskine2, id):
     cur.execute(var, (maskine1, maskine2, id))
     con.commit()
     con.close()
-
+ 
 
 #fill_wash_tabel()
 update_machines(0,0,8)
@@ -50,6 +50,7 @@ status_machines()
 print("fuld booked: ", status_machines()[0])
 print("alle ledige: ", status_machines()[1])
 print("en fri : ", status_machines()[2])
+
 
 # database booking
 # database check
