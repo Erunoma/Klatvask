@@ -110,6 +110,11 @@ def booking():
         
     else:
         return 'log ind du!', {"Refresh": "3; url=/login"}
+
+@app.route('/confirm_booking')
+def confirm_booking():
+    if 'username' in session:
+        return render_template('confirm_booking.html')
  
 
 @app.route('/logout')
@@ -118,7 +123,9 @@ def logout():
     return redirect(url_for('index'))
 
 
+# flask run -h0.0.0.0 -p80
 if __name__ == '__main__':
+    
     app.run(debug=True)
 
 
