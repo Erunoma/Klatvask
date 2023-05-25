@@ -1,8 +1,8 @@
 import sqlite3
 from flask import Flask, g, redirect, url_for, render_template, request, session
 
-# hvis database ik er lavet: sqlite3 database.db ".read db.sql"
-# hvis database ik er lavet: sqlite3 database.db ".read db2.sql"
+# hvis database til users ik er lavet: sqlite3 database.db ".read db.sql"
+# hvis database ik vaskemaskiner ikke er lavet: sqlite3 database.db ".read db2.sql"
 
 
 def register_user_to_db(username, password, phone_number):
