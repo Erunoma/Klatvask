@@ -51,7 +51,8 @@ def fill_wash_tabel():
 def status_machines():
     fuld_booked = []
     alle_ledige = []
-    en_fri = []
+    machine_1_2_fri = []
+    machine_3_4_fri = []
     con = sqlite3.connect('database.db')
     cur = con.cursor()
     #cur.execute('SELECT id, machine_1_2, machine_3_4 FROM machine_booking WHERE machine_1_2=? AND machine_3_4=?', (0, 0))
@@ -65,11 +66,12 @@ def status_machines():
             alle_ledige.append(row)
 
         elif row[1] == 1 and row[2] == 0:
-            en_fri.append(row)
+            machine_3_4_fri.append(row)
 
         elif row[1] == 0 and row[2] == 1:
-            en_fri.append(row)    
-    return fuld_booked, alle_ledige, en_fri
+            machine_1_2_fri.append(row)   
+
+    return fuld_booked, alle_ledige, machine_1_2_fri, machine_3_4_fri
 
 
 # updater vaskemaskiner
@@ -149,14 +151,28 @@ def booking():
 def confirm_booking(id = None):
     if 'username' in session:
         status_machines()
-        if status_machines()[1][int(id)]:
-
-            return render_template('confirm_booking.html', id=id, status='alle fri')  
         
-        elif status_machines()[2][int(id)]:
-            
-            return render_template('confirm_booking.html', id=id, status='en ledig')
- 
+        for item in status_machines()[0]:
+            if item[0] == int(id):
+                return render_template('confirm_booking.html', id=id, status='alle optaget')
+
+        for item in status_machines()[1]:
+            if item[0] == int(id):
+
+                return render_template('confirm_booking.html', id=id, status='alle fri')
+
+        for item in status_machines()[2]:
+            if item[0] == int(id):
+
+                return render_template('confirm_booking.html', id=id, status='maskine 1 og 2 er ledig')
+
+        for item in status_machines()[3]:
+            if item[0] == int(id):
+
+                return render_template('confirm_booking.html', id=id, status='maskine 3 og 4 er ledig')
+        
+        return 'invalid id'
+
 
 
 @app.route('/logout')

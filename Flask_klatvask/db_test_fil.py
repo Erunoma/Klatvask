@@ -4,7 +4,8 @@ import sqlite3
 def status_machines():
     fuld_booked = []
     alle_ledige = []
-    en_fri = []
+    machine_1_2_fri = []
+    machine_3_4_fri = []
     con = sqlite3.connect('database.db')
     cur = con.cursor()
     #cur.execute('SELECT id, machine_1_2, machine_3_4 FROM machine_booking WHERE machine_1_2=? AND machine_3_4=?', (0, 0))
@@ -18,11 +19,12 @@ def status_machines():
             alle_ledige.append(row)
 
         elif row[1] == 1 and row[2] == 0:
-            en_fri.append(row)
+            machine_3_4_fri.append(row)
 
         elif row[1] == 0 and row[2] == 1:
-            en_fri.append(row)    
-    return fuld_booked, alle_ledige, en_fri
+            machine_1_2_fri.append(row)   
+
+    return fuld_booked, alle_ledige, machine_1_2_fri, machine_3_4_fri
            
 
 def fill_wash_tabel():
@@ -45,12 +47,28 @@ def update_machines(maskine1, maskine2, id):
  
 
 #fill_wash_tabel()
-update_machines(1,1,2)
+update_machines(1,0,1)
 status_machines()
 print("fuld booked: ", status_machines()[0])
 print("alle ledige: ", status_machines()[1])
-print("en fri : ", status_machines()[2])
+print("maskine 1 og 2 er ledig: ", status_machines()[2])
+print("maskine 3 og 4 er ledig: ", status_machines()[3])
 
+id = 1
 
-# database booking
-# database check
+for item in status_machines()[0]:
+    if item[0] == id:
+        print("alle optaget")
+
+for item in status_machines()[1]:
+    if item[0] == id: 
+        print("alle er ledige")
+
+for item in status_machines()[2]:
+    if item[0] == id:
+        print("maskine 1 og 2 er ledig")
+
+for item in status_machines()[3]:
+    if item[0] == id:
+        print("maskine 3 og 4 er ledig")
+

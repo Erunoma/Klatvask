@@ -8,15 +8,30 @@
 
         <p> det valgte id er {{ id }} og status er {{ status }}</p>
         
-        {% if status == 'en ledig' %}
+        {% if status == 'maskine 1 og 2 er ledig' %}
             <ul>
-                <li><a href="">den ledige maskine..</a></li>
+                <li><a href="">maskine 1</a></li>
+                <li><a href="">maskine 2</a></li>
             </ul>
-        {% else %}    
+        
+        {% elif status == 'maskine 3 og 4 er ledig' %}     
+
+            <ul>
+                <li><a href="">maskine 3</a></li>
+                <li><a href="">maskine 4</a></li>
+            </ul>
+    
+            
+        {% elif status == 'alle fri' %}    
             <ul>
                 <li><a href="">maskine1</a></li>
                 <li><a href="">maskine2</a></li>
+                <li><a href="">maskine3</a></li>
+                <li><a href="">maskine4</a></li>
             </ul>
+        
+        {% elif status == 'alle optaget' %}
+             
         {% endif %}
 
     {% endif %}
