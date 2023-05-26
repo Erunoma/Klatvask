@@ -35,3 +35,11 @@ git commit -m "Backup Commmited"
 $GitRepoURL = "https://github.com/Erunoma/Klatvask/tree/main/BackUpDev.git"
 git remote add origin $GitRepoURL
 git push -u origin master
+
+# Guide for afterwards:
+# 1. Navigate to scheduled task
+# 2. Navigate to "Create task"
+# 3. Make a "Trigger" for a specific time
+# 4. Make a new "Action" and select the script
+# 5. Set conditions so it matches whatever
+# 5. Set settings so it matches whatever 
