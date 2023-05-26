@@ -45,7 +45,7 @@ def update_machines(maskine1, maskine2, id):
  
 
 #fill_wash_tabel()
-update_machines(0,0,8)
+update_machines(1,1,2)
 status_machines()
 print("fuld booked: ", status_machines()[0])
 print("alle ledige: ", status_machines()[1])
