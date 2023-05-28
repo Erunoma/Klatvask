@@ -1,14 +1,50 @@
 {% extends "base.html" %}
 
 {% block content %}
-<nav>
-    <ul><a href="/booking">booking</a> </ul>
-    <ul></ul>
-    <ul></ul>
-</nav>
+<div class="container_login_top">
+    <p1 style="font-size: 40px; color: whitesmoke; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); text-align: center; ">Register</p1>
+    </div>
+    <br>
+
+
+
     <div class="container">
         <h1> Welcome, {{username}}</h1>
         <br/>
+        <nav>
+            <form action = "/home">
+                <button type="submit" class="acc_button" name="book_here">
+                    <p style="text-align: center; font-size: medium;">Book Here</p>
+                </button>
+            </form>
+            
+            <form action = "/home">
+                <button type="submit" class="acc_button" name="book_here">
+                    <p style="text-align: center; font-size: medium;">View Your Bookings</p>
+                </button>
+            </form>
+            <form action = "/reset_password">
+                <button type="submit" class="acc_button">
+                    <p style="text-align: center; font-size: medium;">Reset Password</p>
+                </button>
+            </form>
+            <form action = "/home">
+                <button type="submit" class="acc_button">
+                    <p style="text-align: center; font-size: medium;">Admin: Modify Bookings</p>
+                </button>
+            </form>
+            <form action = "/home">
+                <button type="submit" class="acc_button">
+                    <p style="text-align: center; font-size: medium;">Admin: Modify Accounts</p>
+                </button>
+            </form>
+            
+            
+         
+          
+            <ul></ul>
+            <ul></ul>
+        </nav>
         <a href="/logout" class="btn btn-primary btn-sm">Logout</a>
     </div>
 {% endblock %}

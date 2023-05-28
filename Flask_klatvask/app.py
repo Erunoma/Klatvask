@@ -12,6 +12,7 @@ def register_user_to_db(username, password, phone_number):
     con.close()
 
 
+
 # check if user and password match
 def check_user(username, password):
     con = sqlite3.connect('database.db')
@@ -129,10 +130,26 @@ def login():
 
 @app.route('/home', methods=['POST', "GET"])
 def home():
+    if request.form == "book_here":
+        return render_template('login.html')
     if 'username' in session:
         return render_template('home.html', username=session['username'])
     else:
         return "<h1>forkert kode eller bruger findes ikke</h1>", {"Refresh": "3; url=/login"}
+    
+
+@app.route('/reset_password',methods=['POST','GET'])
+def reset_password():
+    if 'username' in session:
+       
+            
+        
+        # fill_wash_tabel() sæt ind hvis du vil fylde vaskedatabasen ud med fyld data.
+        return render_template('reset_password.html')
+        
+    else:
+        return 'log ind du!', {"Refresh": "3; url=/login"}
+
 
 @app.route('/booking')
 def booking():
