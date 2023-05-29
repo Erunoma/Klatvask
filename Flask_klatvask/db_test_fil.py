@@ -2,11 +2,12 @@ import sqlite3
 
 
 def status_machines():
+    alle_maskiner = []
     fuld_booked = []
     alle_ledige = []
     machine_1_2_fri = []
     machine_3_4_fri = []
-    alle_maskiner = []
+   
     con = sqlite3.connect('database.db')
     cur = con.cursor()
     #cur.execute('SELECT id, machine_1_2, machine_3_4 FROM machine_booking WHERE machine_1_2=? AND machine_3_4=?', (0, 0))
@@ -92,12 +93,37 @@ for i in range(56):
 '''
 
 status_machines()
-for i in range(56):
-        for item in status_machines()[0]:
-            if item[0] == i:
-                if item[1:3] == (1,1): 
-                    #print(item[0],item[1], item[2])
-                    #print(item[:3])
-                    print(item[0:3])
-                
+test = []
+for i in range(len(status_machines()[0])):
+    for item in status_machines()[0]:
+        if item[0] == i:
+            if item[1:3] == (1,1): 
+                        #print(item[0],item[1], item[2])
+                        #print(item[:3])
+                test.append(i)
+   
+
+
+
+test = str(test)
+test = test.replace('[','').replace(']','').replace(' ', '')
+print(len(test))
+
+for i in range(len(test)):
+    print(test[i])
+
+print(test)
+test_ny = test.split(',')
+
+for i in range(len(test_ny)):
+    test_ny[i] = int(test_ny[i])
+
+print(type(test_ny[0]))
+print(test_ny)
+                    #print(item[0:3])
+
+
+
+
+update_machines(1,1,8)
             

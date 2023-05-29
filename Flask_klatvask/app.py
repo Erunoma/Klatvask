@@ -145,24 +145,30 @@ def booking():
     if 'username' in session:
 # ------------------------------ prøver noget -------------------------------------------------------------
       status_machines()
-      print(status_machines()[1])
-      for i in range(56):
+      #print(status_machines()[1])
+      temp_list = [] # forsøg med med at sende flere ting gennem url
+      for i in range(len(status_machines()[0])):
 
-        for item in status_machines()[1]:
-            
+        for item in status_machines()[0]:
+            #print(item[1:3])
             if item[0] == i:
+                if item[1:3] == (1,1):
+                        
+                        temp_list.append(item[0:1])
+                        #return render_template('booking2.html', maskine_status = 'optaget')
                     
-                    return render_template('booking.html', maskine_status = 'fri')
-                
-            else:
+                #else:
 
-                return render_template('booking.html', maskine_status='optaget')
-                
+                    #return render_template('booking2.html', maskine_status='fri')
+      temp_list = str(temp_list)
+      temp_list = temp_list.replace('[(','').replace(',)]','').replace('(','').replace(',)','').replace(' ','')
+      print(temp_list)
+      return render_template('booking2.html', temp_list=temp_list)
             
         #return render_template('booking.html', maskine_status)
 # ---------------------------------------------------------------------------------------------------------
         # fill_wash_tabel() sæt ind hvis du vil fylde vaskedatabasen ud med fyld data.
-        return render_template('booking.html')
+        #return render_template('booking.html')
         
     else:
         return 'log ind du!', {"Refresh": "3; url=/login"}
@@ -173,21 +179,21 @@ def confirm_booking(id = None):
     if 'username' in session:
         status_machines()
         
-        for item in status_machines()[0]:
-            if item[0] == int(id):
-                return render_template('confirm_booking.html', id=id, status='alle optaget')
-
         for item in status_machines()[1]:
             if item[0] == int(id):
-
-                return render_template('confirm_booking.html', id=id, status='alle fri')
+                return render_template('confirm_booking.html', id=id, status='alle optaget')
 
         for item in status_machines()[2]:
             if item[0] == int(id):
 
-                return render_template('confirm_booking.html', id=id, status='maskine 1 og 2 er ledig')
+                return render_template('confirm_booking.html', id=id, status='alle fri')
 
         for item in status_machines()[3]:
+            if item[0] == int(id):
+
+                return render_template('confirm_booking.html', id=id, status='maskine 1 og 2 er ledig')
+
+        for item in status_machines()[4]:
             if item[0] == int(id):
 
                 return render_template('confirm_booking.html', id=id, status='maskine 3 og 4 er ledig')
