@@ -2,35 +2,31 @@
 
 {% block content %}
 
-    <h1>vælg din maskine</h1>
+    <h1>pick a machine</h1>
 
     {% if id %}
 
-        <p> det valgte id er {{ id }} og status er {{ status }}</p>
+        <p> machine status: {{ status }} </p>
         
-        {% if status == 'maskine 1 og 2 er ledig' %}
+        {% if status == 'machine 1 and machine 2 are available' %}
             <ul>
-                <li><a href="">maskine 1</a></li>
-                <li><a href="">maskine 2</a></li>
+                <li><a href="">machine 1 & machine 2</a></li>
             </ul>
         
-        {% elif status == 'maskine 3 og 4 er ledig' %}     
+        {% elif status == 'machine 3 and machine 4 are available' %}     
 
             <ul>
-                <li><a href="">maskine 3</a></li>
-                <li><a href="">maskine 4</a></li>
+                <li><a href="">machine 3 &  machine 4</a></li>
             </ul>
     
             
-        {% elif status == 'alle fri' %}    
+        {% elif status == 'all available' %}    
             <ul>
-                <li><a href="">maskine1</a></li>
-                <li><a href="">maskine2</a></li>
-                <li><a href="">maskine3</a></li>
-                <li><a href="">maskine4</a></li>
+                <li><a href="">machine 1 & machine 2</a></li>
+                <li><a href="">machine 3 & machine 4</a></li>
             </ul>
         
-        {% elif status == 'alle optaget' %}
+        {% elif status == 'all taken' %}
              
         {% endif %}
 

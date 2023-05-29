@@ -105,7 +105,7 @@ def register():
         repeat_password = request.form['repeat_password']
         phone_number = request.form['phone_number']
         if not username or not password or not repeat_password or not phone_number:
-            return 'udfyld venligst alle', {"Refresh": "3; url=/register"} 
+            return 'please fill out everything', {"Refresh": "3; url=/register"} 
         if password != repeat_password:
             return 'password dont match',{"Refresh": "3; url=/register"} 
 
@@ -138,7 +138,7 @@ def home():
     if 'username' in session:
         return render_template('home.html', username=session['username'])
     else:
-        return "<h1>forkert kode eller bruger findes ikke</h1>", {"Refresh": "3; url=/login"}
+        return "<h1>wrong password, or the user doesnt exist</h1>", {"Refresh": "3; url=/login"}
 
 @app.route('/booking')
 def booking():
@@ -165,7 +165,7 @@ def booking():
         # fill_wash_tabel() sæt ind hvis du vil fylde vaskedatabasen ud med fyld data.
         
     else:
-        return 'log ind du!', {"Refresh": "3; url=/login"}
+        return 'please log in!', {"Refresh": "3; url=/login"}
 
 
 @app.route('/confirm_booking/<id>')
@@ -175,22 +175,22 @@ def confirm_booking(id = None):
         
         for item in status_machines()[1]:
             if item[0] == int(id):
-                return render_template('confirm_booking.html', id=id, status='alle optaget')
+                return render_template('confirm_booking.html', id=id, status='all taken')
 
         for item in status_machines()[2]:
             if item[0] == int(id):
 
-                return render_template('confirm_booking.html', id=id, status='alle fri')
+                return render_template('confirm_booking.html', id=id, status='all available')
 
         for item in status_machines()[3]:
             if item[0] == int(id):
 
-                return render_template('confirm_booking.html', id=id, status='maskine 1 og 2 er ledig')
+                return render_template('confirm_booking.html', id=id, status='machine 1 and machine 2 are available')
 
         for item in status_machines()[4]:
             if item[0] == int(id):
 
-                return render_template('confirm_booking.html', id=id, status='maskine 3 og 4 er ledig')
+                return render_template('confirm_booking.html', id=id, status='machine 3 and machine 4 are available')
         
         return 'invalid id'
 
