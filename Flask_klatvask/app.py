@@ -83,13 +83,17 @@ def update_machines(maskine1, maskine2, id):
     con.close()
 
 
+
 app = Flask(__name__)
 app.secret_key = "r@nd0mSk_1"
 
 
 @app.route("/")
 def index():
-    return render_template('login.html')
+    if 'username' in session:
+        return render_template('home.html', username=session['username'])
+    else:
+        return render_template('login.html')
 
 
 @app.route('/register', methods=["POST", "GET"])
@@ -132,6 +136,7 @@ def login():
 def home():
     if request.form == "book_here":
         return render_template('login.html')
+
     if 'username' in session:
         return render_template('home.html', username=session['username'])
     else:
@@ -161,6 +166,48 @@ def booking():
     else:
         return 'log ind du!', {"Refresh": "3; url=/login"}
 
+
+
+def get_user_list():
+    con = sqlite3.connect('database.db')
+    cur = con.cursor()
+    accounts=cur.execute("SELECT * FROM users").fetchall()
+    cur.close()
+    return accounts
+
+def delete_account(username):
+    con = sqlite3.connect('database.db')
+    cur = con.cursor()
+    print("The user to delete is:",username,".")
+    cur.execute("DELETE FROM users WHERE username=?",(username,))
+    con.commit()
+    cur.close()
+    print("The account for",username, "has been deleted.")
+
+@app.route('/mod_acc', methods=['POST', 'GET'])
+def modify_accounts():
+
+    if request.method == 'POST':
+        username = request.form.get('accounts')
+        print(str(username))
+        delete_account(username)
+        accounts = get_user_list()
+        return render_template("modify_accounts.html", accounts=accounts)
+    if 'username' in session:
+       accounts = get_user_list()
+       return render_template("modify_accounts.html", accounts=accounts)
+        
+    else:
+        return 'log ind du!', {"Refresh": "3; url=/login"}
+@app.route('/mod_book')
+def modify_bookings():
+    if 'username' in session:
+        
+        # fill_wash_tabel() sæt ind hvis du vil fylde vaskedatabasen ud med fyld data.
+        return render_template('modify_bookings.html')
+        
+    else:
+        return 'log ind du!', {"Refresh": "3; url=/login"}
 
 @app.route('/confirm_booking/<id>')
 def confirm_booking(id = None):
