@@ -53,12 +53,16 @@ def status_machines():
     alle_ledige = []
     machine_1_2_fri = []
     machine_3_4_fri = []
+    alle_maskiner = []
     con = sqlite3.connect('database.db')
     cur = con.cursor()
     #cur.execute('SELECT id, machine_1_2, machine_3_4 FROM machine_booking WHERE machine_1_2=? AND machine_3_4=?', (0, 0))
     cur.execute('SELECT * FROM machine_booking')
     result = cur.fetchall()
     for row in result:
+        if row:
+            alle_maskiner.append(row)
+
         if row[1] == 1 and row[2] == 1:
             fuld_booked.append(row)
 
@@ -71,7 +75,7 @@ def status_machines():
         elif row[1] == 0 and row[2] == 1:
             machine_1_2_fri.append(row)   
 
-    return fuld_booked, alle_ledige, machine_1_2_fri, machine_3_4_fri
+    return alle_maskiner, fuld_booked, alle_ledige, machine_1_2_fri, machine_3_4_fri
 
 
 # updater vaskemaskiner
@@ -141,17 +145,21 @@ def booking():
     if 'username' in session:
 # ------------------------------ prøver noget -------------------------------------------------------------
       status_machines()
+      print(status_machines()[1])
       for i in range(56):
 
-        for item in status_machines()[0]:
+        for item in status_machines()[1]:
+            
             if item[0] == i:
-            
-                return render_template('booking.html', maskine_status = 'optaget')
-            
+                    
+                    return render_template('booking.html', maskine_status = 'fri')
+                
             else:
-        
-                return render_template('booking.html', maskine_status='fri')
+
+                return render_template('booking.html', maskine_status='optaget')
+                
             
+        #return render_template('booking.html', maskine_status)
 # ---------------------------------------------------------------------------------------------------------
         # fill_wash_tabel() sæt ind hvis du vil fylde vaskedatabasen ud med fyld data.
         return render_template('booking.html')

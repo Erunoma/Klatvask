@@ -19,7 +19,7 @@
     <div class="grid-item">Søn</div>
 
     <div class="grid-item">7-9</div>
-    <div class="grid-item" {% if maskine_status == 'optaget' %}style="background-color: red;"{% elif maskine_status == 'fri' %}style="background-color: green;"{% endif %}><a href="/confirm_booking/1"></a></div>
+    <div class="grid-item" title="{{ maskine_status }}" {% if maskine_status == 'optaget' %}style="background-color: red;"{% elif maskine_status == 'fri' %}style="background-color: green;"{% endif %}><a href="/confirm_booking/1"></a></div>
     <div class="grid-item" {% if maskine_status == 'optaget' %}style="background-color: red;"{% else %}style="background-color: green;"{% endif %}><a href="/confirm_booking/9"></a></div>
     <div class="grid-item" {% if maskine_status == 'optaget' %}style="background-color: red;"{% else %}style="background-color: green;"{% endif %}><a href="/confirm_booking/17"></a></div>
     <div class="grid-item" {% if maskine_status == 'optaget' %}style="background-color: red;"{% else %}style="background-color: green;"{% endif %}><a href="/confirm_booking/25"></a></div>
@@ -28,7 +28,7 @@
     <div class="grid-item" {% if maskine_status == 'optaget' %}style="background-color: red;"{% else %}style="background-color: green;"{% endif %}><a href="/confirm_booking/49"></a></div>
   
     <div class="grid-item">9-11</div>
-    <div class="grid-item" {% if maskine_status == 'optaget' %}style="background-color: red;"{% else %}style="background-color: green;"{% endif %}><a href="/confirm_booking/2"></a></div>
+    <div class="grid-item" title="{{ maskine_status }}" {% if maskine_status == 'optaget' %}style="background-color: red;"{% else %}style="background-color: green;"{% endif %}><a href="/confirm_booking/2"></a></div>
     <div class="grid-item" {% if maskine_status == 'optaget' %}style="background-color: red;"{% else %}style="background-color: green;"{% endif %}><a href="/confirm_booking/10"></a></div>
     <div class="grid-item" {% if maskine_status == 'optaget' %}style="background-color: red;"{% else %}style="background-color: green;"{% endif %}><a href="/confirm_booking/18"></a></div>
     <div class="grid-item" {% if maskine_status == 'optaget' %}style="background-color: red;"{% else %}style="background-color: green;"{% endif %}><a href="/confirm_booking/26"></a></div>
@@ -37,7 +37,7 @@
     <div class="grid-item" {% if maskine_status == 'optaget' %}style="background-color: red;"{% else %}style="background-color: green;"{% endif %}><a href="/confirm_booking/50"></a></div>
 
     <div class="grid-item">11-13</div>
-    <div class="grid-item" {% if maskine_status == 'optaget' %}style="background-color: red;"{% else %}style="background-color: green;"{% endif %}><a href="/confirm_booking/3"></a></div>
+    <div class="grid-item" title="{{ maskine_status }}" {% if maskine_status == 'optaget' %}style="background-color: red;"{% else %}style="background-color: green;"{% endif %}><a href="/confirm_booking/3"></a></div>
     <div class="grid-item" {% if maskine_status == 'optaget' %}style="background-color: red;"{% else %}style="background-color: green;"{% endif %}><a href="/confirm_booking/11"></a></div>
     <div class="grid-item" {% if maskine_status == 'optaget' %}style="background-color: red;"{% else %}style="background-color: green;"{% endif %}><a href="/confirm_booking/19"></a></div>
     <div class="grid-item" {% if maskine_status == 'optaget' %}style="background-color: red;"{% else %}style="background-color: green;"{% endif %}><a href="/confirm_booking/27"></a></div>
