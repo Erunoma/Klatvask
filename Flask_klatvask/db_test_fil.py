@@ -1,5 +1,9 @@
 import sqlite3
-from datetime import date
+#from datetime import date
+from twilio.rest import Client
+import sched
+import time as time_module
+import _thread
 
 
 def status_machines():
@@ -52,13 +56,30 @@ def update_machines(maskine1, maskine2, username, day, sms_reminder, id):
         con.commit()
         con.close()
         if sms_reminder == 1:
-            # make booking with reminder
-            query_reminder = 'UPDATE users SET'
-            con.close()
-            print('Sending reminder when time')
+            # sms function
+            def send_sms():
+                account_sid = 'AC089b2e953b27ca68060de44a7c026d93'
+                auth_token = '[AuthToken]'
+                client = Client(account_sid, auth_token)
+
+                message = client.messages.create(
+                from_='+13157401145',
+                body='Hej {room_id}. Husk din vasketid DDHH. ',
+                to='+45XXXXXXXX'
+                )
+                print(message.sid)
+                _thread.exit()
+            
+            scheduler = sched.scheduler(time_module.time, time_module.sleep)
+            t = time_module.strptime('2023-05-29 14:53:00', '%Y-%m-%d %H:%M:%S')
+            t = time_module.mktime(t)
+            scheduler_e = scheduler.enterabs(t, 1, send_sms, ())
+
+            _thread.start_new_thread(scheduler.run())
+
         else:
             # make booking without reminder
-            
+            # redirect to my booking
             con.close()
             print('dont forget your time!!!')
     else:
