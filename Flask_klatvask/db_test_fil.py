@@ -125,5 +125,3 @@ print(test_ny)
 
 
 
-update_machines(1,1,8)
-            

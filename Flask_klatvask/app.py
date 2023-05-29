@@ -145,7 +145,6 @@ def booking():
     if 'username' in session:
 # ------------------------------ prøver noget -------------------------------------------------------------
       status_machines()
-      #print(status_machines()[1])
       temp_list = [] # forsøg med med at sende flere ting gennem url
       for i in range(len(status_machines()[0])):
 
@@ -155,20 +154,15 @@ def booking():
                 if item[1:3] == (1,1):
                         
                         temp_list.append(item[0:1])
-                        #return render_template('booking2.html', maskine_status = 'optaget')
-                    
-                #else:
-
-                    #return render_template('booking2.html', maskine_status='fri')
+                  
       temp_list = str(temp_list)
       temp_list = temp_list.replace('[(','').replace(',)]','').replace('(','').replace(',)','').replace(' ','')
       print(temp_list)
-      return render_template('booking2.html', temp_list=temp_list)
+      return render_template('booking.html', temp_list=temp_list)
             
-        #return render_template('booking.html', maskine_status)
+    
 # ---------------------------------------------------------------------------------------------------------
         # fill_wash_tabel() sæt ind hvis du vil fylde vaskedatabasen ud med fyld data.
-        #return render_template('booking.html')
         
     else:
         return 'log ind du!', {"Refresh": "3; url=/login"}
