@@ -139,7 +139,20 @@ def home():
 @app.route('/booking')
 def booking():
     if 'username' in session:
+# ------------------------------ prøver noget -------------------------------------------------------------
+      status_machines()
+      for i in range(56):
+
+        for item in status_machines()[0]:
+            if item[0] == i:
+            
+                return render_template('booking.html', maskine_status = 'optaget')
+            
+            else:
         
+                return render_template('booking.html', maskine_status='fri')
+            
+# ---------------------------------------------------------------------------------------------------------
         # fill_wash_tabel() sæt ind hvis du vil fylde vaskedatabasen ud med fyld data.
         return render_template('booking.html')
         

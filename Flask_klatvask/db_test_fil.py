@@ -45,7 +45,7 @@ def update_machines(maskine1, maskine2, id):
     con.commit()
     con.close()
  
-
+"""
 #fill_wash_tabel()
 update_machines(1,0,1)
 status_machines()
@@ -72,3 +72,9 @@ for item in status_machines()[3]:
     if item[0] == id:
         print("maskine 3 og 4 er ledig")
 
+"""
+status_machines()
+for i in range(56):
+    for item in status_machines()[0]:
+        if item[0] == i:
+            print(0)
