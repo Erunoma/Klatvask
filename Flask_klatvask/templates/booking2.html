@@ -3,7 +3,7 @@
 
 
 {% block content %}
-
+    <!--  jinja to split string into list and convert to ints   -->
     {% set temp_list = temp_list.split(',') %}
     {% for i in range(temp_list|length) %}
         {% set _ = temp_list.__setitem__(i, temp_list[i]|int) %}

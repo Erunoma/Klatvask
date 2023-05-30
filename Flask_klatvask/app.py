@@ -216,6 +216,8 @@ def modify_accounts():
         
     else:
         return 'log ind du!', {"Refresh": "3; url=/login"}
+    
+    
 @app.route('/view_booking', methods=['POST', 'GET'])
 def view_bookings():
 
