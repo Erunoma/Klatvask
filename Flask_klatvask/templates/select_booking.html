@@ -8,29 +8,29 @@
 
         <p> machine status: {{ status }} </p>
         
-        <form method="post">
+        <form action="/select_booking/{{ id }}" method="post">
 
         {% if status == 'machine 1 and machine 2 are available' %}
           
-            <button type="submit" class="confirm_button" name="confirm_button1">
+            <button type="submit" class="confirm_button" value="confirm_button1" name="confirm_button1">
                 <p style="text-align: center; font-size: medium;">Machine 1 & 2</p>
             </button>
         
         {% elif status == 'machine 3 and machine 4 are available' %}     
             
         
-            <button type="submit" class="confirm_button" name="confirm_button2">
+            <button type="submit" class="confirm_button" value="confirm_button2" name="confirm_button2">
                 <p style="text-align: center; font-size: medium;">Machine 3 & 4</p>
             </button>
            
             
         {% elif status == 'all available' %}    
         
-            <button type="submit" class="confirm_button" name="confirm_button1">
+            <button type="submit" class="confirm_button" value="confirm_button1" name="confirm_button1">
                 <p style="text-align: center; font-size: medium;">Machine 1 & 2</p>
             </button>
 
-            <button type="submit" class="confirm_button" name="confirm_button2">
+            <button type="submit" class="confirm_button" value="confirm_button2" name="confirm_button2">
                 <p style="text-align: center; font-size: medium;">Machine 3 & 4</p>
             </button>
         

@@ -214,7 +214,7 @@ def modify_accounts():
     if 'username' in session:
        accounts = get_user_list()
        return render_template("modify_accounts.html", accounts=accounts)
-        
+
     else:
         return 'log ind du!', {"Refresh": "3; url=/login"}
     
@@ -237,13 +237,9 @@ def view_bookings():
 
 @app.route('/select_booking/<id>', methods=["POST","GET"])
 def select_booking(id = None):
-    if request.method=='POST':
-        if request.form == "confirm_button1":
-            print("machine 1 and 2")
-        elif request.form == 'confirm_button2':
-            print("machine 3 and 4")
-
+    
     if 'username' in session:
+       
         status_machines()
         
         for item in status_machines()[1]:
@@ -265,8 +261,21 @@ def select_booking(id = None):
 
                 return render_template('select_booking.html', id=id, status='machine 3 and machine 4 are available')
         
-        return 'invalid id'
+        #return 'invalid id'
+        
+        username = session['username']
+        if request.method == 'POST':
+                if request.form.get('confirm_button1') == 'confirm_button1':
+                    return render_template('confirm_booking.html', id=id, username=username, machine='1 and 2')
+                elif request.form.get('confirm_button2') == 'confirm_button2':
+                    return render_template('confirm_booking.html', id=id, username=username, machine='3 and 4')
 
+
+                
+
+@app.route('/confirm_booking', methods=['POST', 'GET'])
+def confirm_booking():
+  
 
 
 @app.route('/logout')
