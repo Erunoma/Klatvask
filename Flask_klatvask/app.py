@@ -141,7 +141,7 @@ def login():
 @app.route('/home', methods=['POST', "GET"])
 def home():
     if request.form == "book_here":
-        return render_template('login.html')
+        return render_template('booking2.html')
 
     if 'username' in session:
         return render_template('home.html', username=session['username'])
