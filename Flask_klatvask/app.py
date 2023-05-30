@@ -184,6 +184,14 @@ def delete_account(username):
     cur.close()
     print("The account for",username, "has been deleted.")
 
+
+def view_booking(username):
+    con = sqlite3.connect('database.db')
+    cur = con.cursor()
+    bookings=cur.execute("SELECT FROM machine_booking WHERE username=?", (username)).fetchall()
+    return bookings
+    
+
 @app.route('/mod_acc', methods=['POST', 'GET'])
 def modify_accounts():
 
@@ -199,12 +207,14 @@ def modify_accounts():
         
     else:
         return 'log ind du!', {"Refresh": "3; url=/login"}
-@app.route('/mod_book')
-def modify_bookings():
+@app.route('/view_booking', methods=['POST', 'GET'])
+def view_bookings():
+
     if 'username' in session:
-        
+        username=session['username']
+        bookings=view_booking(username)
         # fill_wash_tabel() sæt ind hvis du vil fylde vaskedatabasen ud med fyld data.
-        return render_template('modify_bookings.html')
+        return render_template('modify_bookings.html', bookings=bookings)
         
     else:
         return 'log ind du!', {"Refresh": "3; url=/login"}
