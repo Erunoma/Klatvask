@@ -69,6 +69,7 @@ def update_machines(maskine1, maskine2, username, day, sms_reminder, id):
                 )
                 
                 print(message.sid)
+
                 _thread.exit()
             
             scheduler = sched.scheduler(time_module.time, time_module.sleep)
@@ -77,16 +78,22 @@ def update_machines(maskine1, maskine2, username, day, sms_reminder, id):
             scheduler_e = scheduler.enterabs(t, 1, send_sms, ())
 
             _thread.start_new_thread(scheduler.run())
+            return ''' Reminder wil be sendt.''', {"Refresh": "3; url=/confirm_booking"}
 
         else:
             # make booking without reminder
             # redirect to my booking
             con.close()
+            
+            return '''Don't forget you'r booked time !!! ''', {"Refresh": "3; url=/confirm_booking"}
+            
             print('dont forget your time!!!')
     else:
-        pass
-        # show booking not allowed. 
+        # Show user already has a booking
+        print('print 8') ###################
 
+        return 'You already have a booking!', {"Refresh": "3; url=/home"}
+        
 #fill_wash_tabel()
 update_machines(1,1,2)
 status_machines()
