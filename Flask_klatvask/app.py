@@ -12,6 +12,7 @@ def register_user_to_db(username, password, phone_number):
     con.close()
 
 
+
 # check if user and password match
 def check_user(username, password):
     con = sqlite3.connect('database.db')
@@ -88,13 +89,17 @@ def update_machines(maskine1, maskine2, id):
     con.close()
 
 
+
 app = Flask(__name__)
 app.secret_key = "r@nd0mSk_1"
 
 
 @app.route("/")
 def index():
-    return render_template('login.html')
+    if 'username' in session:
+        return render_template('home.html', username=session['username'])
+    else:
+        return render_template('login.html')
 
 
 @app.route('/register', methods=["POST", "GET"])
@@ -135,6 +140,9 @@ def login():
 
 @app.route('/home', methods=['POST', "GET"])
 def home():
+    if request.form == "book_here":
+        return render_template('login.html')
+
     if 'username' in session:
         return render_template('home.html', username=session['username'])
     else:
@@ -167,6 +175,58 @@ def booking():
     else:
         return 'please log in!', {"Refresh": "3; url=/login"}
 
+
+
+def get_user_list():
+    con = sqlite3.connect('database.db')
+    cur = con.cursor()
+    accounts=cur.execute("SELECT * FROM users").fetchall()
+    cur.close()
+    return accounts
+
+def delete_account(username):
+    con = sqlite3.connect('database.db')
+    cur = con.cursor()
+    print("The user to delete is:",username,".")
+    cur.execute("DELETE FROM users WHERE username=?",(username,))
+    con.commit()
+    cur.close()
+    print("The account for",username, "has been deleted.")
+
+
+def view_booking(username):
+    con = sqlite3.connect('database.db')
+    cur = con.cursor()
+    bookings=cur.execute("SELECT FROM machine_booking WHERE username=?", (username)).fetchall()
+    return bookings
+    
+
+@app.route('/mod_acc', methods=['POST', 'GET'])
+def modify_accounts():
+
+    if request.method == 'POST':
+        username = request.form.get('accounts')
+        print(str(username))
+        delete_account(username)
+        accounts = get_user_list()
+        return render_template("modify_accounts.html", accounts=accounts)
+    if 'username' in session:
+       accounts = get_user_list()
+       return render_template("modify_accounts.html", accounts=accounts)
+        
+    else:
+        return 'log ind du!', {"Refresh": "3; url=/login"}
+@app.route('/view_booking', methods=['POST', 'GET'])
+def view_bookings():
+
+    if 'username' in session:
+        username=session['username']
+        bookings=view_booking(username)
+        # fill_wash_tabel() sæt ind hvis du vil fylde vaskedatabasen ud med fyld data.
+        return render_template('modify_bookings.html', bookings=bookings)
+        
+    else:
+        return 'log ind du!', {"Refresh": "3; url=/login"}
 
 @app.route('/confirm_booking/<id>')
 def confirm_booking(id = None):
