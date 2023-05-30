@@ -166,7 +166,7 @@ def booking():
       temp_list = str(temp_list)
       temp_list = temp_list.replace('[(','').replace(',)]','').replace('(','').replace(',)','').replace(' ','')
       print(temp_list)
-      return render_template('booking.html', temp_list=temp_list)
+      return render_template('booking2.html', temp_list=temp_list)
             
     
 # ---------------------------------------------------------------------------------------------------------
@@ -228,29 +228,33 @@ def view_bookings():
     else:
         return 'log ind du!', {"Refresh": "3; url=/login"}
 
-@app.route('/confirm_booking/<id>')
+@app.route('/select_booking/<id>', methods=["POST","GET"])
 def confirm_booking(id = None):
+    if request.method=='POST':
+        if request.form=="confirm_button1":
+            print("Yep")
+
     if 'username' in session:
         status_machines()
         
         for item in status_machines()[1]:
             if item[0] == int(id):
-                return render_template('confirm_booking.html', id=id, status='all taken')
+                return render_template('select_booking.html', id=id, status='all taken')
 
         for item in status_machines()[2]:
             if item[0] == int(id):
 
-                return render_template('confirm_booking.html', id=id, status='all available')
+                return render_template('select_booking.html', id=id, status='all available')
 
         for item in status_machines()[3]:
             if item[0] == int(id):
 
-                return render_template('confirm_booking.html', id=id, status='machine 1 and machine 2 are available')
+                return render_template('select_booking.html', id=id, status='machine 1 and machine 2 are available')
 
         for item in status_machines()[4]:
             if item[0] == int(id):
 
-                return render_template('confirm_booking.html', id=id, status='machine 3 and machine 4 are available')
+                return render_template('select_booking.html', id=id, status='machine 3 and machine 4 are available')
         
         return 'invalid id'
 

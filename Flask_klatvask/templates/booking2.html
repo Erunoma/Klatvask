@@ -4,14 +4,16 @@
 
 {% block content %}
 
+
+
+
     {% set temp_list = temp_list.split(',') %}
     {% for i in range(temp_list|length) %}
         {% set _ = temp_list.__setitem__(i, temp_list[i]|int) %}
     {% endfor %}
 
-
     {% for i in range(1, 57) %}
-        <a href="/confirm_booking/{{ i }}" {% if i in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}>{{ i }}</a>
+        <a href="/select_booking/{{ i }}" {% if i in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}>{{ i }}</a>
     {% endfor %}
 
 
