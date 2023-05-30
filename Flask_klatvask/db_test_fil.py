@@ -67,6 +67,7 @@ def update_machines(maskine1, maskine2, username, day, sms_reminder, id):
                 body='Hej {room_id}. Husk din vasketid DDHH. ',
                 to='+45XXXXXXXX'
                 )
+                
                 print(message.sid)
                 _thread.exit()
             
