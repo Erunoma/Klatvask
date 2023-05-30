@@ -4,6 +4,15 @@
 
 {% block content %}
 
+<!--  jinja to split string into list and convert to ints   -->
+{% set temp_list = temp_list.split(',') %}
+{% for i in range(temp_list|length) %}
+    {% set _ = temp_list.__setitem__(i, temp_list[i]|int) %}
+{% endfor %}
+    
+   
+
+
 <div class="grid">
 
     <div class="grid-item"><a href="/home">back</a></div>
@@ -16,76 +25,76 @@
     <div class="grid-item">Søn</div>
 
     <div class="grid-item">7-9</div>
-    <div class="grid-item"><a href="/confirm_booking/0"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/8"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/16"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/24"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/32"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/40"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/48"></a></div>
+    <div class="grid-item" {% if 1 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/1"></a></div>
+    <div class="grid-item" {% if 9 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/9"></a></div>
+    <div class="grid-item" {% if 17 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/17"></a></div>
+    <div class="grid-item" {% if 25 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/25"></a></div>
+    <div class="grid-item" {% if 33 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/33"></a></div>
+    <div class="grid-item" {% if 41 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/41"></a></div>
+    <div class="grid-item" {% if 49 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/49"></a></div>
   
     <div class="grid-item">9-11</div>
-    <div class="grid-item"><a href="/confirm_booking/1"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/9"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/17"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/25"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/33"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/41"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/49"></a></div>
+    <div class="grid-item" {% if 2 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/2"></a></div>
+    <div class="grid-item" {% if 10 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/10"></a></div>
+    <div class="grid-item" {% if 18 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/18"></a></div>
+    <div class="grid-item" {% if 26 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/26"></a></div>
+    <div class="grid-item" {% if 34 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/34"></a></div>
+    <div class="grid-item" {% if 42 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/42"></a></div>
+    <div class="grid-item" {% if 50 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/50"></a></div>
 
     <div class="grid-item">11-13</div>
-    <div class="grid-item"><a href="/confirm_booking/2"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/10"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/18"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/26"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/34"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/42"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/50"></a></div>
+    <div class="grid-item" title="{{ maskine_status }}" {% if maskine_status == 'optaget' %}style="background-color: red;"{% else %}style="background-color: green;"{% endif %}><a href="/confirm_booking/3"></a></div>
+    <div class="grid-item" {% if 11 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/11"></a></div>
+    <div class="grid-item" {% if 19 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/19"></a></div>
+    <div class="grid-item" {% if 27 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/27"></a></div>
+    <div class="grid-item" {% if 35 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/35"></a></div>
+    <div class="grid-item" {% if 43 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/43"></a></div>
+    <div class="grid-item" {% if 51 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/51"></a></div>
     
     <div class="grid-item">13-15</div>
-    <div class="grid-item"><a href="/confirm_booking/3"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/11"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/19"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/27"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/35"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/43"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/51"></a></div>
+    <div class="grid-item" {% if 4 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/4"></a></div>
+    <div class="grid-item" {% if 12 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/12"></a></div>
+    <div class="grid-item" {% if 20 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/20"></a></div>
+    <div class="grid-item" {% if 28 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/28"></a></div>
+    <div class="grid-item" {% if 36 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/36"></a></div>
+    <div class="grid-item" {% if 44 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/44"></a></div>
+    <div class="grid-item" {% if 52 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/52"></a></div>
 
     <div class="grid-item">15-17</div>
-    <div class="grid-item"><a href="/confirm_booking/4"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/12"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/20"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/28"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/36"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/44"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/52"></a></div>
+    <div class="grid-item" {% if 5 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/5"></a></div>
+    <div class="grid-item" {% if 13 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/13"></a></div>
+    <div class="grid-item" {% if 21 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/21"></a></div>
+    <div class="grid-item" {% if 29 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/29"></a></div>
+    <div class="grid-item" {% if 37 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/37"></a></div>
+    <div class="grid-item" {% if 45 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/45"></a></div>
+    <div class="grid-item" {% if 53 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/53"></a></div>
 
     <div class="grid-item">17-19</div>
-    <div class="grid-item"><a href="/confirm_booking/5"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/13"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/21"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/29"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/37"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/45"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/53"></a></div>
+    <div class="grid-item" {% if 6 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/6"></a></div>
+    <div class="grid-item" {% if 14 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/14"></a></div>
+    <div class="grid-item" {% if 22 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/22"></a></div>
+    <div class="grid-item" {% if 30 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/30"></a></div>
+    <div class="grid-item" {% if 38 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/38"></a></div>
+    <div class="grid-item" {% if 46 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/46"></a></div>
+    <div class="grid-item" {% if 54 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/54"></a></div>
 
     <div class="grid-item">19-21</div>
-    <div class="grid-item"><a href="/confirm_booking/6"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/13"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/22"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/30"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/38"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/46"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/54"></a></div>
+    <div class="grid-item" {% if 7 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/7"></a></div>
+    <div class="grid-item" {% if 14 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/14"></a></div>
+    <div class="grid-item" {% if 23 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/23"></a></div>
+    <div class="grid-item" {% if 31 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/31"></a></div>
+    <div class="grid-item" {% if 39 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/39"></a></div>
+    <div class="grid-item" {% if 47 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/47"></a></div>
+    <div class="grid-item" {% if 55 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/55"></a></div>
 
     <div class="grid-item">21-23</div>
-    <div class="grid-item"><a href="/confirm_booking/7"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/15"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/23"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/31"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/39"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/47"></a></div>
-    <div class="grid-item"><a href="/confirm_booking/55"></a></div>
+    <div class="grid-item" {% if 8 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/8"></a></div>
+    <div class="grid-item" {% if 16 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/16"></a></div>
+    <div class="grid-item" {% if 24 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/24"></a></div>
+    <div class="grid-item" {% if 32 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/32"></a></div>
+    <div class="grid-item" {% if 40 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/40"></a></div>
+    <div class="grid-item" {% if 48 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/48"></a></div>
+    <div class="grid-item" {% if 56 in temp_list %} style="background-color: red;" {% else %}style="background-color: green;" {% endif %}><a href="/confirm_booking/56"></a></div>
     
 </div>
 

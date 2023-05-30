@@ -2,6 +2,7 @@ import sqlite3
 
 
 def status_machines():
+    alle_maskiner = []
     fuld_booked = []
     alle_ledige = []
     machine_1_2_fri = []
@@ -12,6 +13,9 @@ def status_machines():
     cur.execute('SELECT * FROM machine_booking')
     result = cur.fetchall()
     for row in result:
+        if row:
+            alle_maskiner.append(row)
+
         if row[1] == 1 and row[2] == 1:
             fuld_booked.append(row)
 
@@ -44,14 +48,78 @@ def update_machines(maskine1, maskine2, id):
     con.commit()
     con.close()
  
-
+"""
 #fill_wash_tabel()
-update_machines(1,1,2)
+update_machines(1,0,1)
 status_machines()
 print("fuld booked: ", status_machines()[0])
 print("alle ledige: ", status_machines()[1])
-print("en fri : ", status_machines()[2])
+print("maskine 1 og 2 er ledig: ", status_machines()[2])
+print("maskine 3 og 4 er ledig: ", status_machines()[3])
+
+id = 1
+
+for item in status_machines()[0]:
+    if item[0] == id:
+        print("alle optaget")
+
+for item in status_machines()[1]:
+    if item[0] == id: 
+        print("alle er ledige")
+
+for item in status_machines()[2]:
+    if item[0] == id:
+        print("maskine 1 og 2 er ledig")
+
+for item in status_machines()[3]:
+    if item[0] == id:
+        print("maskine 3 og 4 er ledig")
+
+"""
+
+'''
+status_machines()
+for i in range(56):
+        for item in status_machines()[0]:
+            if item[0] == i:
+            #if item[0][1] == 1 and item[0][1][1] == '1':
+                #print(item[0],item[1], item[2])
+                #print(item[:3])
+                print(item[0:3])
+            else:
+                pass
+'''
+
+status_machines()
+test = []
+for i in range(len(status_machines()[0])):
+    for item in status_machines()[0]:
+        if item[0] == i:
+            if item[1:3] == (1,1): 
+                        #print(item[0],item[1], item[2])
+                        #print(item[:3])
+                test.append(i)
+   
 
 
-# database booking
-# database check
+
+test = str(test)
+test = test.replace('[','').replace(']','').replace(' ', '')
+print(len(test))
+
+for i in range(len(test)):
+    print(test[i])
+
+print(test)
+test_ny = test.split(',')
+
+for i in range(len(test_ny)):
+    test_ny[i] = int(test_ny[i])
+
+print(type(test_ny[0]))
+print(test_ny)
+                    #print(item[0:3])
+
+
+
+
