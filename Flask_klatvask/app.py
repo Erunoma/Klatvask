@@ -229,9 +229,9 @@ def view_bookings():
         return 'log ind du!', {"Refresh": "3; url=/login"}
 
 @app.route('/select_booking/<id>', methods=["POST","GET"])
-def confirm_booking(id = None):
+def select_booking(id = None):
     if request.method=='POST':
-        if request.form=="confirm_button1":
+        if request.form["confirm_button1"]=="confirm_button1":
             print("Yep")
 
     if 'username' in session:
