@@ -1,5 +1,10 @@
 import sqlite3
 from flask import Flask, redirect, url_for, render_template, request, session
+#from twilio.rest import Client
+import sched
+import time as time_module
+import _thread
+
 
 # hvis database til users ik er lavet: sqlite3 database.db ".read db.sql"
 # hvis database ik vaskemaskiner ikke er lavet: sqlite3 database.db ".read db2.sql"
@@ -10,7 +15,6 @@ def register_user_to_db(username, password, phone_number):
     cur.execute('INSERT INTO users(username,password, phone_number, has_a_booking) values (?,?,?,?)', (username, password, phone_number, 0))
     con.commit()
     con.close()
-
 
 
 # check if user and password match
@@ -36,7 +40,6 @@ def check_if_user_exist(username):
         return True
     else:
         return False
-
 
 
 def get_user_list():
@@ -105,14 +108,16 @@ def status_machines():
     return alle_maskiner, fuld_booked, alle_ledige, machine_1_2_fri, machine_3_4_fri
 
 
-# updater vaskemaskiner
-def update_machines(maskine1, maskine2, id):
+# updater vaskemaskiner simpelt
+def update_machines_simple(maskine1, maskine2, id):
     con = sqlite3.connect('database.db')
     cur = con.cursor()
     var = 'UPDATE machine_booking SET machine_1_2=?, machine_3_4=? WHERE id=?'
     cur.execute(var, (maskine1, maskine2, id))
     con.commit()
     con.close()
+
+# updater vaskemaskiner
 
 
 
@@ -263,19 +268,6 @@ def select_booking(id = None):
         
         #return 'invalid id'
         
-        username = session['username']
-        if request.method == 'POST':
-                if request.form.get('confirm_button1') == 'confirm_button1':
-                    return render_template('confirm_booking.html', id=id, username=username, machine='1 and 2')
-                elif request.form.get('confirm_button2') == 'confirm_button2':
-                    return render_template('confirm_booking.html', id=id, username=username, machine='3 and 4')
-
-
-                
-
-@app.route('/confirm_booking', methods=['POST', 'GET'])
-def confirm_booking():
-  
 
 
 @app.route('/logout')
