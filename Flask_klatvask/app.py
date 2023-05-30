@@ -37,6 +37,32 @@ def check_if_user_exist(username):
     else:
         return False
 
+
+
+def get_user_list():
+    con = sqlite3.connect('database.db')
+    cur = con.cursor()
+    accounts=cur.execute("SELECT * FROM users").fetchall()
+    cur.close()
+    return accounts
+
+def delete_account(username):
+    con = sqlite3.connect('database.db')
+    cur = con.cursor()
+    print("The user to delete is:",username,".")
+    cur.execute("DELETE FROM users WHERE username=?",(username,))
+    con.commit()
+    cur.close()
+    print("The account for",username, "has been deleted.")
+
+
+def view_booking(username):
+    con = sqlite3.connect('database.db')
+    cur = con.cursor()
+    bookings=cur.execute("SELECT FROM machine_booking WHERE username=?", (username)).fetchall()
+    return bookings
+
+
 # opret tom vaskemaskine data
 def fill_wash_tabel():
     con = sqlite3.connect('database.db')
@@ -50,11 +76,11 @@ def fill_wash_tabel():
 
 # vaskemaskine status
 def status_machines():
+    alle_maskiner = []
     fuld_booked = []
     alle_ledige = []
     machine_1_2_fri = []
     machine_3_4_fri = []
-    alle_maskiner = []
     con = sqlite3.connect('database.db')
     cur = con.cursor()
     #cur.execute('SELECT id, machine_1_2, machine_3_4 FROM machine_booking WHERE machine_1_2=? AND machine_3_4=?', (0, 0))
@@ -176,31 +202,6 @@ def booking():
         return 'please log in!', {"Refresh": "3; url=/login"}
 
 
-
-def get_user_list():
-    con = sqlite3.connect('database.db')
-    cur = con.cursor()
-    accounts=cur.execute("SELECT * FROM users").fetchall()
-    cur.close()
-    return accounts
-
-def delete_account(username):
-    con = sqlite3.connect('database.db')
-    cur = con.cursor()
-    print("The user to delete is:",username,".")
-    cur.execute("DELETE FROM users WHERE username=?",(username,))
-    con.commit()
-    cur.close()
-    print("The account for",username, "has been deleted.")
-
-
-def view_booking(username):
-    con = sqlite3.connect('database.db')
-    cur = con.cursor()
-    bookings=cur.execute("SELECT FROM machine_booking WHERE username=?", (username)).fetchall()
-    return bookings
-    
-
 @app.route('/mod_acc', methods=['POST', 'GET'])
 def modify_accounts():
 
@@ -216,6 +217,10 @@ def modify_accounts():
         
     else:
         return 'log ind du!', {"Refresh": "3; url=/login"}
+    
+
+
+
 @app.route('/view_booking', methods=['POST', 'GET'])
 def view_bookings():
 
@@ -228,11 +233,15 @@ def view_bookings():
     else:
         return 'log ind du!', {"Refresh": "3; url=/login"}
 
+
+
 @app.route('/select_booking/<id>', methods=["POST","GET"])
-def confirm_booking(id = None):
+def select_booking(id = None):
     if request.method=='POST':
-        if request.form=="confirm_button1":
-            print("Yep")
+        if request.form == "confirm_button1":
+            print("machine 1 and 2")
+        elif request.form == 'confirm_button2':
+            print("machine 3 and 4")
 
     if 'username' in session:
         status_machines()

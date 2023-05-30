@@ -8,38 +8,36 @@
 
         <p> machine status: {{ status }} </p>
         
-        {% if status == 'machine 1 and machine 2 are available' %}
-            <ul>
-                <li><a href="">machine 1 & machine 2</a></li>
-            </ul>
-        
-        {% elif status == 'machine 3 and machine 4 are available' %}     
+        <form method="post">
 
-            <ul>
-                <li><a href="">machine 3 &  machine 4</a></li>
-            </ul>
-    
-            
-        {% elif status == 'all available' %}    
-        <form name="confirm_button1">
+        {% if status == 'machine 1 and machine 2 are available' %}
+          
             <button type="submit" class="confirm_button" name="confirm_button1">
                 <p style="text-align: center; font-size: medium;">Machine 1 & 2</p>
             </button>
-        </form>
-        <form>
+        
+        {% elif status == 'machine 3 and machine 4 are available' %}     
+            
+        
             <button type="submit" class="confirm_button" name="confirm_button2">
                 <p style="text-align: center; font-size: medium;">Machine 3 & 4</p>
             </button>
-        </form>
-            <ul>
-                <li><a href="/confirm_booking">machine 1 & machine 2</a></li>
-                <li><a href="/confirm_booking">machine 3 & machine 4</a></li>
-            </ul>
+           
+            
+        {% elif status == 'all available' %}    
+        
+            <button type="submit" class="confirm_button" name="confirm_button1">
+                <p style="text-align: center; font-size: medium;">Machine 1 & 2</p>
+            </button>
+
+            <button type="submit" class="confirm_button" name="confirm_button2">
+                <p style="text-align: center; font-size: medium;">Machine 3 & 4</p>
+            </button>
         
         {% elif status == 'all taken' %}
              
         {% endif %}
-
+        </form>    
     {% endif %}
-
+    
 {% endblock %}
