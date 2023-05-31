@@ -42,7 +42,7 @@ def fill_wash_tabel():
     con = sqlite3.connect('database.db')
     cur = con.cursor()
     querry = "INSERT INTO machine_booking(machine_1_2, machine_3_4, username, wash_day, sms_enabled) VALUES(?,?,?,?,?)"
-    for i in range(56):
+    for i in range(112):
         cur.execute(querry,(0,0,0,0,0))
     con.commit()
     con.close()
@@ -228,11 +228,24 @@ def view_bookings():
     else:
         return 'log ind du!', {"Refresh": "3; url=/login"}
 
+@app.route("/confirm_booking", methods=["POST", "GET"])
+def confirm_booking(id):
+    print("WElcome")
+    print(id)
+    
 @app.route('/select_booking/<id>', methods=["POST","GET"])
 def select_booking(id = None):
     if request.method=='POST':
-        if request.form["confirm_button2"]=="set2":
+        if request.form["confirm_button"]=="set1":
             print("Yep")
+            info=["20/5", "9-11", 555, 2]
+            confirm_booking(id)
+            return render_template("confirm_booking.html", info=info)
+        if request.form["confirm_button"]=="set2":
+            print("Yep")
+            info=["20/5", "9-11", 420, 2]
+            confirm_booking(id)
+            return render_template("confirm_booking.html", info=info)
 
     if 'username' in session:
         status_machines()
