@@ -294,10 +294,28 @@ def view_bookings():
 
     if 'username' in session:
         username=session['username']
-        bookings=view_booking(username)
-        # fill_wash_tabel() sæt ind hvis du vil fylde vaskedatabasen ud med fyld data.
-        return render_template('modify_bookings.html', bookings=bookings)
         
+        if request.method == 'POST':
+            if request.form['delete_booking'] == "yes":
+                update_machines_simple(username)
+                update_user_wash_status(username)
+                return redirect(url_for('home'))
+                
+        bookings = view_booking(username)
+        if bookings: #check if user has a booking, if list is empty, user does not have booking
+            #print('username: ', bookings[0][3])
+            #print('vask 1 og 2: ',bookings[0][1])
+            #print('vask 3 og 4: ',bookings[0][2])
+            #print('washday: ', bookings[0][4])
+            #print('sms enabled: ',bookings[0][5])
+            machine_1_and_2 = bookings[0][1]
+            machine_3_and_4 = bookings[0][2]
+            washday = bookings[0][4]
+            sms_enabled = bookings[0][5]
+
+            return render_template('view_booking.html',username=username,machine_1_and_2=machine_1_and_2, machine_3_and_4=machine_3_and_4, washday=washday, sms_enabled=sms_enabled)
+        else:
+            return redirect(url_for('home'))
     else:
         return 'log in please!', {"Refresh": "3; url=/login"}
 

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container_login_top">
+    <p style="font-size: 40px; color: whitesmoke; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); text-align: center; ">Your Bookings</p>
+    </div>
+    <br>
+  <div class="container">
+      <form method="post">
+        <div class="container_bookings">
+          <table>
+            <tr>
+              <th>Name</th>
+              <th>Date & Time</th>
+              <th>Machines</th>
+              <th>SMS Enabled?</th>
+            </tr>
+            <tr>
+              <th>{{ username }}</th>
+              <th>{{ washday }}</th>
+              <th>{{ machine_1_and_2 }}, {{ machine_3_and_4 }}</th>
+              <th>{{ sms_enabled }}</th>
+            </tr>
+            <tr>
+              <th><button type="submit" name="delete_booking" value="yes">DELETE BOOKING</button></th>
+            </tr>
+          </table>
+        </div>
+       
+              
+        </div>
+          
+    </form>
+    <br>
+    <a href="/home" class="btn btn-primary btn-sm">Back</a>
+  </div>
+{% endblock %}
