@@ -216,14 +216,14 @@ def modify_accounts():
         
     else:
         return 'log ind du!', {"Refresh": "3; url=/login"}
-@app.route('/view_booking', methods=['POST', 'GET'])
+@app.route('/mod_book', methods=['POST', 'GET'])
 def view_bookings():
 
     if 'username' in session:
         username=session['username']
         bookings=view_booking(username)
         # fill_wash_tabel() sæt ind hvis du vil fylde vaskedatabasen ud med fyld data.
-        return render_template('modify_bookings.html', bookings=bookings)
+        return render_template('mod_book.html', bookings=bookings)
         
     else:
         return 'log ind du!', {"Refresh": "3; url=/login"}
