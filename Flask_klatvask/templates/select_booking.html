@@ -6,37 +6,41 @@
 
     {% if id %}
 
-        <p> machine status: {{ status }} </p>
+        <p>username is {{ username }}  machine table id is {{ id }} and machine status: {{ status }} </p>
         
-        <form action="/confirm_booking" method="post">
+        <form method="post">
 
         {% if status == 'machine 1 and machine 2 are available' %}
           
-            <button type="submit" class="confirm_button" value="confirm_button1" name="confirm_button1">
+            <button type="submit" class="confirm_button" value="set1" name="confirm_button1">
                 <p style="text-align: center; font-size: medium;">Machine 1 & 2</p>
             </button>
         
         {% elif status == 'machine 3 and machine 4 are available' %}     
             
         
-            <button type="submit" class="confirm_button" value="confirm_button2" name="confirm_button2">
+            <button type="submit" class="confirm_button" value="set2" name="confirm_button2">
                 <p style="text-align: center; font-size: medium;">Machine 3 & 4</p>
             </button>
            
             
         {% elif status == 'all available' %}    
         
-            <button type="submit" class="confirm_button" value="confirm_button1" name="confirm_button1">
+            <button type="submit" class="confirm_button" value="set1" name="confirm_button1">
                 <p style="text-align: center; font-size: medium;">Machine 1 & 2</p>
             </button>
 
-            <button type="submit" class="confirm_button" value="confirm_button2" name="confirm_button2">
+            <button type="submit" class="confirm_button" value="set2" name="confirm_button2">
                 <p style="text-align: center; font-size: medium;">Machine 3 & 4</p>
             </button>
         
         {% elif status == 'all taken' %}
              
         {% endif %}
+            <input type="hidden" name="username" value="{{ username }}">
+            <input type="hidden" name="machine_id" value="{{ id }}">
+    
+
         </form>    
     {% endif %}
     

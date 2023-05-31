@@ -118,7 +118,65 @@ def update_machines_simple(maskine1, maskine2, id):
     con.close()
 
 # updater vaskemaskiner
+def update_machines(maskine1, maskine2, username, wash_day, sms_reminder, id):
+    print('print 1')   ####################
+    con = sqlite3.connect('database.db')
+    cur = con.cursor() 
+    print('print 1.5')
+    #query = 'SELECT has_a_booking FROM users WHERE id=?'
+    query = 'SELECT * FROM users WHERE username=?'
+    cur.execute(query, (username,))
+    result = cur.fetchall()
+    print(result)
+    if result[0][4] == 0:
+        print('print 2') #################
+        query2 = 'UPDATE machine_booking SET machine_1_2=?, machine_3_4=?, username=?, wash_day=?, sms_enabled=? WHERE id=?'
+        cur.execute(query2, (maskine1, maskine2, username, wash_day, sms_reminder, id))
+        con.commit()
+        print('print 3') #################
+        query3 = 'UPDATE users SET has_a_booking=? WHERE username=?'
+        cur.execute(query3, (1, username))
+        con.commit()
+        con.close()
+        print('print 4') ################
+        if sms_reminder == 1:
+            # sms function
+            pass
+            """
+            def send_sms():
+                phone_number = result[0][3]
+                print('print 5') ###########
+                account_sid = 'AC089b2e953b27ca68060de44a7c026d93'
+                auth_token = '[AuthToken]'
+                client = Client(account_sid, auth_token)
 
+                message = client.messages.create(
+                from_='+13157401145',
+                body = f'Hej {username}. Husk din vasketid {wash_day}. ',
+                to = f'{phone_number}'
+                )
+                
+                print(message.sid)
+                _thread.exit()
+            
+            scheduler = sched.scheduler(time_module.time, time_module.sleep)
+            t = time_module.strptime('2023-05-30 12:28:00', '%Y-%m-%d %H:%M:%S')
+            t = time_module.mktime(t)
+            scheduler_e = scheduler.enterabs(t, 1, send_sms, ())
+            print('print 6') ###############
+            _thread.start_new_thread(scheduler.run())
+            """
+
+        else:
+            # make booking without reminder
+            # redirect to my booking
+            print('print 7') ################
+            con.close()
+            print('dont forget your time!!!')
+    else:
+        print('print 8') ###################
+        pass
+        # show booking not allowed. 
 
 
 app = Flask(__name__)
@@ -244,30 +302,60 @@ def view_bookings():
 def select_booking(id = None):
     
     if 'username' in session:
-       
+        username = session['username']
+        if request.method=='POST':
+
+            if request.form['confirm_button1'] == "set1":
+                
+                username = request.form['username']
+                machine_id = request.form.get('machine_id')
+                machine_choice = 'machine 1 and 2'
+                
+                print('knap1')
+                return render_template('confirm_booking.html', username=username, machine_id=machine_id, machine_choice=machine_choice)
+            
+            if request.form['confirm_button2'] == "set2":
+                
+                username = request.form['username']
+                machine_id = request.form.get('machine_id')
+                machine_choice = 'machine 3 and 4'
+
+                print('knap2')                   
+                return render_template('confirm_booking.html', username=username, machine_id=machine_id, machine_choice=machine_choice)
+
+
         status_machines()
-        
         for item in status_machines()[1]:
             if item[0] == int(id):
-                return render_template('select_booking.html', id=id, status='all taken')
-
+                
+                return render_template('select_booking.html', id=id, status='all taken', username=username)
+                
         for item in status_machines()[2]:
             if item[0] == int(id):
 
-                return render_template('select_booking.html', id=id, status='all available')
+                return render_template('select_booking.html', id=id, status='all available', username=username)
 
         for item in status_machines()[3]:
             if item[0] == int(id):
 
-                return render_template('select_booking.html', id=id, status='machine 1 and machine 2 are available')
+                return render_template('select_booking.html', id=id, status='machine 1 and machine 2 are available', username=username)
 
         for item in status_machines()[4]:
             if item[0] == int(id):
 
-                return render_template('select_booking.html', id=id, status='machine 3 and machine 4 are available')
+                return render_template('select_booking.html', id=id, status='machine 3 and machine 4 are available', username=username)
         
         #return 'invalid id'
-        
+
+@app.route('/confirm_booking', methods=['POST','GET'])
+def confirm_booking():
+    if 'username' in session:
+       return render_template('confirm_booking.html')
+
+    
+
+    
+
 
 
 @app.route('/logout')
