@@ -72,25 +72,27 @@ def update_machines(maskine1, maskine2, username, wash_day, sms_reminder, id):
         con.close()
         print('print 4') ################
         if sms_reminder == 1:
+            time = '2023-05-29 14:53:00'
             # sms function
             def send_sms():
                 phone_number = result[0][3]
                 print('print 5') ##########
+                
                 account_sid = 'AC089b2e953b27ca68060de44a7c026d93'
                 auth_token = '[AuthToken]'
                 client = Client(account_sid, auth_token)
-
+                
                 message = client.messages.create(
                 from_='+13157401145',
                 body = f'Hej {username}. Husk din vasketid {wash_day}. ',
                 to = f'{phone_number}'
                 )
-                
                 print(message.sid)
+                
                 _thread.exit()
             
             scheduler = sched.scheduler(time_module.time, time_module.sleep)
-            t = time_module.strptime('2023-05-30 12:28:00', '%Y-%m-%d %H:%M:%S')
+            t = time_module.strptime(time, '%Y-%m-%d %H:%M:%S')
             t = time_module.mktime(t)
             scheduler_e = scheduler.enterabs(t, 1, send_sms, ())
             print('print 6') ###############
