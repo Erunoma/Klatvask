@@ -248,7 +248,8 @@ def booking():
         if request.form["calender_button"]==str(button_id):
             button_data=dates_properties.date_data(button_id)
             print("ID: ",button_data.id, "Date: ", button_data.date, "Timeslot: ", button_data.timeslot)
-            return redirect(url_for("select_booking", button_data=button_data, id=button_id))
+            time_data=[button_data.id],[button_data.date],[button_data.timeslot]
+            return redirect(url_for("select_booking", time_data=time_data, id=button_id))
             
             
 # ------------------------------ prøver noget -------------------------------------------------------------
@@ -309,16 +310,14 @@ def view_bookings():
 
 
 
-@app.route("/confirm_booking", methods=["POST", "GET"])
-def confirm_booking(id):
-    print("WElcome")
-    print(id)
     
 @app.route('/select_booking/<id>', methods=["POST","GET"])
 def select_booking(id = None):
     
     if 'username' in session:
         username = session['username']
+        time_data=request.args.getlist("time_data")
+        
         if request.method=='POST':
 
             if request.form['confirm_button'] == "set1":
@@ -327,16 +326,17 @@ def select_booking(id = None):
                 machine_choice = 'machine 1 and 2'
                 
                 print('knap1')
+                
                 #return render_template('confirm_booking.html', username=username, id=id, machine_choice=machine_choice)
-                return redirect(url_for('confirm_booking', username=username, id=id, machine_choice=machine_choice))   
+                return redirect(url_for('confirm_booking', username=username, id=id, machine_choice=machine_choice, time_data=time_data))   
             if request.form['confirm_button'] == "set2":
                 
                 username = request.form['username']
                 machine_choice = 'machine 3 and 4'
-
+                
                 print('knap2')                   
                 #return render_template('confirm_booking.html', username=username, id=id, machine_choice=machine_choice)
-                return redirect(url_for('confirm_booking', username=username, id=id, machine_choice=machine_choice))
+                return redirect(url_for('confirm_booking', username=username, id=id, machine_choice=machine_choice, time_data=time_data))
 
 
         status_machines()
@@ -368,8 +368,8 @@ def confirm_booking():
        username = request.args.get('username')
        id = request.args.get('id')
        machine_choice = request.args.get('machine_choice')
-       
-      
+       time_data=request.args.getlist("time_data")
+    
        x = datetime.datetime.now()
        
        if request.method=='POST':
@@ -392,18 +392,12 @@ def confirm_booking():
                elif machine_choice == 'machine 3 and 4':
                    print('machine 3 and 4')
                    update_machines(0,1,username, x,0,id)
-                   
-               
-               
-              
-       
-       
-       
+
        print("username: ", username)
        print("id: ", id)
        print("machine choice: ", machine_choice)
        print(machine_choice)
-       return render_template('confirm_booking.html', username=username, id=id, machine_choice=machine_choice)
+       return render_template('confirm_booking.html', username=username, id=id, machine_choice=machine_choice,time_data=time_data)
        
 
     
