@@ -9,15 +9,15 @@
         <p> machine status: {{ status }} </p>
         
         {% if status == 'machine 1 and machine 2 are available' %}
-        <form name="confirm_button1">
-            <button type="submit" class="confirm_button" name="confirm_button1">
+        <form method="post">
+            <button type="submit" class="confirm_button" name="confirm_button1" value="set2">
                 <img src="/static/IMG_0618.PNG" style="width: 200px; height: 300px; color: greenyellow;">
                 
                 <p style="text-align: center; font-size: medium;">Machine 1 & 2</p>
             </button>
         </form>
-            <form>
-                <button type="submit" class="confirm_button" name="confirm_button2"disabled style="opacity: 50%; color: red;">
+            <form method="post">
+                <button type="submit" class="confirm_button" name="confirm_button2" value="set2" disabled style="opacity: 50%; color: red;">
                     <img src="/static/IMG_0618.PNG" style="width: 200px; height: 300px;">
                     
                     <p style="text-align: center; font-size: medium;">Machine 3 & 4</p>
@@ -26,16 +26,16 @@
         
         {% elif status == 'machine 3 and machine 4 are available' %}     
 
-        <form name="confirm_button1">
-            <button type="submit" class="confirm_button" name="confirm_button1" disabled style="opacity: 50%; color: red;">
+        <form method="post">
+            <button type="submit" class="confirm_button" name="confirm_button1" value="set1" disabled style="opacity: 50%; color: red;">
                 <img src="/static/IMG_0618.PNG" style="width: 200px; height: 300px;">
                 
                 <p style="text-align: center; font-size: medium;">Machine 1 & 2</p>
             </button>
             <br>
         </form>
-            <form>
-                <button type="submit" class="confirm_button" name="confirm_button2">
+            <form method="post">
+                <button type="submit" class="confirm_button" name="confirm_button2" value="set2">
                     <img src="/static/IMG_0618.PNG" style="width: 200px; height: 300px;">
                     
                     <p style="text-align: center; font-size: medium;">Machine 3 & 4</p>
@@ -45,16 +45,16 @@
         
         {% elif status == 'all available' %}   
 
-        <form name="confirm_button1">
-            <button type="submit" class="confirm_button" name="confirm_button1" value="confirm_button1">
+        <form method="post">
+            <button type="submit" class="confirm_button" name="confirm_button1" value="set1">
                 <img src="/static/IMG_0618.PNG" style="width: 200px; height: 300px;">
                 
                 <p style="text-align: center; font-size: medium;">Machine 1 & 2</p>
             </button>
         </form>
         <br>
-        <form>
-            <button type="submit" class="confirm_button" name="confirm_button2">
+        <form method="post">
+            <button type="submit" class="confirm_button" name="confirm_button2" value="set2">
                 <img src="/static/IMG_0618.PNG" style="width: 200px; height: 300px;">
                 
                 <p style="text-align: center; font-size: medium;">Machine 3 & 4</p>

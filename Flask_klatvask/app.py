@@ -231,7 +231,7 @@ def view_bookings():
 @app.route('/select_booking/<id>', methods=["POST","GET"])
 def select_booking(id = None):
     if request.method=='POST':
-        if request.form["confirm_button1"]=="confirm_button1":
+        if request.form["confirm_button2"]=="set2":
             print("Yep")
 
     if 'username' in session:
