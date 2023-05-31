@@ -1,5 +1,7 @@
 import sqlite3
 from flask import Flask, redirect, url_for, render_template, request, session
+import datetime
+import dates_properties
 
 # hvis database til users ik er lavet: sqlite3 database.db ".read db.sql"
 # hvis database ik vaskemaskiner ikke er lavet: sqlite3 database.db ".read db2.sql"
@@ -148,9 +150,18 @@ def home():
     else:
         return "<h1>wrong password, or the user doesnt exist</h1>", {"Refresh": "3; url=/login"}
 
-@app.route('/booking')
+@app.route('/booking', methods=["POST","GET"])
 def booking():
     if 'username' in session:
+      if request.method=="POST":
+        button_id=request.form["calender_button"]
+       
+        if request.form["calender_button"]==str(button_id):
+            button_data=dates_properties.date_data(button_id)
+            print("ID: ",button_data.id, "Date: ", button_data.date, "Timeslot: ", button_data.timeslot)
+            return redirect(url_for("select_booking", button_data=button_data, id=button_id))
+            
+            
 # ------------------------------ prøver noget -------------------------------------------------------------
       status_machines()
       temp_list = [] # forsøg med med at sende flere ting gennem url
@@ -235,6 +246,7 @@ def confirm_booking(id):
     
 @app.route('/select_booking/<id>', methods=["POST","GET"])
 def select_booking(id = None):
+    print()
     if request.method=='POST':
         if request.form["confirm_button"]=="set1":
             print("Yep")
