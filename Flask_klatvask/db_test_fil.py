@@ -72,7 +72,7 @@ def update_machines(maskine1, maskine2, username, wash_day, sms_reminder, id):
         con.close()
         print('print 4') ################
         if sms_reminder == 1:
-            time = '2023-05-29 14:53:00'
+            #time = '2023-05-29 14:53:00'
             # sms function
             def send_sms():
                 phone_number = result[0][3]
@@ -92,7 +92,7 @@ def update_machines(maskine1, maskine2, username, wash_day, sms_reminder, id):
                 _thread.exit()
             
             scheduler = sched.scheduler(time_module.time, time_module.sleep)
-            t = time_module.strptime(time, '%Y-%m-%d %H:%M:%S')
+            t = time_module.strptime(wash_day, '%Y-%m-%d %H:%M:%S')
             t = time_module.mktime(t)
             scheduler_e = scheduler.enterabs(t, 1, send_sms, ())
             print('print 6') ###############
