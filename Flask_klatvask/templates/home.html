@@ -1,40 +1,198 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container_login_top">
-    <p1 style="font-size: 40px; color: whitesmoke; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); text-align: center; ">Register</p1>
+
+<style>
+    body {
+        background-image: url('https://images.pexels.com/photos/4700417/pexels-photo-4700417.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1.jpg');
+        color: black;
+    }
+  
+    h1 {
+        max-width: 345px;
+        text-align: center;
+        background-color: black;
+        margin: 15;
+        color: white;
+        padding: 20px;
+        font-size: 40px;
+        padding: 25px;
+        margin: 0 auto;
+          margin-left: auto;
+          margin-right: auto;
+    }
+    
+    .container {
+        max-width: 387px;
+        margin: 0 auto;
+        padding: 5px;
+        background-color: white;
+        opacity: 0.9;
+    }
+  
+    .form-control {
+        color: black;
+        font-size: 18px;
+        background-color: white;
+        border: 1.6px solid black;
+        padding: 6px;
+        width: 100%;
+    }
+      
+    .form-label {
+        color: black;
+        font-size: 17px;
+    }
+  
+     .acc_button0 {
+        color: white;
+        background-color: teal;
+        border-color: black;
+        text-decoration: none;
+        display: inline-block;
+        padding: 4px 155px;
+        margin-bottom: 0;
+        font-size: 23px;
+        font-weight: 400;
+        font-family: Times New Roman;
+        line-height: 1.42857143;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        cursor: pointer;
+        border: 1px solid transparent;
+        border-radius: 10px;
+    }
+    
+    .acc_button1 {
+        color: white;
+        background-color: teal;
+        border-color: black;
+        text-decoration: none;
+        display: inline-block;
+        padding: 4px 125px;
+        margin-bottom: 0;
+        font-size: 23px;
+        font-weight: 400;
+        font-family: Times New Roman;
+        line-height: 1.42857143;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        cursor: pointer;
+        border: 1px solid transparent;
+        border-radius: 10px;
+    }
+    
+    .acc_button2 {
+        color: white;
+        background-color: teal;
+        border-color: black;
+        text-decoration: none;
+        display: inline-block;
+        padding: 4px 142px;
+        margin-bottom: 0;
+        font-size: 23px;
+        font-weight: 400;
+        font-family: Times New Roman;
+        line-height: 1.42857143;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        cursor: pointer;
+        border: 1px solid transparent;
+        border-radius: 10px;
+    }
+    
+    .acc_button3 {
+        color: white;
+        background-color: grey;
+        border-color: black;
+        text-decoration: none;
+        display: inline-block;
+        padding: 4px 110px;
+        margin-bottom: 0;
+        font-size: 23px;
+        font-weight: 400;
+        font-family: Times New Roman;
+        line-height: 1.42857143;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        cursor: pointer;
+        border: 1px solid transparent;
+        border-radius: 10px;
+    }
+    
+    .acc_button4 {
+        color: white;
+        background-color: grey;
+        border-color: black;
+        text-decoration: none;
+        display: inline-block;
+        padding: 4px 110px;
+        margin-bottom: 0;
+        font-size: 23px;
+        font-weight: 400;
+        font-family: Times New Roman;
+        line-height: 1.42857143;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        cursor: pointer;
+        border: 1px solid transparent;
+        border-radius: 10px;
+    }
+  
+    a.btn-primary {
+        color: white;
+        background-color: black;
+        border-color: black;
+        text-decoration: none;
+        padding: 6px 160px;
+        margin-bottom: 0;
+        font-size: 23px;
+        font-weight: 400;
+        font-family: Times New Roman;
+        line-height: 1.42857143;
+        text-align: center;
+        border: 1px solid transparent;
+        border-radius: 8px;
+    }
+  </style>
+  
+<div class="container_top">
+    <h1> Kvintus Kollegiet
     </div>
     <br>
 
-
-
     <div class="container">
-        <h1> Welcome, {{username}}</h1>
+        <p style="text-align: center; font-size: 30;">Welcome, {{username}}</p>
         <br/>
         <nav>
             <form action = "/booking">
-                <button type="submit" class="acc_button" name="book_here">
+                <button type="submit" class="acc_button0" name="book_here">
                     <p style="text-align: center; font-size: medium;">Book Here</p>
                 </button>
             </form>
             
             <form action = "/home">
-                <button type="submit" class="acc_button" name="book_here">
+                <button type="submit" class="acc_button1" name="book_here">
                     <p style="text-align: center; font-size: medium;">View Your Bookings</p>
                 </button>
             </form>
             <form action = "/reset_password">
-                <button type="submit" class="acc_button">
+                <button type="submit" class="acc_button2">
                     <p style="text-align: center; font-size: medium;">Reset Password</p>
                 </button>
             </form>
             <form action = "/mod_book">
-                <button type="submit" class="acc_button">
+                <button type="submit" class="acc_button3">
                     <p style="text-align: center; font-size: medium;">Admin: Modify Bookings</p>
                 </button>
             </form>
             <form action = "/mod_acc">
-                <button type="submit" class="acc_button">
+                <button type="submit" class="acc_button4">
                     <p style="text-align: center; font-size: medium;">Admin: Modify Accounts</p>
                 </button>
             </form>

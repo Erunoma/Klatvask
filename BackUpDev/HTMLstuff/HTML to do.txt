@@ -1,4 +1,11 @@
-modify booking
-Booking
-Select booking
-confirm booking
+Mangler:
+- Booking2 HELP 
+- ConfirmBooking TOM
+- Modify Bookings I gang 
+- Select Booking HELP 
+
+Register - STEMT
+ModifyAccounts - STEMT
+ResetPassword - STEMT
+Home - STEMT
+Login - STEMT 
