@@ -1,5 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <p>username: {{ username }}  machine id is {{ id }} machine choice is {{ machine_choice }}</p>
+    <p> confirming your choices room{{ username }} you have picked machine id {{ id }}  and you have chosen {{ machine_choice }}</p>
+
+    <p> do you want a sms reminder for your booking?</p>
+    <form method="post">
+
+        <button type="submit" name="sms_choice" value="sms_yes">yes</button>
+        <button type="submit" name="sms_choice" value="sms_no">no</button>
+            
+    </form>
 {% endblock %}

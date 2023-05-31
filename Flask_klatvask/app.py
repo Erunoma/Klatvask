@@ -4,7 +4,7 @@ from flask import Flask, redirect, url_for, render_template, request, session
 import sched
 import time as time_module
 import _thread
-
+import datetime
 
 # hvis database til users ik er lavet: sqlite3 database.db ".read db.sql"
 # hvis database ik vaskemaskiner ikke er lavet: sqlite3 database.db ".read db2.sql"
@@ -308,20 +308,19 @@ def select_booking(id = None):
             if request.form['confirm_button'] == "set1":
                 
                 username = request.form['username']
-                machine_id = request.form.get('machine_id')
                 machine_choice = 'machine 1 and 2'
                 
                 print('knap1')
-                return render_template('confirm_booking.html', username=username, machine_id=id, machine_choice=machine_choice)
-            
+                #return render_template('confirm_booking.html', username=username, id=id, machine_choice=machine_choice)
+                return redirect(url_for('confirm_booking', username=username, id=id, machine_choice=machine_choice))   
             if request.form['confirm_button'] == "set2":
                 
                 username = request.form['username']
-                machine_id = request.form['machine_id']
                 machine_choice = 'machine 3 and 4'
 
                 print('knap2')                   
-                return render_template('confirm_booking.html', username=username, machine_id=machine_id, machine_choice=machine_choice)
+                #return render_template('confirm_booking.html', username=username, id=id, machine_choice=machine_choice)
+                return redirect(url_for('confirm_booking', username=username, id=id, machine_choice=machine_choice))
 
 
         status_machines()
@@ -350,7 +349,46 @@ def select_booking(id = None):
 @app.route('/confirm_booking', methods=['POST','GET'])
 def confirm_booking():
     if 'username' in session:
-       return render_template('confirm_booking.html')
+       username = request.args.get('username')
+       id = request.args.get('id')
+       machine_choice = request.args.get('machine_choice')
+       
+      
+       x = datetime.datetime.now()
+       
+       if request.method=='POST':
+           
+           if request.form['sms_choice'] == "sms_yes":
+               print('yes to sms')
+               if machine_choice == '1_and_2':
+                   
+                   update_machines(1,0,username, x,1,id)
+           
+               elif machine_choice == '3_and_4':
+                   update_machines(0,1,username,x ,1,id)
+               
+           if request.form['sms_choice'] == "sms_no":
+               print('no to sms')
+               if machine_choice == 'machine 1 and 2':
+                   print('machine 1 and 2')
+                   update_machines(1,0,username, x,0,id)
+               
+               elif machine_choice == 'machine 3 and 4':
+                   print('machine 3 and 4')
+                   update_machines(0,1,username, x,0,id)
+                   
+               
+               
+              
+       
+       
+       
+       print("username: ", username)
+       print("id: ", id)
+       print("machine choice: ", machine_choice)
+       print(machine_choice)
+       return render_template('confirm_booking.html', username=username, id=id, machine_choice=machine_choice)
+       
 
     
 
