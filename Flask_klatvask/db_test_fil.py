@@ -103,10 +103,10 @@ def update_machines(maskine1, maskine2, username, wash_day, sms_reminder, id):
             # redirect to my booking
             print('print 7') ################
             con.close()
-            return 'dont forget your time!!!', {'Refresh': '3; url/home'}
+            return 'dont forget your time!!!', {'Refresh': '3; url/confirm_booking'}
     else:
         print('print 8') ###################
-        return 'You already have a booking !!',{"Refresh": "3; url=/home"} 
+        return 'You already have a booking !!',{"Refresh": "3; url=/view_booking"} 
         # show booking not allowed. 
         
 #fill_wash_tabel()
