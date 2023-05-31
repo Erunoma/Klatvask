@@ -6,26 +6,27 @@
     </div>
     <br>
   <div class="container">
-      <form action="/view_booking" method="post">
-        {%for books in bookings%}
+      <form method="post">
         <div class="container_bookings">
           <table>
             <tr>
-              <th>Name</tr>
+              <th>Name</th>
               <th>Date & Time</th>
               <th>Machines</th>
               <th>SMS Enabled?</th>
             </tr>
             <tr>
-              <th>{{books["username"]}}</th>
-              <th>{{books["wash_day"]}}</th>
-              <th>{{books["machine_1_2"]}}, {{}{books["machine_3_4"}</th>
-              <th>{{books["sms_enabled"]}}</th>
+              <th>{{ username }}</th>
+              <th>{{ washday }}</th>
+              <th>{{ machine_1_and_2 }}, {{ machine_3_and_4 }}</th>
+              <th>{{ sms_enabled }}</th>
+            </tr>
+            <tr>
+              <th><button type="submit" name="delete_booking" value="yes">DELETE BOOKING</button></th>
             </tr>
           </table>
         </div>
-        {%endfor%}
-        
+       
               
         </div>
           
