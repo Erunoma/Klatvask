@@ -1,89 +1,8 @@
-<style>
-    body {
-        background-image: url('https://images.pexels.com/photos/4700417/pexels-photo-4700417.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1.jpg');
-        color: black;
-    }
-	
-     h1 {
-    	max-width: 365px;
-        text-align: center;
-    	background-color: black;
-    	margin: 15;
-    	color: white;
-    	padding: 20px;
-        font-size: 40px;
-        padding: 25px;
-        margin: 0 auto;
-		margin-left: auto;
-		margin-right: auto;
-    }
-    
-    .form-control {
-        color: black;
-        font-size: 20px;
-        background-color: white;
-        border: 1.6px solid black;
-        padding: 5px;
-        width: 100%;
-    }
-    
-    .form-label {
-        color: black;
-        font-size: 15px;
-    }
-    
-    .container {
-        max-width: 400px;
-        margin: 0 auto;
-        padding: 8px;
-        background-color: white;
-        opacity: 0.9;
-        
-    }
+{% extends "base.html" %}
 
-    .btn-registre {
-        color: white;
-        background-color: teal;
-        border-color: black;
-        text-decoration: none;
-        display: inline-block;
-        padding: 4px 10px;
-        margin-bottom: 0;
-        font-size: 27px;
-        font-weight: 400;
-        font-family: Times New Roman;
-        line-height: 1.42857143;
-        text-align: center;
-        white-space: nowrap;
-        vertical-align: middle;
-        cursor: pointer;
-        border: 1px solid transparent;
-        border-radius: 8px;
-    }
-
-    a.btn-primary {
-        color: white;
-        background-color: teal;
-        border-color: black;
-        text-decoration: none;
-        display: inline-block;
-        padding: 4px 10px;
-        margin-bottom: 0;
-        font-size: 27px;
-        font-weight: 400;
-        font-family: Times New Roman;
-        line-height: 1.42857143;
-        text-align: center;
-        white-space: nowrap;
-        vertical-align: middle;
-        cursor: pointer;
-        border: 1px solid transparent;
-        border-radius: 8px;
-    }
-</style>
-
-<div class="container_top">
-	<h1>Kvintus Kollegiet
+{% block content %}
+<div class="container_login_top">
+    <p1 style="font-size: 40px; color: whitesmoke; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); text-align: center; ">Register</p1>
     </div>
     <br>
   <div class="container">
@@ -92,13 +11,13 @@
           <div class="mb-3">
               <label for="Username" class="form-label">Room number</label>
               <br>
-              <p style="font-size: 10px; font-style: italic;">Numbers only</p>
+              <p style="font-size: 10px; font-style: italic;">*Numbers only</p>
               <input type="text" class="form-control" id="Username" name="username">
           </div>
           <div class="mb-3">
               <label for="Password" class="form-label">Password</label>
               <br>
-              <p style="font-size: 10px; font-style: italic;">Recommanded: At least one special symbol and a mix of upper- and lowercase letters</p>
+              <p style="font-size: 10px; font-style: italic;">*We recommend having at least one special symbol and a mix of upper and lowercase letters</p>
               <input type="password" class="form-control" id="Password" name="password">
           </div>
           <div class="mb-3">
@@ -108,10 +27,13 @@
           </div>
           <div class="mb-3">
               <label for="Phone_number" class="form-label">Phone number</label>
-              <p style="font-size: 10px; font-style: italic;">Please include country numbers with a +</p>
+              <p style="font-size: 10px; font-style: italic;">*Please include country numbers with a +</p>
               <input type="text" class="form-control" id="Phone_number" name="phone_number">
           </div>
         <br>
-        <button type="submit" class="btn btn-registre">Register</button>
-        <a href="/login" class="btn btn-primary btn-sm">Back</a>
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+    <br>
+    <a href="/login" class="btn btn-primary btn-sm">Back</a>
   </div>
+{% endblock %}
