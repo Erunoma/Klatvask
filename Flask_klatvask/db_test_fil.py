@@ -111,10 +111,11 @@ def update_machines(maskine1, maskine2, username, wash_day, sms_reminder, id):
 update_user(0, 420)
 update_machines(0, 0, 123, 2023-5-30, 1, 16)
 status_machines()
+
+
 #print("fuld booked: ", status_machines()[0])
 #print("alle ledige: ", status_machines()[1])
 #print("en fri : ", status_machines()[2])
-
 
 # database booking
 # database check

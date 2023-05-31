@@ -12,14 +12,17 @@
 
         {% if status == 'machine 1 and machine 2 are available' %}
         <form method="post">
-            <button type="submit" class="confirm_button" name="confirm_button1" value="set2">
+            <button type="submit" class="confirm_button" name="confirm_button" value="set1">
                 <img src="/static/IMG_0618.PNG" style="width: 200px; height: 300px; color: greenyellow;">
                 
                 <p style="text-align: center; font-size: medium;">Machine 1 & 2</p>
+                <input type="hidden" name="username" value="{{ username }}">
+                <input type="hidden" name="machine_id" value="{{ id }}">
+                <input type="hidden" name="machine_choice" value="1_and_2">
             </button>
         </form>
             <form method="post">
-                <button type="submit" class="confirm_button" name="confirm_button2" value="set2" disabled style="opacity: 50%; color: red;">
+                <button type="submit" class="confirm_button" name="confirm_button" value="set2" disabled style="opacity: 50%; color: red;">
                     <img src="/static/IMG_0618.PNG" style="width: 200px; height: 300px;">
                     
                     <p style="text-align: center; font-size: medium;">Machine 3 & 4</p>
@@ -29,7 +32,7 @@
         {% elif status == 'machine 3 and machine 4 are available' %}     
 
         <form method="post">
-            <button type="submit" class="confirm_button" name="confirm_button1" value="set1" disabled style="opacity: 50%; color: red;">
+            <button type="submit" class="confirm_button" name="confirm_button" value="set1" disabled style="opacity: 50%; color: red;">
                 <img src="/static/IMG_0618.PNG" style="width: 200px; height: 300px;">
                 
                 <p style="text-align: center; font-size: medium;">Machine 1 & 2</p>
@@ -37,11 +40,14 @@
             <br>
         </form>
             <form method="post">
-                <button type="submit" class="confirm_button" name="confirm_button2" value="set2">
+                <button type="submit" class="confirm_button" name="confirm_button" value="set2">
                     <img src="/static/IMG_0618.PNG" style="width: 200px; height: 300px;">
                     
                     <p style="text-align: center; font-size: medium;">Machine 3 & 4</p>
                 </button>
+                <input type="hidden" name="username" value="{{ username }}">
+                <input type="hidden" name="machine_id" value="{{ id }}">
+                <input type="hidden" name="machine_choice" value="3_and_4">
             </form>
     
         
@@ -53,6 +59,9 @@
                 
                 <p style="text-align: center; font-size: medium;">Machine 1 & 2</p>
             </button>
+            <input type="hidden" name="username" value="{{ username }}">
+                <input type="hidden" name="machine_id" value="{{ id }}">
+                <input type="hidden" name="machine_choice" value="1_and_2">
         </form>
         <br>
         <form method="post">
@@ -61,6 +70,9 @@
                 
                 <p style="text-align: center; font-size: medium;">Machine 3 & 4</p>
             </button>
+            <input type="hidden" name="username" value="{{ username }}">
+                <input type="hidden" name="machine_id" value="{{ id }}">
+                <input type="hidden" name="machine_choice" value="3_and_4">
         </form>
         
         

@@ -305,19 +305,19 @@ def select_booking(id = None):
         username = session['username']
         if request.method=='POST':
 
-            if request.form['confirm_button1'] == "set1":
+            if request.form['confirm_button'] == "set1":
                 
                 username = request.form['username']
                 machine_id = request.form.get('machine_id')
                 machine_choice = 'machine 1 and 2'
                 
                 print('knap1')
-                return render_template('confirm_booking.html', username=username, machine_id=machine_id, machine_choice=machine_choice)
+                return render_template('confirm_booking.html', username=username, machine_id=id, machine_choice=machine_choice)
             
-            if request.form['confirm_button2'] == "set2":
+            if request.form['confirm_button'] == "set2":
                 
                 username = request.form['username']
-                machine_id = request.form.get('machine_id')
+                machine_id = request.form['machine_id']
                 machine_choice = 'machine 3 and 4'
 
                 print('knap2')                   
