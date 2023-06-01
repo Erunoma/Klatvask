@@ -1,5 +1,6 @@
 from datetime import date, datetime
 from flask import Flask, redirect, url_for, render_template, request, session
+import sqlite3
 
 id_slots=112
 
@@ -7,6 +8,30 @@ currentday=date.today()
 
 calenderViewableDays=14
 
+def weekchange():
+    con = sqlite3.connect('database.db')
+    cur = con.cursor()
+    bookings=cur.execute("SELECT * FROM machine_booking").fetchall()
+    
+    print(bookings[4][0])
+    new_bookings=[]
+    
+    for i in bookings:
+        new_bookings.append(i[0])
+    print (new_bookings)
+    
+    complete_data=[]
+
+    for i in new_bookings:
+        if int(i) < 57:
+            new_id=i+56
+            cur.execute("UPDATE machine_booking(machine_1_2, machine_3_4, username, wash_day, sms_enabled) VALUES(?,?,?,?,?)", (i,0,0,0,0))
+            cur.execute("UPDATE machine_booking SET id=? WHERE id=?", (new_id,i))
+        if int(i) >= 57:
+            new_id=i-56
+        cur.execute("UPDATE machine_booking SET id=? WHERE id=?", (new_id,i))
+    con.commit()
+    con.close
 
 
 class calender_buttons:
@@ -19,20 +44,37 @@ def date_data(id):
     button_data.id=id
     id = int(id)
     print("ID From dates_properties:", id)
-    if int(button_data.id) in range(1,9) or int(button_data.id) in range(57,65):
-        button_data.date="Monday"
-    elif int(button_data.id) in range(9,17) or int(button_data.id) in range(65,73):
-        button_data.date="Tuesday"
-    elif int(button_data.id) in range(17,25)or int(button_data.id) in range(73,81):
-        button_data.date="Wednesday"
-    elif int(button_data.id) in range(25,33)or int(button_data.id) in range(81,89):
-        button_data.date="Thursday"
-    elif int(button_data.id) in range(33,41)or int(button_data.id) in range(89,97):
-        button_data.date="Friday"
-    elif int(button_data.id) in range(41,49)or int(button_data.id) in range(97,105):
-        button_data.date="Saturday"
-    elif int(button_data.id) in range(49,57)or int(button_data.id) in range(105,113):
-        button_data.date="Sunday"
+    if int(button_data.id) in range(1,9):
+        button_data.date="Monday this week"
+    elif int(button_data.id) in range(9,17):
+        button_data.date="Tuesday this week"
+    elif int(button_data.id) in range(17,25):
+        button_data.date="Wednesday this week"
+    elif int(button_data.id) in range(25,33):
+        button_data.date="Thursday this week"
+    elif int(button_data.id) in range(33,41):
+        button_data.date="Friday this week"
+    elif int(button_data.id) in range(41,49):
+        button_data.date="Saturday this week"
+    elif int(button_data.id) in range(49,57):
+        button_data.date="Sunday this week"
+
+
+    
+    elif int(button_data.id) in range(57,65):
+        button_data.date="Monday next week"
+    elif int(button_data.id) in range(65,73):
+        button_data.date="Tuesday next week"
+    elif int(button_data.id) in range(73,81):
+        button_data.date="Wednesday next week"
+    elif int(button_data.id) in range(81,89):
+        button_data.date="Thursday next week"
+    elif int(button_data.id) in range(89,97):
+        button_data.date="Friday next week"
+    elif int(button_data.id) in range(97,105):
+        button_data.date="Saturday next week"
+    elif int(button_data.id) in range(105,113):
+        button_data.date="Sunday next week"
     else:
         button_data.date="ERROR"
 
@@ -61,3 +103,4 @@ def date_data(id):
 
 
 
+weekchange()
