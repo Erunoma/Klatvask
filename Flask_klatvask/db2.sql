@@ -3,7 +3,8 @@ CREATE TABLE machine_booking (
     machine_1_2 bit ,
     machine_3_4 bit ,
     username Text not null ,
-    wash_day DATE ,
+    wash_day TEXT ,
+    timeslot TEXT,
     sms_enabled bit
 
 )
