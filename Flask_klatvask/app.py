@@ -5,7 +5,7 @@ import sched
 import time as time_module
 import _thread
 import datetime
-
+import dates_properties
 # hvis database til users ik er lavet: sqlite3 database.db ".read db.sql"
 # hvis database ik vaskemaskiner ikke er lavet: sqlite3 database.db ".read db2.sql"
 
@@ -71,7 +71,7 @@ def fill_wash_tabel():
     con = sqlite3.connect('database.db')
     cur = con.cursor()
     querry = "INSERT INTO machine_booking(machine_1_2, machine_3_4, username, wash_day, sms_enabled) VALUES(?,?,?,?,?)"
-    for i in range(56):
+    for i in range(112):
         cur.execute(querry,(0,0,0,0,0))
     con.commit()
     con.close()
@@ -245,9 +245,19 @@ def home():
     else:
         return "<h1>wrong password, or the user doesnt exist</h1>", {"Refresh": "3; url=/login"}
 
-@app.route('/booking')
+@app.route('/booking', methods=["POST","GET"])
 def booking():
     if 'username' in session:
+      if request.method=="POST":
+        button_id=request.form["calender_button"]
+       
+        if request.form["calender_button"]==str(button_id):
+            button_data=dates_properties.date_data(button_id)
+            print("ID: ",button_data.id, "Date: ", button_data.date, "Timeslot: ", button_data.timeslot)
+            return redirect(url_for("select_booking", button_data=button_data, id=button_id))
+            
+            
+# ------------------------------ prøver noget -------------------------------------------------------------
       status_machines()
       temp_list = [] # forsøg med med at sende flere ting gennem url
       for i in range(len(status_machines()[0])):
@@ -331,24 +341,6 @@ def modify_bookings():
                 return redirect(url_for('home'))
                 
 
-        bookings = view_booking(username)
-        if bookings: #check if user has a booking, if list is empty, user does not have booking
-            #print('username: ', bookings[0][3])
-            #print('vask 1 og 2: ',bookings[0][1])
-            #print('vask 3 og 4: ',bookings[0][2])
-            #print('washday: ', bookings[0][4])
-            #print('sms enabled: ',bookings[0][5])
-            machine_1_and_2 = bookings[0][1]
-            machine_3_and_4 = bookings[0][2]
-            washday = bookings[0][4]
-            sms_enabled = bookings[0][5]
-
-            return render_template('modify_bookings.html',username=username,machine_1_and_2=machine_1_and_2, machine_3_and_4=machine_3_and_4, washday=washday, sms_enabled=sms_enabled)
-        else:
-            return redirect(url_for('home'))
-    else:
-        return 'log in please!', {"Refresh": "3; url=/login"}
-
 
 @app.route('/select_booking/<id>', methods=["POST","GET"])
 def select_booking(id = None):
@@ -400,13 +392,12 @@ def select_booking(id = None):
 
 @app.route('/confirm_booking', methods=['POST','GET'])
 def confirm_booking():
-    if 'username' in session:
        username = request.args.get('username')
        id = request.args.get('id')
        machine_choice = request.args.get('machine_choice')
        
       
-       x = datetime.datetime.now()   # snyd her <-----------------------------
+       x = datetime.datetime.now()
        
        if request.method=='POST':
            
@@ -429,13 +420,25 @@ def confirm_booking():
                    print('machine 3 and 4')
                    update_machines(0,1,username, x,0,id)
                    
-            
+               
+               
+              
+       
+       
+       
        print("username: ", username)
        print("id: ", id)
        print("machine choice: ", machine_choice)
        print(machine_choice)
        return render_template('confirm_booking.html', username=username, id=id, machine_choice=machine_choice)
        
+       return render_template('confirm_booking.html')
+
+    
+
+    
+
+
 
 @app.route('/logout')
 def logout():

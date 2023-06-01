@@ -201,7 +201,7 @@ border: 2px solid #FFFFFF;
 
 box-sizing: border-box;
 
-position: absolute;
+
 width: 348px;
 height: 289px;
 left: 21px;
@@ -245,4 +245,31 @@ border: 2px solid #000000;
   width: 150px;
   height: 75px;
   font-size: 40px;
+}
+.container_confirm_top{
+  box-sizing: border-box;
+  text-align: center;
+  position: top;
+  margin: auto;
+  width: 400px;
+  height: 53px;
+  left: 26px;
+  top: 99px;
+
+  background: #D9D9D9;
+  border: 1px solid #000000;
+}
+.confirm_page{
+  align-self: center;
+  box-sizing: border-box;
+  text-align: center;
+  margin: auto;
+  position: top;
+  width: 300px;
+  height: 300px;
+  left: 26px;
+  top: 170px;
+
+  background: #D9D9D9;
+  border: 1px solid #000000;
 }
