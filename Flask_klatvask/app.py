@@ -86,7 +86,6 @@ def status_machines():
     machine_3_4_fri = []
     con = sqlite3.connect('database.db')
     cur = con.cursor()
-    #cur.execute('SELECT id, machine_1_2, machine_3_4 FROM machine_booking WHERE machine_1_2=? AND machine_3_4=?', (0, 0))
     cur.execute('SELECT * FROM machine_booking')
     result = cur.fetchall()
     for row in result:
