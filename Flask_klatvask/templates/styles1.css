@@ -163,14 +163,6 @@ a.btn-primary1 {
     border: 1px solid transparent;
 }
 
-body {
-    font-family: Arial, sans-serif;
-}
-
-h1 {
-    text-align: center;
-    color: #333;
-}
 
 .calender_table1 {
     width: 100%;
@@ -187,21 +179,53 @@ h1 {
     height: 40px;
 }
 
-.booking_cell {
+.booking_cell1 {
     cursor: pointer;
     transition-duration: 0.4s;
 }
 
-.booking_cell:hover {
+.booking_cell1:hover {
     background-color: #90EE90;
     color: white;
 }
 
-.booking_container {
+.booking_container1 {
     max-width: 90%;
     min-height: 70vh;
     margin: 0 auto 20px auto;
     padding: 5px;
     background-color: white;
     opacity: 0.9;
+}
+/*Machines*/
+.machine_selector1 {
+    max-width: 50%;
+    min-height: 170px;
+    margin: 0 auto;
+    padding: 5px;
+    background-color: white;
+    opacity: 0.9;
+}
+.form-container1 {
+    display: flex;
+    justify-content: space-around;
+}
+
+.form-content1 {
+    margin: 0 10px;
+}
+
+.button-image1 {
+    width: 200px; 
+    height: 300px;
+}
+
+.button-text1 {
+    text-align: center; 
+    font-size: medium;
+}
+
+.confirm_button1[disabled] {
+    opacity: 50%;
+    color: red;
 }
