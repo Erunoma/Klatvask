@@ -7,6 +7,7 @@ import _thread
 import datetime
 import dates_properties
 
+
 # hvis database til users ik er lavet: sqlite3 database.db ".read db.sql"
 # hvis database ik vaskemaskiner ikke er lavet: sqlite3 database.db ".read db2.sql"
 
@@ -191,6 +192,18 @@ def update_machines(maskine1, maskine2, username, wash_day, timeslot, sms_remind
         # show booking not allowed. 
 
 
+# Every Week, at the specified time, the database will update its weekly bookings
+""""
+def weekly_schedule():
+    scheduler = sched.scheduler(time_module.time, time_module.sleep)
+    t = time_module.strptime("", '%d %H:%M:%S')
+    t = time_module.mktime(t)
+    scheduler_e = scheduler.enterabs(t, 1, dates_properties.weekchange(), ())
+    sleep(1)
+    _thread.start_new_thread(scheduler.run())
+def start():
+    weekly_schedule()
+"""
 app = Flask(__name__)
 app.secret_key = "r@nd0mSk_1"
 
@@ -408,40 +421,36 @@ def select_booking(id = None):
 
 @app.route('/confirm_booking', methods=['POST','GET'])
 def confirm_booking():
-       username = request.args.get('username')
-       id = request.args.get('id')
-       machine_choice = request.args.get('machine_choice')
-       time_data=request.args.getlist("time_data")
-       print('inde på confirm booking')
-       if request.method=='POST':
+    username = request.args.get('username')
+    id = request.args.get('id')
+    machine_choice = request.args.get('machine_choice')
+    time_data=request.args.getlist("time_data")
+    print('inde på confirm booking')
+    if request.method=='POST':
            
-           if request.form['final_button'] == "send":
-               print('der trykkes på confirm')
-    
-               sms_final = request.form.getlist('sms_choice') == "sms_choice_box"
-               print('sms_final: ', sms_final)
-               if sms_final == False:
-                   sms_choice = 0
-               else:
-                   sms_choice = 1
-                
-               if machine_choice == 'machine 1 and 2':
-                   print('er i sms ja')
-                   update_machines(1,0,username, time_data[1], time_data[2] ,sms_choice, id)
-           
-               elif machine_choice == 'machine 3 and 4':
-                   print('er i sms nej')
-                   update_machines(0,1,username,time_data[1], time_data[2], sms_choice, id)
-               
-         
+        if request.form['final_button'] == "send":
+            print('der trykkes på confirm')
 
-       print("username: ", username)
-       print("id: ", id)
-       print("machine choice: ", machine_choice)
-       print(machine_choice)
-       return render_template('confirm_booking.html', username=username, id=id, machine_choice=machine_choice,time_data=time_data)
+            sms_final = request.form.getlist('sms_choice') == "sms_choice_box"
+            print('sms_final: ', sms_final)
+            if sms_final == False:
+                sms_choice = 0
+            else:
+                sms_choice = 1
+                
+            if machine_choice == 'machine 1 and 2':
+                print('er i sms ja')
+                result = update_machines(1,0,username, time_data[1], time_data[2] ,sms_choice, id)
+                
+            elif machine_choice == 'machine 3 and 4':
+                print('er i sms nej')
+                result = update_machines(0,1,username,time_data[1], time_data[2], sms_choice, id)
+                
+            return result
+            
+    return render_template('confirm_booking.html', username=username, id=id, machine_choice=machine_choice,time_data=time_data)
        
-       return render_template('confirm_booking.html')
+  
 
     
 
