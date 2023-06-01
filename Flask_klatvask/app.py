@@ -422,10 +422,10 @@ def confirm_booking():
                 
                if machine_choice == '1_and_2':
                    
-                   update_machines(1,0,username, x,sms_choice,id)
+                   update_machines(1,0,username, time_data[1], time_data[2] ,sms_choice,id)
            
                elif machine_choice == '3_and_4':
-                   update_machines(0,1,username,x ,sms_choice,id)
+                   update_machines(0,1,username,time_data[1], time_data[2], sms_choice,id)
                
          
 

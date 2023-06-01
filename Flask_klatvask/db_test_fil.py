@@ -1,6 +1,6 @@
 import sqlite3
 #from datetime import date
-from twilio.rest import Client
+#from twilio.rest import Client
 import sched
 import time as time_module
 import _thread
@@ -34,9 +34,9 @@ def status_machines():
 def fill_wash_tabel():
     con = sqlite3.connect('database.db')
     cur = con.cursor()
-    querry = "INSERT INTO machine_booking(machine_1_2, machine_3_4, username, wash_day, sms_enabled) VALUES(?,?,?,?,?)"
-    for i in range(56):
-        cur.execute(querry,(0,0,0,0,0))
+    querry = "INSERT INTO machine_booking(machine_1_2, machine_3_4, username, wash_day, timeslot, sms_enabled) VALUES(?,?,?,?,?,?)"
+    for i in range(112):
+        cur.execute(querry,(0,0,0,0,0,0))
     con.commit()
     con.close()
 
@@ -109,10 +109,10 @@ def update_machines(maskine1, maskine2, username, wash_day, sms_reminder, id):
         return 'You already have a booking !!',{"Refresh": "3; url=/view_booking"} 
         # show booking not allowed. 
         
-#fill_wash_tabel()
-update_user(0, 420)
-update_machines(0, 0, 123, 2023-5-30, 1, 16)
-status_machines()
+fill_wash_tabel()
+#update_user(0, 420)
+#update_machines(0, 0, 123, 2023-5-30, 1, 16)
+#status_machines()
 #print("fuld booked: ", status_machines()[0])
 #print("alle ledige: ", status_machines()[1])
 #print("en fri : ", status_machines()[2])
