@@ -30,9 +30,9 @@ def weekchange():
         con.commit()
     
     
-    querry = "INSERT INTO machine_booking(machine_1_2, machine_3_4, username, wash_day, sms_enabled) VALUES(?,?,?,?,?) WHERE "
-    for i in range(56):
-        cur.execute(querry,(0,0,0,0,0))
+    querry = "INSERT INTO machine_booking(id,machine_1_2, machine_3_4, username, wash_day, sms_enabled) VALUES(?,?,?,?,?,?)"
+    for i in range(57,113):
+        cur.execute(querry,(i,0,0,0,0,0))
     con.commit()
 
     con.close()
@@ -111,4 +111,3 @@ def date_data(id):
 
 
 
-weekchange()
