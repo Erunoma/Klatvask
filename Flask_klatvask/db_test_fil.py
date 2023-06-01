@@ -101,11 +101,11 @@ def update_machines(maskine1, maskine2, username, wash_day, sms_reminder, id):
         else:
             # make booking without reminder
             # redirect to my booking
-            print('print 7') ################
-            con.close()
-            return 'dont forget your time!!!', {'Refresh': '3; url/confirm_booking'}
+            print('print 7') ################  
+            return 'dont forget your time!!!', {'Refresh': '3; url/view_booking'}
     else:
         print('print 8') ###################
+        con.close()
         return 'You already have a booking !!',{"Refresh": "3; url=/view_booking"} 
         # show booking not allowed. 
         
