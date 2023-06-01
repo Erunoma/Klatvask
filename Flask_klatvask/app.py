@@ -404,26 +404,26 @@ def confirm_booking():
     
        x = datetime.datetime.now()
        
+      
+       
        if request.method=='POST':
            
-           if request.form['sms_choice'] == "sms_yes":
-               print('yes to sms')
+           if request.form['final_button'] == "send":
+    
+               sms_final = request.form.getlist('sms_choice') == "sms_choice_box"
+               if sms_final == False:
+                   sms_choice = 0
+               else:
+                   sms_choice = 1
+                
                if machine_choice == '1_and_2':
                    
-                   update_machines(1,0,username, x,1,id)
+                   update_machines(1,0,username, x,sms_choice,id)
            
                elif machine_choice == '3_and_4':
-                   update_machines(0,1,username,x ,1,id)
+                   update_machines(0,1,username,x ,sms_choice,id)
                
-           if request.form['sms_choice'] == "sms_no":
-               print('no to sms')
-               if machine_choice == 'machine 1 and 2':
-                   print('machine 1 and 2')
-                   update_machines(1,0,username, x,0,id)
-               
-               elif machine_choice == 'machine 3 and 4':
-                   print('machine 3 and 4')
-                   update_machines(0,1,username, x,0,id)
+         
 
        print("username: ", username)
        print("id: ", id)
