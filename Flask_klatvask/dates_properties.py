@@ -11,27 +11,35 @@ calenderViewableDays=14
 def weekchange():
     con = sqlite3.connect('database.db')
     cur = con.cursor()
+
+
+    cur.execute("DELETE FROM machine_booking WHERE id<57")
+    con.commit()
+
     bookings=cur.execute("SELECT * FROM machine_booking").fetchall()
-    
     print(bookings[4][0])
     new_bookings=[]
     
     for i in bookings:
         new_bookings.append(i[0])
     print (new_bookings)
-    
-    complete_data=[]
-
     for i in new_bookings:
-        if int(i) < 57:
-            new_id=i+56
-            cur.execute("UPDATE machine_booking(machine_1_2, machine_3_4, username, wash_day, sms_enabled) VALUES(?,?,?,?,?)", (i,0,0,0,0))
-            cur.execute("UPDATE machine_booking SET id=? WHERE id=?", (new_id,i))
-        if int(i) >= 57:
-            new_id=i-56
-        cur.execute("UPDATE machine_booking SET id=? WHERE id=?", (new_id,i))
+        if int(i) >=57:
+            new_id=int(i)-56
+        cur.execute("UPDATE machine_booking SET id=? WHERE id=?", (new_id,int(i)))
+        con.commit()
+    
+    
+    querry = "INSERT INTO machine_booking(machine_1_2, machine_3_4, username, wash_day, sms_enabled) VALUES(?,?,?,?,?) WHERE "
+    for i in range(56):
+        cur.execute(querry,(0,0,0,0,0))
     con.commit()
-    con.close
+
+    con.close()
+
+    
+    
+    
 
 
 class calender_buttons:
