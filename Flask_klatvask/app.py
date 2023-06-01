@@ -13,7 +13,7 @@ import dates_properties
 def register_user_to_db(username, password, phone_number):
     con = sqlite3.connect('database.db')
     cur = con.cursor()
-    cur.execute('INSERT INTO users(username,password, phone_number, has_a_booking) values (?,?,?,?)', (username, password, phone_number, 0))
+    cur.execute('INSERT INTO users(username, password, phone_number, has_a_booking, is_admin) values (?,?,?,?,?)', (username, password, phone_number, 0, 0))
     con.commit()
     con.close()
 
@@ -121,7 +121,7 @@ def update_user_wash_status(username):
 def update_machines_simple(username):
     con = sqlite3.connect('database.db')
     cur = con.cursor()
-    query = 'UPDATE machine_booking SET machine_1_2=?, machine_3_4=?, username=?, wash_day=?, timeslot=? sms_enabled=? WHERE username=?'
+    query = 'UPDATE machine_booking SET machine_1_2=?, machine_3_4=?, username=?, wash_day=?, timeslot=?, sms_enabled=? WHERE username=?'
     cur.execute(query, (0, 0, 0, 0, 0, 0, username))
     con.commit()
     con.close()
@@ -182,7 +182,8 @@ def update_machines(maskine1, maskine2, username, wash_day, timeslot, sms_remind
             # make booking without reminder
             # redirect to my booking
             print('print 7') ################  
-            return 'dont forget your time!!!', {'Refresh': '3; url/view_booking'}
+            return 'dont forget your time!!!', {'Refresh': '3; url=/view_booking'}
+            
     else:
         print('print 8') ###################
         con.close()
@@ -194,12 +195,14 @@ app = Flask(__name__)
 app.secret_key = "r@nd0mSk_1"
 
 
+
 @app.route("/")
 def index():
     if 'username' in session:
         return render_template('home.html', username=session['username'])
     else:
         return render_template('login.html')
+
 
 
 @app.route('/register', methods=["POST", "GET"])
@@ -224,6 +227,7 @@ def register():
         return render_template('register.html')
 
 
+
 @app.route('/login', methods=["POST", "GET"])
 def login():
     if request.method == 'POST':
@@ -238,6 +242,7 @@ def login():
         return redirect(url_for('index'))
 
 
+
 @app.route('/home', methods=['POST', "GET"])
 def home():
     if request.form == "book_here":
@@ -247,6 +252,8 @@ def home():
         return render_template('home.html', username=session['username'])
     else:
         return "<h1>wrong password, or the user doesnt exist</h1>", {"Refresh": "3; url=/login"}
+
+
 
 @app.route('/booking', methods=["POST","GET"])
 def booking():
@@ -405,27 +412,26 @@ def confirm_booking():
        id = request.args.get('id')
        machine_choice = request.args.get('machine_choice')
        time_data=request.args.getlist("time_data")
-    
-       x = datetime.datetime.now()
-       
-      
-       
+       print('inde på confirm booking')
        if request.method=='POST':
            
            if request.form['final_button'] == "send":
+               print('der trykkes på confirm')
     
                sms_final = request.form.getlist('sms_choice') == "sms_choice_box"
+               print('sms_final: ', sms_final)
                if sms_final == False:
                    sms_choice = 0
                else:
                    sms_choice = 1
                 
-               if machine_choice == '1_and_2':
-                   
-                   update_machines(1,0,username, time_data[1], time_data[2] ,sms_choice,id)
+               if machine_choice == 'machine 1 and 2':
+                   print('er i sms ja')
+                   update_machines(1,0,username, time_data[1], time_data[2] ,sms_choice, id)
            
-               elif machine_choice == '3_and_4':
-                   update_machines(0,1,username,time_data[1], time_data[2], sms_choice,id)
+               elif machine_choice == 'machine 3 and 4':
+                   print('er i sms nej')
+                   update_machines(0,1,username,time_data[1], time_data[2], sms_choice, id)
                
          
 
