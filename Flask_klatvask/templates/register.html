@@ -1,56 +1,6 @@
-<style>
-    body {
-        background-image: url('https://images.pexels.com/photos/1147124/pexels-photo-1147124.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1.jpg');
-        color: black;
-    }
+{% extends "base.html" %}
 
-    .container {
-        max-width: 400px;
-        margin: 0 auto;
-        padding: 20px;
-        background-color: white;
-        opacity: 0.9;
-        size-adjust: auto;
-    }
-
-    .form-control {
-        color: black;
-        background-color: white;
-        border: 1px solid black;
-        padding: 5px;
-        width: 100%;
-    }
-
-    .form-label {
-        color: black;
-    }
-
-    .btn-primary {
-        color: white;
-        background-color: black;
-        border-color: black;
-    }
-
-    a.btn-primary {
-        color: white;
-        background-color: black;
-        border-color: black;
-        text-decoration: none;
-        display: inline-block;
-        padding: 6px 12px;
-        margin-bottom: 0;
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 1.42857143;
-        text-align: center;
-        white-space: nowrap;
-        vertical-align: middle;
-        cursor: pointer;
-        border: 1px solid transparent;
-        border-radius: 4px;
-    }
-</style>
-
+{% block content %}
 <div class="container">
     <form action="/register" method="post">
         <div class="mb-3">
@@ -74,8 +24,9 @@
             <input type="text" class="form-control" id="Phone_number" name="phone_number">
         </div>
         <br>
-        <button type="submit" class="btn btn-primary">Register</button>
+        <button type="submit" class="btn btn-primary-register">Register</button>
     </form>
     <br>
-    <a href="/login" class="btn btn-primary btn-sm">Back</a>
+    <a href="/login" class="btn btn-primary-register btn-sm">Back</a>
 </div>
+{% endblock %}
