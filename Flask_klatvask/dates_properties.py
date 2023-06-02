@@ -52,41 +52,41 @@ def date_data(id):
     button_data.id=id
     id = int(id)
     print("ID From dates_properties:", id)
-    if int(button_data.id) in range(1,9):
+    if int(button_data.id) in range(1,17):
         button_data.date="Monday"
-    elif int(button_data.id) in range(9,17):
+    elif int(button_data.id) in range(17,33):
         button_data.date="Tuesday"
-    elif int(button_data.id) in range(17,25):
+    elif int(button_data.id) in range(33,49):
         button_data.date="Wednesday"
-    elif int(button_data.id) in range(25,33):
+    elif int(button_data.id) in range(49,65):
         button_data.date="Thursday"
-    elif int(button_data.id) in range(33,41):
+    elif int(button_data.id) in range(65,81):
         button_data.date="Friday"
-    elif int(button_data.id) in range(41,49):
+    elif int(button_data.id) in range(81,97):
         button_data.date="Saturday"
-    elif int(button_data.id) in range(49,57):
+    elif int(button_data.id) in range(97,113):
         button_data.date="Sunday"
 
 
     
-    elif int(button_data.id) in range(57,65):
+    elif int(button_data.id) in range(113,129):
         button_data.date="Monday"
-    elif int(button_data.id) in range(65,73):
+    elif int(button_data.id) in range(129,145):
         button_data.date="Tuesday"
-    elif int(button_data.id) in range(73,81):
+    elif int(button_data.id) in range(145,161):
         button_data.date="Wednesday"
-    elif int(button_data.id) in range(81,89):
+    elif int(button_data.id) in range(161,177):
         button_data.date="Thursday"
-    elif int(button_data.id) in range(89,97):
+    elif int(button_data.id) in range(177,193):
         button_data.date="Friday"
-    elif int(button_data.id) in range(97,105):
+    elif int(button_data.id) in range(193,209):
         button_data.date="Saturday"
-    elif int(button_data.id) in range(105,113):
+    elif int(button_data.id) in range(209,225):
         button_data.date="Sunday"
     else:
         button_data.date="ERROR"
 
-    if id==1 or id==9  or id==17  or id==25  or id==33  or id==41  or id==49  or id==57 or id==65 or id==73 or id==81 or id==89 or id==97 or id==105: 
+    if id==1 or id==2  or id==17  or id==18  or id==33  or id==34  or id==49  or id==50 or id==65 or id==66 or id==81 or id==82 or id==97 or id==98 or id==113 or id==114: 
         button_data.timeslot="7-9"
     elif id==2 or id==10  or id==18  or id==26  or id==34  or id==42  or id==50  or id==58 or id==66 or id==74 or id==82 or id==90 or id==98 or id==106: 
         button_data.timeslot="9-11"

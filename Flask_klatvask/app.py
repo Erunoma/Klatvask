@@ -104,6 +104,7 @@ def status_machines():
     result = cur.fetchall()
     for row in result:
         if row:
+
             alle_maskiner.append(row)
 
         if row[1] == 1 and row[2] == 1:
@@ -128,6 +129,17 @@ def update_user_wash_status(username):
     cur.execute(query,(0,username))
     con.commit()
     con.close()
+
+def check_if_even_uneven(id):
+    machine_choice = None
+    id = int(id)
+    if id % 2 == 0:
+        machine_choice = 'machine 3 and 4'
+        
+    else:
+        machine_choice  = 'machine 1 and 2'
+
+    return machine_choice
 
 
 # update machine status back to 0
@@ -329,16 +341,16 @@ def booking():
             button_data=dates_properties.date_data(button_id)
             print("ID: ",button_data.id, "Date: ", button_data.date, "Timeslot: ", button_data.timeslot)
             time_data=[button_data.id],[button_data.date],[button_data.timeslot]
-            return redirect(url_for("select_booking", time_data=time_data, id=button_id))           
+            return redirect(url_for("confirm_booking", time_data=time_data, id=button_id))           
 # ------------------------------ prøver noget -------------------------------------------------------------
       status_machines()
       temp_list = [] # forsøg med med at sende flere ting gennem url
       for i in range(len(status_machines()[0])):
 
         for item in status_machines()[0]:
-            #print(item[1:3])
+            print('item: ',item)
             if item[0] == i:
-                if item[1:3] == (1,1):
+                if item[1:3] == (1,1) or (0,1) or (1,0):
                         
                         temp_list.append(item[0:1])
                   
@@ -442,7 +454,7 @@ def select_booking(id = None):
     if 'username' in session:
         username = session['username']
         time_data=request.args.getlist("time_data")
-        
+
         if request.method=='POST':
 
             if request.form['confirm_button'] == "set1":
@@ -489,34 +501,35 @@ def select_booking(id = None):
 
 @app.route('/confirm_booking', methods=['POST','GET'])
 def confirm_booking():
-    username = request.args.get('username')
-    id = request.args.get('id')
-    machine_choice = request.args.get('machine_choice')
-    time_data=request.args.getlist("time_data")
-
-    if request.method=='POST':
-           
-        if request.form['final_button'] == "send":
-            print('der trykkes på confirm')
-
-            sms_final = request.form.getlist('sms_choice') == "sms_choice_box"
-            print('sms_final: ', sms_final)
-            if sms_final == False:
-                sms_choice = 0
-            else:
-                sms_choice = 1
-                
-            if machine_choice == 'machine 1 and 2':
-                print('er i sms ja')
-                result = update_machines(1,0,username, time_data[1], time_data[2] ,sms_choice, id)
-                
-            elif machine_choice == 'machine 3 and 4':
-                print('er i sms nej')
-                result = update_machines(0,1,username,time_data[1], time_data[2], sms_choice, id)
-                
-            return result
+    if 'username' in session:
+        username = session['username']
+        id = request.args.get('id')
+        #machine_choice = request.args.get('machine_choice')
+        time_data=request.args.getlist("time_data")
+        machine_choice = check_if_even_uneven(id)
+        if request.method=='POST':
             
-    return render_template('confirm_booking.html', username=username, id=id, machine_choice=machine_choice,time_data=time_data)
+            if request.form['final_button'] == "send":
+                print('der trykkes på confirm')
+
+                sms_final = request.form.getlist('sms_choice') == "sms_choice_box"
+                print('sms_final: ', sms_final)
+                if sms_final == False:
+                    sms_choice = 0
+                else:
+                    sms_choice = 1
+                    
+                if check_if_even_uneven(id) == 'machine 1 and 2':
+                    print('er i sms ja')
+                    result = update_machines(1,0,username, time_data[1], time_data[2] ,sms_choice, id)
+                    
+                elif check_if_even_uneven(id) == 'machine 3 and 4':
+                    print('er i sms nej')
+                    result = update_machines(0,1,username,time_data[1], time_data[2], sms_choice, id)
+                    
+                return result
+                
+        return render_template('confirm_booking.html', username=username, id=id, machine_choice=machine_choice,time_data=time_data)
        
   
 
