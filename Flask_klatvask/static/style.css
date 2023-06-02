@@ -271,6 +271,7 @@ border: 2px solid #000000;
 body {
   background-image: url('https://images.pexels.com/photos/4700417/pexels-photo-4700417.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1.jpg');
   color: black;
+  background-size: cover;
 }
 
 /* SORT KASSE */

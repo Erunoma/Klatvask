@@ -228,6 +228,35 @@ def index():
         return render_template('login.html')
 
 
+@app.route('/reset_password',methods=['POST','GET'])
+def reset_password():
+    if 'username' in session:
+       if request.method=='POST':
+        
+          username = request.form['username']
+          old_password_form=request.form['old_password']
+          new_password_form=request.form['new_password']
+          new_password_repeat_form=request.form['repeat_password']
+          correct_info= check_user(username,old_password_form)
+          if correct_info==True:
+            if new_password_form == new_password_repeat_form:
+                con = sqlite3.connect('database.db')
+                cur = con.cursor()
+                query = 'UPDATE users SET password=? WHERE username = ?'
+                cur.execute(query,(new_password_form,username))
+                con.commit()
+                con.close()
+                return redirect(url_for('home'))
+            else:
+                return 'The repeated password did not match.',{"Refresh": "3; url=/reset_password"} 
+          else:
+            return 'The account information provided did not match our database.',{"Refresh": "3; url=/reset_passowrd"}
+
+        # fill_wash_tabel() sæt ind hvis du vil fylde vaskedatabasen ud med fyld data.
+
+    return render_template('reset_password.html')
+        
+   
 
 @app.route('/register', methods=["POST", "GET"])
 def register():

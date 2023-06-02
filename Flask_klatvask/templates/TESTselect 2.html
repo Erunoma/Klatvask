@@ -1,0 +1,82 @@
+<style>
+  body {
+    background-image: url('https://images.pexels.com/photos/4700417/pexels-photo-4700417.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1.jpg');
+    color: black;
+  }
+</style>
+
+<div class="machine_selector">
+    <h1>pick a machine</h1>
+    <p>ID: {{id}}</p>
+    {% if id %}
+
+        <p> machine status: {{ status }} </p>
+        
+        {% if status == 'machine 1 and machine 2 are available' %}
+        <form method="post">
+            <button type="submit" class="confirm_button" name="confirm_button" value="set1">
+                <img src="/static/IMG_0618.PNG" style="width: 200px; height: 300px; color: greenyellow;">
+                
+                <p style="text-align: center; font-size: medium;">Machine 1 & 2</p>
+            </button>
+        </form>
+            <form method="post">
+                <button type="submit" class="confirm_button" name="confirm_button" value="set2" disabled style="opacity: 50%; color: red;">
+                    <img src="/static/IMG_0618.PNG" style="width: 200px; height: 300px;">
+                    
+                    <p style="text-align: center; font-size: medium;">Machine 3 & 4</p>
+                </button>
+            </form>
+        
+        {% elif status == 'machine 3 and machine 4 are available' %}     
+
+        <form method="post">
+            <button type="submit" class="confirm_button" name="confirm_button" value="set1" disabled style="opacity: 50%; color: red;">
+                <img src="/static/IMG_0618.PNG" style="width: 200px; height: 300px;">
+                
+                <p style="text-align: center; font-size: medium;">Machine 1 & 2</p>
+            </button>
+            <br>
+        </form>
+            <form method="post">
+                <button type="submit" class="confirm_button" name="confirm_button" value="set2">
+                    <img src="/static/IMG_0618.PNG" style="width: 200px; height: 300px;">
+                    
+                    <p style="text-align: center; font-size: medium;">Machine 3 & 4</p>
+                </button>
+            </form>
+    
+        
+        {% elif status == 'all available' %}   
+
+        <form method="post">
+            <button type="submit" class="confirm_button" name="confirm_button" value="set1">
+                <img src="/static/IMG_0618.PNG" style="width: 200px; height: 300px;">
+                
+                <p style="text-align: center; font-size: medium;">Machine 1 & 2</p>
+            </button>
+        </form>
+        <br>
+        <form method="post">
+            <button type="submit" class="confirm_button" name="confirm_button" value="set2">
+                <img src="/static/IMG_0618.PNG" style="width: 200px; height: 300px;">
+                
+                <p style="text-align: center; font-size: medium;">Machine 3 & 4</p>
+            </button>
+        </form>
+        
+        
+        {% elif status == 'all taken' %}
+
+        <p style="font-size: 40;"> It looks like somebody took the last machines from this timeslot, while you were weren't looking. We apologize.</p>
+             
+        {% endif %}
+
+    {% endif %}
+
+<br>
+<form action="/booking">
+    <button type="submit" class="back_button" name="back_button">Back</button>
+</form>
+</div>
+{% endblock %}

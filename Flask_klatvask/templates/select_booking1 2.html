@@ -1,0 +1,79 @@
+{% extends "base.html" %}<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<div class="container_top1">
+	<h1>Kvintus Kollegiet
+    <p>Machines</p>
+    </div>
+
+<div class="machine_selector1">
+    {% block content %}
+    <h1>pick a machine</h1>
+    <p>ID: {{id}}</p>
+    {% if id %}
+
+        <p> machine status: {{ status }} </p>
+        
+        {% if status == 'machine 1 and machine 2 are available' %}
+        <div class="form-container1">
+            <form method="post" class="form-content1">
+                <button type="submit" class="confirm_button" name="confirm_button" value="set1">
+                    <img src="/static/IMG_0618.PNG" class="button-image1">
+                    <p class="button-text">Machine 1 & 2</p>
+                </button>
+            </form>
+            <form method="post" class="form-content1">
+                <button type="submit" class="confirm_button" name="confirm_button" value="set2" disabled>
+                    <img src="/static/IMG_0618.PNG" class="button-image1">
+                    <p class="button-text1">Machine 3 & 4</p>
+                </button>
+            </form>
+        </div>
+        
+        {% elif status == 'machine 3 and machine 4 are available' %}     
+
+        <div class="form-container1">
+            <form method="post" class="form-content1">
+                <button type="submit" class="confirm_button1" name="confirm_button" value="set1" disabled>
+                    <img src="/static/IMG_0618.PNG" class="button-image1">
+                    <p class="button-text">Machine 1 & 2</p>
+                </button>
+            </form>
+            <form method="post" class="form-content1">
+                <button type="submit" class="confirm_button1" name="confirm_button" value="set2">
+                    <img src="/static/IMG_0618.PNG" class="button-image1">
+                    <p class="button-text1">Machine 3 & 4</p>
+                </button>
+            </form>
+        </div>
+        {% elif status == 'all available' %}   
+
+        <div class="form-container1">
+            <form method="post" class="form-content1">
+                <button type="submit" class="confirm_button1" name="confirm_button" value="set1">
+                    <img src="/static/IMG_0618.PNG" class="button-image1">
+                    <p class="button-text1">Machine 1 & 2</p>
+                </button>
+            </form>
+            <form method="post" class="form-content1">
+                <button type="submit" class="confirm_button1" name="confirm_button" value="set2">
+                    <img src="/static/IMG_0618.PNG" class="button-image1">
+                    <p class="button-text1">Machine 3 & 4</p>
+                </button>
+            </form>
+        </div>
+        
+        {% elif status == 'all taken' %}
+
+        <p style="font-size: 40px; text-align: center;">It looks like somebody took the last machines from this timeslot, while you were weren't looking. We apologize. <br> :( </p>
+             
+        {% endif %}
+
+    {% endif %}
+<div class="btn-container1">
+<br>
+<form action="/booking">
+    <button type="submit" class="btn-primary1" name="back_button">Back</button>
+</form>
+{% endblock %}
+</div></div>

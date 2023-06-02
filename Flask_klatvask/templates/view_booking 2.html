@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container_top1">
+  <h1> Kvintus Kollegiet
+  <p style="font-size: 27px; color: teal; text-align: center; ">Your Bookings</p></div>
+<br>
+  <div class="container" style="height: 250px;">
+      <form method="post">
+        <div class="container_bookings1">
+          <table>
+            <tr>
+              <th>Name</th>
+              <th>Date & Time</th>
+              <th>Machines</th>
+              <th>SMS Enabled?</th>
+            </tr>
+            <tr>
+              <th>{{ username }}</th>
+              <th>{{ washday }}, {{ timeslot }}</th>
+              <th>{{ machine_1_and_2 }}, {{ machine_3_and_4 }}</th>
+              <th>{{ sms_enabled }}</th>
+            </tr>
+            <tr>
+              <th><button type="submit" name="delete_booking" value="yes">DELETE BOOKING</button></th>
+            </tr>
+          </table>
+          <a href="/home" class="btn btn-primary1 btn-sm">Back</a>
+        </div>
+       
+        
+        </div>
+          
+    </form>
+    <br>
+    
+  </div>
+{% endblock %}
