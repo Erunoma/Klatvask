@@ -30,6 +30,17 @@ def check_user(username, password):
         return True
     else:
         return False
+    
+def check_admin(username):
+    con = sqlite3.connect('database.db')
+    cur = con.cursor()
+    cur.execute('Select is_admin FROM users WHERE username=?', (username,))
+
+    result = cur.fetchone()
+    if result == 1:
+        return True
+    else:
+        return False
 
 # to check if user exists, so we cant have two users with the same name, and different passwords..    
 def check_if_user_exist(username):
@@ -249,8 +260,9 @@ def login():
         print(check_user(username, password))
         if check_user(username, password):
             session['username'] = username
-
-        return redirect(url_for('home'))
+            admin = check_admin(username)
+    
+        return redirect(url_for('home', admin=admin))
     else:
         return redirect(url_for('index'))
 
@@ -262,6 +274,7 @@ def home():
         return render_template('booking2.html')
 
     if 'username' in session:
+        
         return render_template('home.html', username=session['username'])
     else:
         return "<h1>wrong password, or the user doesnt exist</h1>", {"Refresh": "3; url=/login"}
