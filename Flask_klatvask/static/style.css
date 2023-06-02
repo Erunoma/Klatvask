@@ -59,6 +59,7 @@
         padding: 20px;
         background-color: white;
         opacity: 0.9;
+        size-adjust: auto;
   }
   .form-control{
     /* Rectangle 17 */
@@ -192,7 +193,7 @@ box-sizing: border-box;
 margin: auto;
 
 size-adjust: auto;
-width: 330px;
+width: auto;
 height: 550px;
 left: 21px;
 top: 150px;
@@ -226,8 +227,8 @@ border: 2px solid #000000;
   text-align: center;
   margin: auto;
   position: top;
-  width: 500px;
-  height: 1000px;
+  width: auto;
+  height: 1100px;
   left: 26px;
   top: 170px;
 
@@ -259,7 +260,7 @@ border: 2px solid #000000;
   text-align: center;
   margin: auto;
   position: top;
-  width: 300px;
+  width: 320px;
   height: 300px;
   left: 26px;
   top: 170px;
