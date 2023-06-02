@@ -54,32 +54,20 @@
 
   }
   .container{
-    align-self: center;
-    box-sizing: border-box;
-    text-align: center;
-    margin: auto;
-    position: top;
-    width: 339px;
-    height: 500px;
-    left: 26px;
-    top: 170px;
-
-    background: #D9D9D9;
-    border: 1px solid #000000;
+    max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: white;
+        opacity: 0.9;
   }
   .form-control{
     /* Rectangle 17 */
 
-  box-sizing: border-box;
-
-  font-size: 30px;
-  width: 310px;
-  height: 39px;
-  left: 50px;
-  top: 218px;
-
-  background: #FFFFFF;
-  border: 1px solid #000000;
+    color: black;
+    background-color: white;
+    border: 1px solid black;
+    padding: 5px;
+    width: 100%;
 
   }
   .form-label{
@@ -283,6 +271,7 @@ border: 2px solid #000000;
 body {
   background-image: url('https://images.pexels.com/photos/4700417/pexels-photo-4700417.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1.jpg');
   color: black;
+  background-size: cover;
 }
 
 /* SORT KASSE */
