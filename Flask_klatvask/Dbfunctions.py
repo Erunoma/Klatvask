@@ -62,12 +62,19 @@ def booking_machines():
     con.commit()
     con.close()
 
+def create_admin(username, password, phone_number,admin_status):
+    con = sqlite3.connect('database.db')
+    cur = con.cursor()
+    cur.execute('INSERT INTO users(username, password, phone_number, has_a_booking, is_admin) values (?,?,?,?,?)', (username, password, phone_number, 0, admin_status))
+    con.commit()
+    con.close()
 
+create_admin(999,123,88888888,1)
 #fill_wash_tabel()
-booking_machines()
-booked_machines()
-print("dum_list: ", dum_list)
-print("dummer_list: ", dummer_list)
+#booking_machines()
+#booked_machines()
+#print("dum_list: ", dum_list)
+#print("dummer_list: ", dummer_list)
 
 # database booking
 # database check
