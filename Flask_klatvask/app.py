@@ -36,7 +36,8 @@ def check_admin(username):
     cur = con.cursor()
     cur.execute('Select is_admin FROM users WHERE username=?', (username,))
     result = cur.fetchone()
-    if result == 1:
+    print('result fra check admin: ',result)
+    if result == (1,):
         return True
     else:
         return False
@@ -289,13 +290,10 @@ def login():
         username = request.form['username']
         password = request.form['password']
         print(check_user(username, password))
-        admin = check_admin(username)
+        
         if check_user(username, password):
             session['username'] = username
-        if admin == 1:
-            return redirect(url_for('home', admin=admin))
-        elif admin == 0:
-            return redirect(url_for('home'))
+            return redirect(url_for('home') )
 
     else:
         return redirect(url_for('index'))
@@ -306,10 +304,19 @@ def login():
 def home():
     if request.form == "book_here":
         return render_template('booking2.html')
-
-    if 'username' in session:
         
-        return render_template('home.html', username=session['username'])
+    if 'username' in session:
+        username= session['username']
+        is_admin = check_admin(username)
+        
+        print('sidste skridt: ',is_admin)
+        if is_admin==True:
+            return render_template('home.html', username=session['username'],is_admin=is_admin)
+        else:
+            return render_template('home.html', username=session['username'])
+        
+        
+       
     else:
         return "<h1>wrong password, or the user doesn't exist</h1>", {"Refresh": "3; url=/login"}
 
