@@ -239,13 +239,13 @@ def register():
         repeat_password = request.form['repeat_password']
         phone_number = request.form['phone_number']
         if not username or not password or not repeat_password or not phone_number:
-            return 'please fill out everything', {"Refresh": "3; url=/register"} 
+            return 'please fill out everything', {"Refresh": "3; url=/register"}
+        if len(username)>3:
+            return 'username can only be 3 numbers', {"Refresh": "3; url=/register"}     
         if password != repeat_password:
             return 'password dont match',{"Refresh": "3; url=/register"} 
-
         if check_if_user_exist(username):
-            return '<h1>User already exists</h1>', {"Refresh": "3; url=/login"} 
-            
+            return '<h1>User already exists</h1>', {"Refresh": "3; url=/login"}    
         else:
             register_user_to_db(username, password, phone_number)
             return redirect(url_for('index'))     
@@ -296,9 +296,7 @@ def booking():
             button_data=dates_properties.date_data(button_id)
             print("ID: ",button_data.id, "Date: ", button_data.date, "Timeslot: ", button_data.timeslot)
             time_data=[button_data.id],[button_data.date],[button_data.timeslot]
-            return redirect(url_for("select_booking", time_data=time_data, id=button_id))
-            
-            
+            return redirect(url_for("select_booking", time_data=time_data, id=button_id))           
 # ------------------------------ prøver noget -------------------------------------------------------------
       status_machines()
       temp_list = [] # forsøg med med at sende flere ting gennem url
@@ -364,6 +362,19 @@ def view_bookings():
             washday = bookings[0][4]
             timeslot = bookings[0][5]
             sms_enabled = bookings[0][6]
+
+            if machine_1_and_2 == 1:
+                machine_1_and_2 = 'Machine 1 and 2'
+            else:
+                machine_1_and_2 = ''
+            
+            if machine_3_and_4 == 1:
+                machine_3_and_4 = 'Machine 3 and 4'
+            else:
+                machine_3_and_4 = ''
+
+            washday = washday.replace("['",'').replace("']",'') 
+            timeslot = timeslot.replace("['",'').replace("']",'') 
 
             return render_template('view_booking.html',username=username,machine_1_and_2=machine_1_and_2, machine_3_and_4=machine_3_and_4, washday=washday, timeslot=timeslot, sms_enabled=sms_enabled)
         else:
