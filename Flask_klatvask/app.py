@@ -282,7 +282,7 @@ def home():
         
         return render_template('home.html', username=session['username'])
     else:
-        return "<h1>wrong password, or the user doesnt exist</h1>", {"Refresh": "3; url=/login"}
+        return "<h1>wrong password, or the user doesn't exist</h1>", {"Refresh": "3; url=/login"}
 
 
 
@@ -333,7 +333,7 @@ def modify_accounts():
        return render_template("modify_accounts.html", accounts=accounts)
 
     else:
-        return 'log ind du!', {"Refresh": "3; url=/login"}
+        return 'log in!', {"Refresh": "3; url=/login"}
     
 
 
