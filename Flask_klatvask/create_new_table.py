@@ -9,4 +9,13 @@ def fill_wash_tabel():
     con.commit()
     con.close()
 
-fill_wash_tabel()
+#fill_wash_tabel()
+
+def create_admin(username, password, phone_number,admin_status):
+    con = sqlite3.connect('database.db')
+    cur = con.cursor()
+    cur.execute('INSERT INTO users(username, password, phone_number, has_a_booking, is_admin) values (?,?,?,?,?)', (username, password, phone_number, 0, admin_status))
+    con.commit()
+    con.close()
+
+create_admin(999,123,88888888,1)

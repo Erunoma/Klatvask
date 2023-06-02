@@ -290,11 +290,13 @@ def login():
         username = request.form['username']
         password = request.form['password']
         print(check_user(username, password))
-        
+       
         if check_user(username, password):
             session['username'] = username
+            
             return redirect(url_for('home') )
-
+        else:
+            return 'The account information provided did not match our database.',{"Refresh": "3; url=/login"}
     else:
         return redirect(url_for('index'))
 
@@ -306,17 +308,12 @@ def home():
         return render_template('booking2.html')
         
     if 'username' in session:
+        print("There is a user here")
         username= session['username']
         is_admin = check_admin(username)
         
         print('sidste skridt: ',is_admin)
-        if is_admin==True:
-            return render_template('home.html', username=session['username'],is_admin=is_admin)
-        else:
-            return render_template('home.html', username=session['username'])
-        
-        
-       
+        return render_template('home.html', username=session['username'],is_admin=is_admin)
     else:
         return "<h1>wrong password, or the user doesn't exist</h1>", {"Refresh": "3; url=/login"}
 
