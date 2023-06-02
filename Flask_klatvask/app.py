@@ -35,12 +35,12 @@ def check_admin(username):
     con = sqlite3.connect('database.db')
     cur = con.cursor()
     cur.execute('Select is_admin FROM users WHERE username=?', (username,))
-
     result = cur.fetchone()
     if result == 1:
         return True
     else:
         return False
+    
 
 # to check if user exists, so we cant have two users with the same name, and different passwords..    
 def check_if_user_exist(username):
@@ -215,6 +215,8 @@ def weekly_schedule():
 def start():
     weekly_schedule()
 """
+
+
 app = Flask(__name__)
 app.secret_key = "r@nd0mSk_1"
 
@@ -258,11 +260,14 @@ def login():
         username = request.form['username']
         password = request.form['password']
         print(check_user(username, password))
+        admin = check_admin(username)
         if check_user(username, password):
             session['username'] = username
-            admin = check_admin(username)
-    
-        return redirect(url_for('home', admin=admin))
+        if admin == 1:
+            return redirect(url_for('home', admin=admin))
+        elif admin == 0:
+            return redirect(url_for('home'))
+
     else:
         return redirect(url_for('index'))
 
