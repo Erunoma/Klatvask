@@ -53,36 +53,36 @@ def date_data(id):
     id = int(id)
     print("ID From dates_properties:", id)
     if int(button_data.id) in range(1,9):
-        button_data.date="Monday this week"
+        button_data.date="Monday"
     elif int(button_data.id) in range(9,17):
-        button_data.date="Tuesday this week"
+        button_data.date="Tuesday"
     elif int(button_data.id) in range(17,25):
-        button_data.date="Wednesday this week"
+        button_data.date="Wednesday"
     elif int(button_data.id) in range(25,33):
-        button_data.date="Thursday this week"
+        button_data.date="Thursday"
     elif int(button_data.id) in range(33,41):
-        button_data.date="Friday this week"
+        button_data.date="Friday"
     elif int(button_data.id) in range(41,49):
-        button_data.date="Saturday this week"
+        button_data.date="Saturday"
     elif int(button_data.id) in range(49,57):
-        button_data.date="Sunday this week"
+        button_data.date="Sunday"
 
 
     
     elif int(button_data.id) in range(57,65):
-        button_data.date="Monday next week"
+        button_data.date="Monday"
     elif int(button_data.id) in range(65,73):
-        button_data.date="Tuesday next week"
+        button_data.date="Tuesday"
     elif int(button_data.id) in range(73,81):
-        button_data.date="Wednesday next week"
+        button_data.date="Wednesday"
     elif int(button_data.id) in range(81,89):
-        button_data.date="Thursday next week"
+        button_data.date="Thursday"
     elif int(button_data.id) in range(89,97):
-        button_data.date="Friday next week"
+        button_data.date="Friday"
     elif int(button_data.id) in range(97,105):
-        button_data.date="Saturday next week"
+        button_data.date="Saturday"
     elif int(button_data.id) in range(105,113):
-        button_data.date="Sunday next week"
+        button_data.date="Sunday"
     else:
         button_data.date="ERROR"
 

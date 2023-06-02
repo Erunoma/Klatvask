@@ -402,7 +402,13 @@ def view_bookings():
             else:
                 machine_3_and_4 = ''
 
-            washday = washday.replace("['",'').replace("']",'') 
+            washday = washday.replace("['",'').replace("']",'')
+            if bookings[0][0]< 57:
+                washday = 'This week',washday
+            if bookings[0][0]> 57:
+                washday = 'Next week',washday
+
+
             timeslot = timeslot.replace("['",'').replace("']",'') 
 
             return render_template('view_booking.html',username=username,machine_1_and_2=machine_1_and_2, machine_3_and_4=machine_3_and_4, washday=washday, timeslot=timeslot, sms_enabled=sms_enabled)
@@ -483,7 +489,7 @@ def confirm_booking():
     id = request.args.get('id')
     machine_choice = request.args.get('machine_choice')
     time_data=request.args.getlist("time_data")
-    print('inde på confirm booking')
+
     if request.method=='POST':
            
         if request.form['final_button'] == "send":
