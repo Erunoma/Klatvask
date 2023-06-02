@@ -348,9 +348,9 @@ def booking():
       for i in range(len(status_machines()[0])):
 
         for item in status_machines()[0]:
-            print('item: ',item)
             if item[0] == i:
-                if item[1:3] == (1,1) or (0,1) or (1,0):
+                print('item: ', item )
+                if item[1:3] == (1,1) or item[1:3] == (1,0) or item[1:3] == (0,1):
                         
                         temp_list.append(item[0:1])
                   
@@ -419,9 +419,9 @@ def view_bookings():
                 machine_3_and_4 = ''
 
             washday = washday.replace("['",'').replace("']",'')
-            if bookings[0][0]< 57:
+            if bookings[0][0]< 113:
                 washday = 'This week',washday
-            if bookings[0][0]> 57:
+            if bookings[0][0]> 113:
                 washday = 'Next week',washday
 
 

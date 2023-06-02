@@ -108,8 +108,18 @@ def update_machines(maskine1, maskine2, username, wash_day, sms_reminder, id):
         con.close()
         return 'You already have a booking !!',{"Refresh": "3; url=/view_booking"} 
         # show booking not allowed. 
-        
-fill_wash_tabel()
+
+
+def create_admin(username, password, phone_number,admin_status):
+    con = sqlite3.connect('database.db')
+    cur = con.cursor()
+    cur.execute('INSERT INTO users(username, password, phone_number, has_a_booking, is_admin) values (?,?,?,?,?)', (username, password, phone_number, 0, admin_status))
+    con.commit()
+    con.close()
+
+
+#create_admin(999,123,123,1)
+#fill_wash_tabel()
 #update_user(0, 420)
 #update_machines(0, 0, 123, 2023-5-30, 1, 16)
 #status_machines()

@@ -86,11 +86,11 @@ def date_data(id):
     else:
         button_data.date="ERROR"
 
-    if id==1 or id==2  or id==17  or id==18  or id==33  or id==34  or id==49  or id==50 or id==65 or id==66 or id==81 or id==82 or id==97 or id==98 or id==113 or id==114: 
+    if id==1 or id==2  or id==17  or id==18  or id==33  or id==34  or id==49  or id==50 or id==65 or id==66 or id==81 or id==82 or id==97 or id==98 or id==113 or id==114 or id==129 or id==130 or id==145 or id==146 or id==161 or id==162 or id==177 or id==178 or id==193 or id==194 or id==209 or id==210: 
         button_data.timeslot="7-9"
-    elif id==2 or id==10  or id==18  or id==26  or id==34  or id==42  or id==50  or id==58 or id==66 or id==74 or id==82 or id==90 or id==98 or id==106: 
+    elif id==3 or id==4  or id==19  or id==20  or id==35  or id==36  or id==51  or id==52 or id==67 or id==68 or id==83 or id==84 or id==99 or id==100 or id==115 or id==116 or id==131 or id==132 or id==147 or id==148 or id== 163 or id==164 or id==179 or id==180 or id==195 or id==196 or id==211 or id==212: 
         button_data.timeslot="9-11"
-    elif id==3 or id==11  or id==19  or id==27  or id==35  or id==43  or id==51  or id==59 or id==67 or id==75 or id==83 or id==91 or id==99 or id==107: 
+    elif id==5 or id==6  or id==21  or id==22  or id==37  or id==38  or id==53  or id==54 or id==69 or id==70 or id==85 or id==86 or id==101 or id==102 or id==117 or id==118 or id==133 or id==134 or id==149 or id==150 or id==165 or id==166 or id==181 or id==182 or id==197 or id==198 or id==213 or id==214: 
         button_data.timeslot="11-13"
     elif id==4 or id==12  or id==20  or id==28  or id==36  or id==44  or id==52  or id==60 or id==68 or id==76 or id==84 or id==92 or id==100 or id==108: 
         button_data.timeslot="13-15"
