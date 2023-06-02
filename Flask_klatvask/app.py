@@ -234,7 +234,6 @@ def index():
 def reset_password():
     if 'username' in session:
        if request.method=='POST':
-        
           username = request.form['username']
           old_password_form=request.form['old_password']
           new_password_form=request.form['new_password']
@@ -252,11 +251,12 @@ def reset_password():
             else:
                 return 'The repeated password did not match.',{"Refresh": "3; url=/reset_password"} 
           else:
-            return 'The account information provided did not match our database.',{"Refresh": "3; url=/reset_passowrd"}
+            return 'The account information provided did not match our database.',{"Refresh": "3; url=/reset_password"}
+            
+       return render_template('reset_password.html')
+    else:
+        return 'please log in!', {"Refresh": "3; url=/login"}
 
-        # fill_wash_tabel() sæt ind hvis du vil fylde vaskedatabasen ud med fyld data.
-
-    return render_template('reset_password.html')
         
    
 
