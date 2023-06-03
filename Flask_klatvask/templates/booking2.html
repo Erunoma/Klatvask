@@ -11,6 +11,8 @@
     {% for i in range(temp_list|length) %}
         {% set _ = temp_list.__setitem__(i, temp_list[i]|int) %}
     {% endfor %}
+    
+    
     <div class="container_top1">
         <h1>Kvintus Kollegiet
         <p>Calender</p>
@@ -20,9 +22,9 @@
     <br>
     <table class="calender_table"> 
         <tr class="table_tr">
-            <th class="table_th">
-            </th>
+            <th class="table_th"></th>
             <th class="table_th">7-9</th>
+          
             <th class="table_th">9-11</th>
             <th class="table_th">11-13</th>
             <th class="table_th">13-15</th>
@@ -32,14 +34,34 @@
             <th class="table_th">21-23</th>
         </tr>
 
-       <tr class="table_tr"> 
+
+
+      
+        
         <th class="table_th">MON </th>
-    {% for i in range(1, 9) %}
-        <th class="table_th">
-            <form method="post">
-            <button class="table_button" name="calender_button" value="{{i}}"{% if i in temp_list %} style="background-color: red; width:120px; height:60px; opacity: 50%;"disabled {% else %}style="background-color: green; width:120px; height:60px;" {% endif %}>MON {{ i }}</button>
-        </form>
-        </th> 
+        <table class="calender_table2">
+            {% for i in range(1, 17) %}
+        
+
+        </table>
+
+
+        {% for i in range(1, 17) %}
+        <th>
+        <table class="calender_table2">
+            <th class="table_th_button">
+                <form method="post">
+                <button class="table_button" name="calender_button" value="{{i}}"{% if i in temp_list %} style="background-color: red; width:60px; height:30px; opacity: 50%;"disabled {% else %}style="background-color: green; width:60px; height:60px;" {% endif %}>MON {{ i }}</button>
+                </th>
+                <th class="table_th_button">
+                    <form method="post">
+                    <button class="table_button" name="calender_button" value="{{1+i}}"{% if i in temp_list %} style="background-color: red; width:60px; height:30px; opacity: 50%;"disabled {% else %}style="background-color: green; width:60px; height:60px;" {% endif %}>MON {{ 1+i}}</button>
+                    
+                </form>
+            </th>
+        </table>
+        </th>
+      
         {% endfor %}
         <tr class="table_tr"> 
             <th  class="table_th">TUE </th>

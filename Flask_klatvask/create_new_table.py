@@ -3,13 +3,13 @@ def fill_wash_tabel():
     con = sqlite3.connect('database.db')
     cur = con.cursor()
     querry = "INSERT INTO machine_booking(id, machine_1_2, machine_3_4, username, wash_day, timeslot, sms_enabled) VALUES(?,?,?,?,?,?,?)"
-    for i in range(1,113):
+    for i in range(1,245):
         cur.execute(querry,(i,0,0,0,0,0,0))
         
     con.commit()
     con.close()
 
-#fill_wash_tabel()
+fill_wash_tabel()
 
 def create_admin(username, password, phone_number,admin_status):
     con = sqlite3.connect('database.db')

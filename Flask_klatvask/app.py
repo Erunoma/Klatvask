@@ -11,6 +11,7 @@ import dates_properties
 # hvis database til users ik er lavet: sqlite3 database.db ".read db.sql"
 # hvis database ik vaskemaskiner ikke er lavet: sqlite3 database.db ".read db2.sql"
 
+#Registers new users to the database when creating an account
 def register_user_to_db(username, password, phone_number):
     con = sqlite3.connect('database.db')
     cur = con.cursor()
@@ -30,7 +31,8 @@ def check_user(username, password):
         return True
     else:
         return False
-    
+
+#Checks to see if the user is an admin
 def check_admin(username):
     con = sqlite3.connect('database.db')
     cur = con.cursor()
@@ -55,14 +57,14 @@ def check_if_user_exist(username):
     else:
         return False
 
-
+#Gets a list of users
 def get_user_list():
     con = sqlite3.connect('database.db')
     cur = con.cursor()
     accounts=cur.execute("SELECT * FROM users").fetchall()
     cur.close()
     return accounts
-
+#Deletes an account. normally only accessible by admins
 def delete_account(username):
     con = sqlite3.connect('database.db')
     cur = con.cursor()
@@ -72,7 +74,7 @@ def delete_account(username):
     cur.close()
     print("The account for",username, "has been deleted.")
 
-
+#Gets the booking information of the users booking
 def view_booking(username):
     con = sqlite3.connect('database.db')
     cur = con.cursor()
@@ -80,18 +82,18 @@ def view_booking(username):
     return bookings
 
 
-# opret tom vaskemaskine data
+# Creates the static database rows for washing machine id's
 def fill_wash_tabel():
     con = sqlite3.connect('database.db')
     cur = con.cursor()
     querry = "INSERT INTO machine_booking(machine_1_2, machine_3_4, username, wash_day, timeslot, sms_enabled) VALUES(?,?,?,?,?,?)"
-    for i in range(112):
+    for i in range(224):
         cur.execute(querry,(0,0,0,0,0,0))
     con.commit()
     con.close()
 
 
-# vaskemaskine status
+# Check the status of all the washing machines, to see if they are booked or not.
 def status_machines():
     alle_maskiner = []
     fuld_booked = []
@@ -120,7 +122,7 @@ def status_machines():
 
     return alle_maskiner, fuld_booked, alle_ledige, machine_1_2_fri, machine_3_4_fri
 
-# update user wash status
+# Users are only able to have one booking at a time. This checks if they already have one.
 def update_user_wash_status(username):
     con = sqlite3.connect('database.db')
     cur = con.cursor()
@@ -130,7 +132,7 @@ def update_user_wash_status(username):
     con.close()
 
 
-# update machine status back to 0
+# Clears the row for all data.
 def update_machines_simple(username):
     con = sqlite3.connect('database.db')
     cur = con.cursor()
@@ -139,7 +141,7 @@ def update_machines_simple(username):
     con.commit()
     con.close()
 
-# updater vaskemaskiner
+# Updates the database with the booking information.
 def update_machines(maskine1, maskine2, username, wash_day, timeslot, sms_reminder, id):
     print('print 1')   ####################
     con = sqlite3.connect('database.db')
@@ -329,14 +331,15 @@ def booking():
             button_data=dates_properties.date_data(button_id)
             print("ID: ",button_data.id, "Date: ", button_data.date, "Timeslot: ", button_data.timeslot)
             time_data=[button_data.id],[button_data.date],[button_data.timeslot]
-            return redirect(url_for("select_booking", time_data=time_data, id=button_id))           
-# ------------------------------ prøver noget -------------------------------------------------------------
+            return redirect(url_for('confirm_booking', username=session['username'], id=button_id, time_data=time_data,))
+                   
+
       status_machines()
-      temp_list = [] # forsøg med med at sende flere ting gennem url
+      temp_list = [] 
       for i in range(len(status_machines()[0])):
 
         for item in status_machines()[0]:
-            #print(item[1:3])
+   
             if item[0] == i:
                 if item[1:3] == (1,1):
                         
@@ -385,11 +388,6 @@ def view_bookings():
                 
         bookings = view_booking(username)
         if bookings: #check if user has a booking, if list is empty, user does not have booking
-            #print('username: ', bookings[0][3])
-            #print('vask 1 og 2: ',bookings[0][1])
-            #print('vask 3 og 4: ',bookings[0][2])
-            #print('washday: ', bookings[0][4])
-            #print('sms enabled: ',bookings[0][5])
             machine_1_and_2 = bookings[0][1]
             machine_3_and_4 = bookings[0][2]
             washday = bookings[0][4]
@@ -436,56 +434,7 @@ def modify_bookings():
 
     print(id)
     
-@app.route('/select_booking/<id>', methods=["POST","GET"])
-def select_booking(id = None):
-    
-    if 'username' in session:
-        username = session['username']
-        time_data=request.args.getlist("time_data")
-        
-        if request.method=='POST':
-
-            if request.form['confirm_button'] == "set1":
-                
-                username = request.form['username']
-                machine_choice = 'machine 1 and 2'
-                
-                print('knap1')
-                
-                #return render_template('confirm_booking.html', username=username, id=id, machine_choice=machine_choice)
-                return redirect(url_for('confirm_booking', username=username, id=id, machine_choice=machine_choice, time_data=time_data))   
-            if request.form['confirm_button'] == "set2":
-                
-                username = request.form['username']
-                machine_choice = 'machine 3 and 4'
-                
-                print('knap2')                   
-                #return render_template('confirm_booking.html', username=username, id=id, machine_choice=machine_choice)
-                return redirect(url_for('confirm_booking', username=username, id=id, machine_choice=machine_choice, time_data=time_data))
-
-
-        status_machines()
-        for item in status_machines()[1]:
-            if item[0] == int(id):
-                
-                return render_template('select_booking.html', id=id, status='all taken', username=username)
-                
-        for item in status_machines()[2]:
-            if item[0] == int(id):
-
-                return render_template('select_booking.html', id=id, status='all available', username=username)
-
-        for item in status_machines()[3]:
-            if item[0] == int(id):
-
-                return render_template('select_booking.html', id=id, status='machine 1 and machine 2 are available', username=username)
-
-        for item in status_machines()[4]:
-            if item[0] == int(id):
-
-                return render_template('select_booking.html', id=id, status='machine 3 and machine 4 are available', username=username)
-        
-        
+  
 
 @app.route('/confirm_booking', methods=['POST','GET'])
 def confirm_booking():
@@ -516,15 +465,8 @@ def confirm_booking():
                 
             return result
             
-    return render_template('confirm_booking.html', username=username, id=id, machine_choice=machine_choice,time_data=time_data)
+    return render_template('confirm_booking.html', username=username, id=id,time_data=time_data)
        
-  
-
-    
-
-    
-
-
 
 @app.route('/logout')
 def logout():
