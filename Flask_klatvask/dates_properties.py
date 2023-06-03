@@ -52,7 +52,7 @@ def date_data(id):
     button_data.id=id
     id = int(id)
     print("ID From dates_properties:", id)
-    if int(button_data.id) in range(1,9):
+    if int(button_data.id) in range(1,16):
         button_data.date="Monday"
     elif int(button_data.id) in range(9,17):
         button_data.date="Tuesday"
