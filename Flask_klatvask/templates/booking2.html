@@ -1,17 +1,11 @@
 {% extends "base.html" %}
 
-
-
 {% block content %}
-
-
-
-
+   
     {% set temp_list = temp_list.split(',') %}
     {% for i in range(temp_list|length) %}
-        {% set _ = temp_list.__setitem__(i, temp_list[i]|int) %}
+        {% set temp_list = temp_list.__setitem__(i, temp_list[i]|int) %}
     {% endfor %}
-    
     
     <div class="container_top1">
         <h1>Kvintus Kollegiet
@@ -33,16 +27,17 @@
             <th class="table_th" colspan="2">19-21</th>
             <th class="table_th" colspan="2">21-23</th>
         </tr>
-
-
-
-      
-        
         <th class="table_th">MON </th>
     {% for i in range(1, 17) %}
         <th class="table_th">
             <form method="post">
-            <button class="table_button" name="calender_button" value="{{i}}"{% if i in temp_list %} style="background-color: red; width:120px; height:60px; opacity: 50%;"disabled {% else %}style="background-color: green; width:120px; height:60px;" {% endif %}>MON {{ i }}</button>
+            <button 
+                class="table_button" name="calender_button" value="{{i}}"
+                {% if i in temp_list %} style="background-color: red; width:120px; height:60px; opacity: 50%;"disabled 
+                {% else %}style="background-color: green; width:120px; height:60px;" 
+                {% endif %}>MON {{ i }}
+            </button>
+        
         </form>
         </th> 
         {% endfor %}
@@ -51,7 +46,7 @@
         {% for i in range(17, 33) %}
             <th class="table_th">
                 <form method="post">
-                    <button class="table_button" name="calender_button" value="{{i}}"{% if i in temp_list %} style="background-color: red; width:120px; height:60px; opacity: 50%;"disabled {% else %}style="background-color: green; width:120px; height:60px;" {% endif %}>{{ i }}</button>
+                    <button class="table_button" name="calender_button" value="{{i}}"{% if i in temp_list %} style="background-color: red; width:120px; height:60px; opacity: 50%;"disabled {% else %}style="background-color: green; width:120px; height:60px;" {% endif %}>TUE {{ i }}</button>
             </form>
             </th> 
             {% endfor %}
@@ -61,7 +56,7 @@
     {% for i in range(33, 49) %}
         <th class="table_th">
             <form method="post">
-                <button class="table_button" name="calender_button" value="{{i}}"{% if i in temp_list %} style="background-color: red; width:120px; height:60px; opacity: 50%;"disabled {% else %}style="background-color: green; width:120px; height:60px;" {% endif %}>{{ i }}</button>
+                <button class="table_button" name="calender_button" value="{{i}}"{% if i in temp_list %} style="background-color: red; width:120px; height:60px; opacity: 50%;"disabled {% else %}style="background-color: green; width:120px; height:60px;" {% endif %}>WED {{ i }}</button>
         </form>
         </th> 
         {% endfor %}
@@ -70,7 +65,7 @@
     {% for i in range(49, 65) %}
         <th class="table_th">
             <form method="post">
-                <button class="table_button" name="calender_button" value="{{i}}"{% if i in temp_list %} style="background-color: red; width:120px; height:60px; opacity: 50%;"disabled {% else %}style="background-color: green; width:120px; height:60px;" {% endif %}>{{ i }}</button>
+                <button class="table_button" name="calender_button" value="{{i}}"{% if i in temp_list %} style="background-color: red; width:120px; height:60px; opacity: 50%;"disabled {% else %}style="background-color: green; width:120px; height:60px;" {% endif %}>THU {{ i }}</button>
         </form>
         </th> 
         {% endfor %}
@@ -79,16 +74,16 @@
     {% for i in range(65, 81) %}
         <th class="table_th">
             <form method="post">
-                <button class="table_button" name="calender_button" value="{{i}}"{% if i in temp_list %} style="background-color: red; width:120px; height:60px; opacity: 50%;"disabled {% else %}style="background-color: green; width:120px; height:60px;" {% endif %}>{{ i }}</button>
+                <button class="table_button" name="calender_button" value="{{i}}"{% if i in temp_list %} style="background-color: red; width:120px; height:60px; opacity: 50%;"disabled {% else %}style="background-color: green; width:120px; height:60px;" {% endif %}>FRI {{ i }}</button>
         </form>
         </th> 
         {% endfor %}
-<tr class="table_tr"> 
+    <tr class="table_tr"> 
         <th class="table_th">SAT </th>
     {% for i in range(81, 97) %}
         <th class="table_th">
             <form method="post">
-                <button class="table_button" name="calender_button" value="{{i}}"{% if i in temp_list %} style="background-color: red; width:120px; height:60px; opacity: 50%;"disabled {% else %}style="background-color: green; width:120px; height:60px;" {% endif %}>{{ i }}</button>
+                <button class="table_button" name="calender_button" value="{{i}}"{% if i in temp_list %} style="background-color: red; width:120px; height:60px; opacity: 50%;"disabled {% else %}style="background-color: green; width:120px; height:60px;" {% endif %}>SAT {{ i }}</button>
         </form>
         </th> 
         {% endfor %}
@@ -97,7 +92,7 @@
     {% for i in range(97, 113) %}
         <th class="table_th">
             <form method="post">
-                <button class="table_button" name="calender_button" value="{{i}}"{% if i in temp_list %} style="background-color: red; width:120px; height:60px; opacity: 50%;"disabled {% else %}style="background-color: green; width:120px; height:60px;" {% endif %}>{{ i }}</button>
+                <button class="table_button" name="calender_button" value="{{i}}"{% if i in temp_list %} style="background-color: red; width:120px; height:60px; opacity: 50%;"disabled {% else %}style="background-color: green; width:120px; height:60px;" {% endif %}>SUN {{ i }}</button>
         </form>
         </th> 
         {% endfor %}
@@ -135,7 +130,7 @@
         {% for i in range(113, 129) %}
             <th class="table_th">
                 <form method="post">
-                    <button class="table_button" name="calender_button" value="{{i}}"{% if i in temp_list %} style="background-color: red; width:120px; height:60px; opacity: 50%;"disabled {% else %}style="background-color: green; width:120px; height:60px;" {% endif %}>{{ i }}</button>
+                    <button class="table_button" name="calender_button" value="{{i}}"{% if i in temp_list %} style="background-color: red; width:120px; height:60px; opacity: 50%;"disabled {% else %}style="background-color: green; width:120px; height:60px;" {% endif %}>MON {{ i }}</button>
             </form>
             </th> 
             {% endfor %}
@@ -144,7 +139,7 @@
             {% for i in range(129, 145) %}
                 <th class="table_th">
                     <form method="post">
-                        <button class="table_button" name="calender_button" value="{{i}}"{% if i in temp_list %} style="background-color: red; width:120px; height:60px; opacity: 50%;"disabled {% else %}style="background-color: green; width:120px; height:60px;" {% endif %}>{{ i }}</button>
+                        <button class="table_button" name="calender_button" value="{{i}}"{% if i in temp_list %} style="background-color: red; width:120px; height:60px; opacity: 50%;"disabled {% else %}style="background-color: green; width:120px; height:60px;" {% endif %}>TUE {{ i }}</button>
                 </form>
                 </th> 
                 {% endfor %}
@@ -154,7 +149,7 @@
         {% for i in range(145, 161) %}
             <th class="table_th">
                 <form method="post">
-                    <button class="table_button" name="calender_button" value="{{i}}"{% if i in temp_list %} style="background-color: red; width:120px; height:60px; opacity: 50%;"disabled {% else %}style="background-color: green; width:120px; height:60px;" {% endif %}>{{ i }}</button>
+                    <button class="table_button" name="calender_button" value="{{i}}"{% if i in temp_list %} style="background-color: red; width:120px; height:60px; opacity: 50%;"disabled {% else %}style="background-color: green; width:120px; height:60px;" {% endif %}>WED {{ i }}</button>
             </form>
             </th> 
             {% endfor %}
@@ -163,7 +158,7 @@
         {% for i in range(161, 177) %}
             <th class="table_th">
                 <form method="post">
-                    <button class="table_button" name="calender_button" value="{{i}}"{% if i in temp_list %} style="background-color: red; width:120px; height:60px; opacity: 50%;"disabled {% else %}style="background-color: green; width:120px; height:60px;" {% endif %}>{{ i }}</button>
+                    <button class="table_button" name="calender_button" value="{{i}}"{% if i in temp_list %} style="background-color: red; width:120px; height:60px; opacity: 50%;"disabled {% else %}style="background-color: green; width:120px; height:60px;" {% endif %}>THU {{ i }}</button>
             </form>
             </th> 
             {% endfor %}
@@ -172,7 +167,7 @@
         {% for i in range(177, 193) %}
             <th class="table_th">
                 <form method="post">
-                    <button class="table_button" name="calender_button" value="{{i}}"{% if i in temp_list %} style="background-color: red; width:120px; height:60px; opacity: 50%;"disabled {% else %}style="background-color: green; width:120px; height:60px;" {% endif %}>{{ i }}</button>
+                    <button class="table_button" name="calender_button" value="{{i}}"{% if i in temp_list %} style="background-color: red; width:120px; height:60px; opacity: 50%;"disabled {% else %}style="background-color: green; width:120px; height:60px;" {% endif %}>FRI {{ i }}</button>
             </form>
             </th> 
             {% endfor %}
@@ -181,7 +176,7 @@
         {% for i in range(193, 209) %}
             <th class="table_th">
                 <form method="post">
-                    <button class="table_button" name="calender_button" value="{{i}}"{% if i in temp_list %} style="background-color: red; width:120px; height:60px; opacity: 50%;"disabled {% else %}style="background-color: green; width:120px; height:60px;" {% endif %}>{{ i }}</button>
+                    <button class="table_button" name="calender_button" value="{{i}}"{% if i in temp_list %} style="background-color: red; width:120px; height:60px; opacity: 50%;"disabled {% else %}style="background-color: green; width:120px; height:60px;" {% endif %}>SAT {{ i }}</button>
             </form>
             </th> 
             {% endfor %}
@@ -190,7 +185,7 @@
         {% for i in range(209, 225) %}
             <th class="table_th">
                 <form method="post">
-                    <button class="table_button" name="calender_button" value="{{i}}"{% if i in temp_list %} style="background-color: red; width:120px; height:60px; opacity: 50%;"disabled {% else %}style="background-color: green; width:120px; height:60px;" {% endif %}>{{ i }}</button>
+                    <button class="table_button" name="calender_button" value="{{i}}"{% if i in temp_list %} style="background-color: red; width:120px; height:60px; opacity: 50%;"disabled {% else %}style="background-color: green; width:120px; height:60px;" {% endif %}>SUN {{ i }}</button>
             </form>
             </th> 
             {% endfor %}

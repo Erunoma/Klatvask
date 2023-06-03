@@ -7,7 +7,6 @@ import _thread
 import datetime
 import dates_properties
 
-
 # hvis database til users ik er lavet: sqlite3 database.db ".read db.sql"
 # hvis database ik vaskemaskiner ikke er lavet: sqlite3 database.db ".read db2.sql"
 
@@ -32,7 +31,7 @@ def check_user(username, password):
     else:
         return False
 
-#Checks to see if the user is an admin
+#Checks to see if the user is an admin¢
 def check_admin(username):
     con = sqlite3.connect('database.db')
     cur = con.cursor()
@@ -64,6 +63,7 @@ def get_user_list():
     accounts=cur.execute("SELECT * FROM users").fetchall()
     cur.close()
     return accounts
+
 #Deletes an account. normally only accessible by admins
 def delete_account(username):
     con = sqlite3.connect('database.db')
@@ -339,15 +339,18 @@ def booking():
       if request.method=="POST":
         button_id=request.form["calender_button"]
        
-        if request.form["calender_button"]==str(button_id):
+        if request.form["calender_button"] == str(button_id):
             button_data=dates_properties.date_data(button_id)
             print("ID: ",button_data.id, "Date: ", button_data.date, "Timeslot: ", button_data.timeslot)
             time_data=[button_data.id],[button_data.date],[button_data.timeslot]
             return redirect(url_for("confirm_booking", time_data=time_data, id=button_id))           
-# ------------------------------ prøver noget -------------------------------------------------------------
+        
       status_machines()
       temp_list = [] 
-      for i in range(len(status_machines()[0])):
+      for i in range(len(status_machines()[0])+1):
+      #for i in range(225):
+
+        
 
         for item in status_machines()[0]:
             if item[0] == i:
